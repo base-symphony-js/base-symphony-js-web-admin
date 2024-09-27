@@ -6,8 +6,10 @@
   "scripts": {
     "start": "serve -s dist",
     "dev": "vite",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "prepare": "husky",
     "format": "npx prettier --write .",
     "format-check": "npx prettier --check .",
     "preview": "vite preview",
@@ -21,6 +23,8 @@
     "react-dom": "18.3.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "19.3.0",
+    "@commitlint/config-conventional": "19.2.2",
     "@eslint/js": "9.9.0",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
@@ -31,6 +35,7 @@
     "eslint-plugin-react-hooks": "5.1.0-rc.0",
     "eslint-plugin-react-refresh": "0.4.9",
     "globals": "15.9.0",
+    "husky": "9.1.6",
     "prettier": "3.3.3",
     "typescript": "5.5.3",
     "typescript-eslint": "8.0.1",
