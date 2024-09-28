@@ -31,6 +31,7 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       'prettier/prettier': 'warn',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 )
