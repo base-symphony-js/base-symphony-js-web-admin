@@ -1,6 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: Poppins;
+    font-weight: 300;
+    src: url(./assets/fonts/Poppins-Light.ttf);
+  }
+  @font-face {
+    font-family: Poppins;
+    font-weight: 400;
+    src: url(./assets/fonts/Poppins-Regular.ttf);
+  }
+  @font-face {
+    font-family: Poppins;
+    font-weight: 500;
+    src: url(./assets/fonts/Poppins-Medium.ttf);
+  }
+  @font-face {
+    font-family: Poppins;
+    font-weight: 600;
+    src: url(./assets/fonts/Poppins-SemiBold.ttf);
+  }
+  @font-face {
+    font-family: Poppins;
+    font-weight: 700;
+    src: url(./assets/fonts/Poppins-Bold.ttf);
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
+  font-family: poppins;
   background-color: #3e474b;
   color: white;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #0e40ae;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #004bce;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: #004bce;
+}
+::-webkit-scrollbar-track {
+  background: #ebebeb;
+  border-radius: 4px;
 }
