@@ -1,4 +1,4 @@
-import { api } from '../../common'
+import { api } from '../../config'
 
 interface IRequest {
   params?: object

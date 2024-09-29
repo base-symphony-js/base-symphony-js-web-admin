@@ -14,7 +14,7 @@ export const PublicRoute = ({ isAuth, element: Element }: PublicRouteProps) => {
     } else {
       navigate('/login', { replace: true })
     }
-  }, [isAuth, navigate])
+  }, [isAuth])
 
   return <Element />
 }

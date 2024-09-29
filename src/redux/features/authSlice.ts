@@ -1,22 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
-interface PersonalInfo {
-  firstName: string
-  lastName?: string
-  email: string
-  phoneNumber?: string
-  photo?: string
-}
-
-interface Tokens {
-  accessToken: string
-  refreshToken: string
-}
+import { IPersonalInfo, ITokens } from '../../interfaces'
 
 export interface AuthState {
   isAuth: boolean
-  personalInfo: PersonalInfo
-  tokens: Tokens
+  personalInfo: IPersonalInfo
+  tokens: ITokens
 }
 
 const initialState: AuthState = {
@@ -37,7 +25,7 @@ export const AuthSlice = createSlice({
   reducers: {
     login: (
       state,
-      action: PayloadAction<{ personalInfo: PersonalInfo; tokens: Tokens }>,
+      action: PayloadAction<{ personalInfo: IPersonalInfo; tokens: ITokens }>,
     ) => {
       state.isAuth = true
       state.personalInfo = action.payload.personalInfo
@@ -45,11 +33,11 @@ export const AuthSlice = createSlice({
     },
     updatePersonalInfo: (
       state,
-      action: PayloadAction<{ personalInfo: PersonalInfo }>,
+      action: PayloadAction<{ personalInfo: IPersonalInfo }>,
     ) => {
       state.personalInfo = action.payload.personalInfo
     },
-    updateTokens: (state, action: PayloadAction<{ tokens: Tokens }>) => {
+    updateTokens: (state, action: PayloadAction<{ tokens: ITokens }>) => {
       state.tokens = action.payload.tokens
     },
     logout: state => {

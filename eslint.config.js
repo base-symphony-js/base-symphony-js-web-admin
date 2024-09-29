@@ -32,6 +32,7 @@ export default tseslint.config(
       ],
       'prettier/prettier': 'warn',
       '@typescript-eslint/no-explicit-any': 'off',
+      'react-hooks/exhaustive-deps': 'off',
     },
   },
 )

@@ -1,19 +1,34 @@
-import { useEffect } from 'react'
-import { Provider } from 'react-redux'
+import { useCallback, useEffect } from 'react'
 import AppRouter from './routes/AppRouter'
-import { store } from './redux'
-import { apiInterceptor } from './common'
+import { useAuthActions } from './redux'
+import { api, apiInterceptor } from './config'
+import { AuthStorage } from './services'
 
 const App = () => {
+  const { dispatchLogin, dispatchLogout } = useAuthActions()
+
   useEffect(() => {
     apiInterceptor()
+    loadUserInfo()
   }, [])
 
-  return (
-    <Provider store={store}>
-      <AppRouter />
-    </Provider>
-  )
+  const loadUserInfo = useCallback(() => {
+    const personalInfo = AuthStorage.getPersonalInfo()
+    const tokens = AuthStorage.getTokens()
+    if (
+      Object.keys(personalInfo).length !== 0 &&
+      Object.keys(tokens).length !== 0
+    ) {
+      api.defaults.headers.Authorization = `Bearer ${tokens?.accessToken}`
+      dispatchLogin(personalInfo, tokens)
+    } else {
+      AuthStorage.removePersonalInfo()
+      AuthStorage.removeTokens()
+      dispatchLogout()
+    }
+  }, [])
+
+  return <AppRouter />
 }
 
 export default App

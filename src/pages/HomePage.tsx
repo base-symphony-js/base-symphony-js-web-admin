@@ -1,6 +1,6 @@
 import { useAuthActions } from '../redux'
-import { api } from '../common'
-import { apiGetProfile } from '../services'
+import { api } from '../config'
+import { apiGetProfile, AuthStorage } from '../services'
 
 export const HomePage = () => {
   const { dispatchLogout } = useAuthActions()
@@ -12,6 +12,8 @@ export const HomePage = () => {
 
   const handleLogout = () => {
     api.defaults.headers.Authorization = ''
+    AuthStorage.removePersonalInfo()
+    AuthStorage.removeTokens()
     dispatchLogout()
   }
 

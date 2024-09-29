@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useAuthActions } from '../redux'
-import { apiGetProfile, apiLogin } from '../services'
-import { api } from '../common'
+import { apiGetProfile, apiLogin, AuthStorage } from '../services'
+import { api } from '../config'
 
 export const LoginPage = () => {
   const { dispatchLogin } = useAuthActions()
@@ -11,7 +11,6 @@ export const LoginPage = () => {
   const handleLogin = async () => {
     const response = await apiLogin({ body: { email, password } })
     const { success, data } = response
-    console.log('HANDLE_LOGIN', response)
     if (success) {
       api.defaults.headers.Authorization = `Bearer ${data?.tokens?.accessToken}`
       dispatchLogin(
@@ -27,6 +26,17 @@ export const LoginPage = () => {
           refreshToken: data?.tokens?.accessToken,
         },
       )
+      AuthStorage.setPersonalInfo({
+        firstName: data?.user?.firstName,
+        lastName: data?.user?.lastName,
+        email: data?.user?.email,
+        photo: data?.user?.photo,
+        phoneNumber: data?.user?.phoneNumber,
+      })
+      AuthStorage.setTokens({
+        accessToken: data?.tokens?.accessToken,
+        refreshToken: data?.tokens?.accessToken,
+      })
     }
   }
 

@@ -2,18 +2,15 @@ import { useAppDispatch } from './store'
 import {
   login,
   logout,
-  AuthState,
   updatePersonalInfo,
   updateTokens,
 } from './features/authSlice'
+import { IPersonalInfo, ITokens } from '../interfaces'
 
 export const useAuthActions = () => {
   const dispatch = useAppDispatch()
 
-  const dispatchLogin = (
-    personalInfo: AuthState['personalInfo'],
-    tokens: AuthState['tokens'],
-  ) => {
+  const dispatchLogin = (personalInfo: IPersonalInfo, tokens: ITokens) => {
     dispatch(
       login({
         personalInfo,
@@ -22,9 +19,7 @@ export const useAuthActions = () => {
     )
   }
 
-  const dispatchUpdatePersonalInfo = (
-    personalInfo: AuthState['personalInfo'],
-  ) => {
+  const dispatchUpdatePersonalInfo = (personalInfo: IPersonalInfo) => {
     dispatch(
       updatePersonalInfo({
         personalInfo,
@@ -32,7 +27,7 @@ export const useAuthActions = () => {
     )
   }
 
-  const dispatchUpdateTokens = (tokens: AuthState['tokens']) => {
+  const dispatchUpdateTokens = (tokens: ITokens) => {
     dispatch(
       updateTokens({
         tokens,
