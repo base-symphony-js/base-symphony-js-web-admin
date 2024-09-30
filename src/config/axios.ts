@@ -1,7 +1,8 @@
 import axios from 'axios'
+import { VITE_APP_API } from '@common'
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_APP_API,
+  baseURL: VITE_APP_API,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
