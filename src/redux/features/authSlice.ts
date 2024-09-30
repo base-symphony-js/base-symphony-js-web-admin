@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IPersonalInfo, ITokens } from '../../interfaces'
+import { IPersonalInfo, ITokens } from '@interfaces'
 
 export interface AuthState {
   isAuth: boolean

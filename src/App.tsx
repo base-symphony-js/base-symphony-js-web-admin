@@ -1,8 +1,8 @@
 import { useCallback, useEffect } from 'react'
-import AppRouter from './routes/AppRouter'
-import { useAuthActions } from './redux'
-import { api, apiInterceptor } from './config'
-import { AuthStorage } from './services'
+import { AppRouter } from '@routes'
+import { useAuthActions } from '@redux'
+import { api, apiInterceptor } from '@config'
+import { AuthStorage } from '@services'
 
 const App = () => {
   const { dispatchLogin, dispatchLogout } = useAuthActions()

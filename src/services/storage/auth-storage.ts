@@ -1,4 +1,4 @@
-import { IPersonalInfo, IRole, ITokens } from '../../interfaces'
+import { IPersonalInfo, IRole, ITokens } from '@interfaces'
 
 export const AuthStorage = {
   getTokens(): ITokens {

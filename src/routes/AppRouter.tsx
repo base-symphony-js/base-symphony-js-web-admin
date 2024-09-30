@@ -4,13 +4,11 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom'
-import { ErrorPage, LoginPage } from '../pages'
-import { PublicRoute } from './PublicRoute'
-import { PrivateRoute } from './PrivateRoute'
-import { DashboardRouter } from './DashboardRouter'
-import { useAppSelector } from '../redux'
+import { ErrorPage, LoginPage } from '@pages'
+import { PublicRoute, PrivateRoute, DashboardRouter } from '@routes'
+import { useAppSelector } from '@redux'
 
-const AppRouter = () => {
+export const AppRouter = () => {
   const isAuth = useAppSelector(state => state.auth.isAuth)
   return (
     <Router>
@@ -30,5 +28,3 @@ const AppRouter = () => {
     </Router>
   )
 }
-
-export default AppRouter

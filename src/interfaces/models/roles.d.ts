@@ -1,4 +1,4 @@
-import { IModule } from './permissions'
+import { IModule } from '@permissions'
 
 export type Roles = 'admin' | 'owner'
 

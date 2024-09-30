@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { useAuthActions } from '../redux'
-import { apiGetProfile, apiLogin, AuthStorage } from '../services'
-import { api } from '../config'
+import { useAuthActions } from '@redux'
+import { apiGetProfile, apiLogin, AuthStorage } from '@services'
+import { api } from '@config'
 
 export const LoginPage = () => {
   const { dispatchLogin } = useAuthActions()

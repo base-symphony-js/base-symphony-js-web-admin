@@ -1,6 +1,6 @@
-import { useAuthActions } from '../redux'
-import { api } from '../config'
-import { apiGetProfile, AuthStorage } from '../services'
+import { useAuthActions } from '@redux'
+import { api } from '@config'
+import { apiGetProfile, AuthStorage } from '@services'
 
 export const HomePage = () => {
   const { dispatchLogout } = useAuthActions()
@@ -10,11 +10,12 @@ export const HomePage = () => {
     console.log('HANDLE_PROFILE', response)
   }
 
-  const handleLogout = () => {
+  const handleLogout = (): string => {
     api.defaults.headers.Authorization = ''
     AuthStorage.removePersonalInfo()
     AuthStorage.removeTokens()
     dispatchLogout()
+    return ''
   }
 
   return (

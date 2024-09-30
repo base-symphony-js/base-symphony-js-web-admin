@@ -5,7 +5,7 @@ import {
   updatePersonalInfo,
   updateTokens,
 } from './features/authSlice'
-import { IPersonalInfo, ITokens } from '../interfaces'
+import { IPersonalInfo, ITokens } from '@interfaces'
 
 export const useAuthActions = () => {
   const dispatch = useAppDispatch()
