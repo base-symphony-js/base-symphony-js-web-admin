@@ -64,7 +64,7 @@ export const TextPage = () => {
           <TextCustom text="Texto secondary" className="text-secondary" />
           <TextCustom text="Texto optional" className="text-optional" />
           <TextCustom text="Texto gray" className="text-dark-gray" />
-          <TextCustom text="Texto ligth" className="text-ligth-gray" />
+          <TextCustom text="Texto light" className="text-light-gray" />
           <TextCustom text="Texto green" className="text-success" />
           <TextCustom text="Texto red" className="text-danger" />
           <TextCustom text="Texto orange" className="text-warning" />
@@ -76,7 +76,7 @@ export const TextPage = () => {
           <TextCustom text="Fondo secondary" className="bg-secondary" />
           <TextCustom text="Fondo optional" className="bg-optional" />
           <TextCustom text="Fondo gray" className="bg-dark-gray" />
-          <TextCustom text="Fondo ligth" className="bg-ligth-gray" />
+          <TextCustom text="Fondo light" className="bg-light-gray" />
           <TextCustom text="Fondo green" className="bg-success" />
           <TextCustom text="Fondo red" className="bg-danger" />
           <TextCustom text="Fondo orange" className="bg-warning" />

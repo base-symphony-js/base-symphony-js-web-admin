@@ -62,10 +62,7 @@ export const RadioGroupCustom = ({
         ))}
       </RadioGroup>
       {msgError && (
-        <TextCustom
-          text={msgError}
-          className="text-sm text-danger align-middle ml-1"
-        />
+        <TextCustom text={msgError} className="text-sm text-danger ml-1" />
       )}
     </div>
   )

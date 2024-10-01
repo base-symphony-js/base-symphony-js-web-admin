@@ -5,6 +5,7 @@ import {
   HomePage,
   Inputs1Page,
   Inputs2Page,
+  Inputs3Page,
   Inputs4Page,
   LoaderPage,
   TextPage,
@@ -22,7 +23,7 @@ export const DashboardRouter = () => {
         <Route path="/examples/text-and-colors" element={<TextPage />} />
         <Route path="/examples/inputs1" element={<Inputs1Page />} />
         <Route path="/examples/inputs2" element={<Inputs2Page />} />
-        {/* <Route path="/examples/inputs3" element={<Inputs3Page />} /> */}
+        <Route path="/examples/inputs3" element={<Inputs3Page />} />
         <Route path="/examples/inputs4" element={<Inputs4Page />} />
         <Route path="*" element={<Navigate to="/page-error" replace />} />
       </Routes>

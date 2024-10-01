@@ -16,7 +16,7 @@ export default {
         secondary: '#F07167',
         optional: '#FED9B7',
         'dark-gray': '#6C757D',
-        'ligth-gray': '#CDCDCD',
+        'light-gray': '#CDCDCD',
         success: '#22bb33',
         danger: '#F32013',
         warning: '#ffcc00',

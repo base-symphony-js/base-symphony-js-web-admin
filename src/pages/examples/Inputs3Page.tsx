@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Divider } from '@mui/material'
 import {
-  DatePickerCustom,
+  /* DatePickerCustom, */
   PageLayout,
   SelectCustom,
   TextCustom,
@@ -19,13 +19,13 @@ export const Inputs3Page = () => {
   const [genero3, setGenero3] = useState('')
   const [genero4, setGenero4] = useState('')
   const [genero5, setGenero5] = useState('')
-  const [fecha1, setFecha1] = useState(null)
+  /* const [fecha1, setFecha1] = useState(null)
   const [fecha2, setFecha2] = useState(null)
   const [fecha3, setFecha3] = useState(null)
   const [fecha4, setFecha4] = useState(null)
   const [fecha5, setFecha5] = useState(null)
   const [fecha6, setFecha6] = useState(null)
-  const [fecha7, setFecha7] = useState(null)
+  const [fecha7, setFecha7] = useState(null) */
 
   return (
     <PageLayout title="Ejemplos de Selects y DatePickets">
@@ -41,6 +41,7 @@ export const Inputs3Page = () => {
             options={constGeneros}
             value={genero1}
             setValue={setGenero1}
+            placeholder="Seleccione una opción"
           />
           <SelectCustom
             name="Requerido"
@@ -76,7 +77,7 @@ export const Inputs3Page = () => {
       <TextCustom text="DatePickers" className="text-6xl mt-4" />
       <Divider />
       {/* Estados */}
-      <div className="px-4 pt-4">
+      {/* <div className="px-4 pt-4">
         <TextCustom text="Estados" className="text-3xl" />
         <Divider />
         <div className="flex flex-col gap-1">
@@ -111,9 +112,9 @@ export const Inputs3Page = () => {
           />
         </div>
         <Divider />
-      </div>
+      </div> */}
       {/* Validaciones */}
-      <div className="px-4 pt-4">
+      {/* <div className="px-4 pt-4">
         <TextCustom text="Validaciones" className="text-3xl" />
         <Divider />
         <div className="flex flex-col gap-1">
@@ -131,7 +132,7 @@ export const Inputs3Page = () => {
           />
         </div>
         <Divider />
-      </div>
+      </div> */}
     </PageLayout>
   )
 }
