@@ -36,6 +36,12 @@ export const Inputs1Page = () => {
           <TextInputCustom
             value={inputDisabled}
             setValue={setInputDisabled}
+            name="Placeholder"
+            placeholder="Ingrese un texto"
+          />
+          <TextInputCustom
+            value={inputDisabled}
+            setValue={setInputDisabled}
             name="Deshabilitado"
             disabled
           />
@@ -94,27 +100,32 @@ export const Inputs1Page = () => {
             name="Iconos de adorno"
             value={inputIconAdornament}
             setValue={setInputIconAdornament}
-            iconStart={<ReplyIcon />}
-            iconEnd={<SendIcon />}
+            startIcon={<ReplyIcon />}
+            endIcon={<SendIcon />}
           />
           <TextInputCustom
             name="Iconos de botones"
             value={inputIconButton}
             setValue={setInputIconButton}
-            iconStart={<ReplyIcon />}
-            iconEnd={<SendIcon />}
-            iconMode="button"
-            iconOnClick={() => setInputIconButton('')}
+            startIcon={<ReplyIcon />}
+            startIconMode="button"
+            startIconAction={() => setInputIconButton('')}
+            endIcon={<SendIcon />}
+            endIconMode="button"
+            endIconAction={() => setInputIconButton('')}
           />
           <TextInputCustom
             name="Color para iconos de botones"
             value={inputIconButtonColor}
             setValue={setInputIconButtonColor}
-            iconStart={<ReplyIcon />}
-            iconEnd={<SendIcon />}
-            iconMode="button"
-            iconOnClick={() => setInputIconButtonColor('')}
-            iconTypeColor="success"
+            startIcon={<ReplyIcon />}
+            startIconMode="button"
+            startIconAction={() => setInputIconButton('')}
+            startIconTypeColor="success"
+            endIcon={<SendIcon />}
+            endIconMode="button"
+            endIconAction={() => setInputIconButton('')}
+            endIconTypeColor="danger"
           />
           <TextCustom
             text="La accion de los botones es limpiar los inputs"

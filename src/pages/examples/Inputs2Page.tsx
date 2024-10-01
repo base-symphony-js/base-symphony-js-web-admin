@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Divider } from '@mui/material'
 import { PageLayout, TextCustom, TextInputCustom } from '@components'
-import { validInputEmail } from '@core'
+import { validInputEmail } from '@common'
 
 export const Inputs2Page = () => {
   const [inputDefault, setInputDefault] = useState('')
@@ -11,11 +11,10 @@ export const Inputs2Page = () => {
   const [iOnlyAlphanumeric, setIOnlyAlphanumeric] = useState('')
   const [iOnlyAlphanumericExtend, setIOnlyAlphanumericExtend] = useState('')
   const [iMaxLength, setIMaxLength] = useState('')
-  const [phoneNumberHN, setPhoneNumberHN] = useState('')
   const [email, setEmail] = useState('')
-  const [emailMsgError, setEmailMsgError] = useState(null)
+  const [emailMsgError, setEmailMsgError] = useState('')
   const [emailDomain, setEmailDomain] = useState('')
-  const [emailDomainMsgError, setEmailDomainMsgError] = useState(null)
+  const [emailDomainMsgError, setEmailDomainMsgError] = useState('')
 
   const handleValidEmail = () => {
     if (email) {
@@ -26,7 +25,7 @@ export const Inputs2Page = () => {
         setEmailMsgError('Correo no válido')
       }
     } else {
-      setEmailMsgError(null)
+      setEmailMsgError('')
     }
   }
 
@@ -39,7 +38,7 @@ export const Inputs2Page = () => {
         setEmailDomainMsgError('Correo no válido')
       }
     } else {
-      setEmailDomainMsgError(null)
+      setEmailDomainMsgError('')
     }
   }
 
@@ -61,48 +60,37 @@ export const Inputs2Page = () => {
             value={iOnlyNumbers}
             setValue={setIOnlyNumbers}
             name="Solo números"
-            typesValidation={'onlyNumber'}
+            validation={'onlyNumber'}
           />
           <TextInputCustom
             value={iOnlyLetters}
             setValue={setIOnlyLetters}
             name="Solo letras"
-            typesValidation={'onlyLetters'}
+            validation={'onlyLetters'}
           />
           <TextInputCustom
             value={iOnlyLettersExtend}
             setValue={setIOnlyLettersExtend}
             name="Solo letras (extendido)"
-            typesValidation={'onlyLettersExtend'}
+            validation="onlyLettersExtend"
           />
           <TextInputCustom
             value={iOnlyAlphanumeric}
             setValue={setIOnlyAlphanumeric}
             name="Solo números y letras"
-            typesValidation={'onlyAlphanumeric'}
+            validation={'onlyAlphanumeric'}
           />
           <TextInputCustom
             value={iOnlyAlphanumericExtend}
             setValue={setIOnlyAlphanumericExtend}
             name="Solo números y letras (extendido)"
-            typesValidation={'onlyAlphanumericExtend'}
+            validation="onlyAlphanumericExtend"
           />
           <TextInputCustom
             value={iMaxLength}
             setValue={setIMaxLength}
             name="MaxLength 10"
             maxLength={10}
-          />
-          <TextInputCustom
-            value={phoneNumberHN}
-            setValue={setPhoneNumberHN}
-            name="Número de teléfono HN"
-            validInitNumbers={[2, 3, 8, 9]}
-            maxLength={8}
-          />
-          <TextCustom
-            text="Solo números que empiezen con: 2, 3, 8, 9"
-            className="italic"
           />
         </div>
         <Divider />

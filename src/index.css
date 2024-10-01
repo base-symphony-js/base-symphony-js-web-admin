@@ -33,9 +33,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: poppins;
-  background-color: #3e474b;
-  color: white;
+  background-color: #545f64;
 }
 
 ::-webkit-scrollbar {

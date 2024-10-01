@@ -1,7 +1,7 @@
 import { useAuthActions } from '@redux'
 import { api } from '@config'
 import { apiGetProfile, AuthStorage } from '@services'
-import { PageLayout } from '@components'
+import { ButtonCustom, PageLayout } from '@components'
 import { useNavigate } from 'react-router-dom'
 
 export const HomePage = () => {
@@ -24,52 +24,47 @@ export const HomePage = () => {
   return (
     <PageLayout title="Home">
       <p>HomePage</p>
-      <button
-        onClick={handleProfile}
-        className="bg-violet-500  text-white rounded-md px-4 py-2 cursor-pointer hover:bg-violet-600 active:bg-violet-700"
-      >
-        Profile
-      </button>
+      <ButtonCustom text="Profile" onClick={handleProfile} />
       <br />
       <br />
-      <button
-        onClick={() => navigate('/dashboard/home')}
-        className="bg-violet-500  text-white rounded-md px-4 py-2 cursor-pointer hover:bg-violet-600 active:bg-violet-700"
-      >
-        Home
-      </button>
-      <button
-        onClick={() => navigate('/dashboard/examples/alerts')}
-        className="bg-violet-500  text-white rounded-md px-4 py-2 cursor-pointer hover:bg-violet-600 active:bg-violet-700"
-      >
-        Examples - Alerts
-      </button>
-      <button
-        onClick={() => navigate('/dashboard/examples/buttons')}
-        className="bg-violet-500  text-white rounded-md px-4 py-2 cursor-pointer hover:bg-violet-600 active:bg-violet-700"
-      >
-        Examples - Buttons
-      </button>
-      <button
-        onClick={() => navigate('/dashboard/examples/loaders')}
-        className="bg-violet-500  text-white rounded-md px-4 py-2 cursor-pointer hover:bg-violet-600 active:bg-violet-700"
-      >
-        Examples - Loaders
-      </button>
-      <button
-        onClick={() => navigate('/dashboard/examples/text-and-colors')}
-        className="bg-violet-500  text-white rounded-md px-4 py-2 cursor-pointer hover:bg-violet-600 active:bg-violet-700"
-      >
-        Examples - Texts And Colors
-      </button>
+      <div className="flex flex-col gap-2">
+        <ButtonCustom text="Home" onClick={() => navigate('/dashboard/home')} />
+        <ButtonCustom
+          text="Examples - Alerts"
+          onClick={() => navigate('/dashboard/examples/alerts')}
+        />
+        <ButtonCustom
+          text="Examples - Buttons"
+          onClick={() => navigate('/dashboard/examples/buttons')}
+        />
+        <ButtonCustom
+          text="Examples - Texts And Colors"
+          onClick={() => navigate('/dashboard/examples/text-and-colors')}
+        />
+      </div>
       <br />
       <br />
-      <button
-        onClick={handleLogout}
-        className="bg-violet-500  text-white rounded-md px-4 py-2 cursor-pointer hover:bg-violet-600 active:bg-violet-700"
-      >
-        Logout
-      </button>
+      <div className="flex flex-col gap-2">
+        <ButtonCustom
+          text="Examples - Inputs 1"
+          onClick={() => navigate('/dashboard/examples/inputs1')}
+        />
+        <ButtonCustom
+          text="Examples - Inputs 2"
+          onClick={() => navigate('/dashboard/examples/inputs2')}
+        />
+        <ButtonCustom
+          text="Examples - Inputs 3"
+          onClick={() => navigate('/dashboard/examples/inputs3')}
+        />
+        <ButtonCustom
+          text="Examples - Inputs 4"
+          onClick={() => navigate('/dashboard/examples/inputs4')}
+        />
+      </div>
+      <br />
+      <br />
+      <ButtonCustom text="Logout" onClick={handleLogout} />
     </PageLayout>
   )
 }
