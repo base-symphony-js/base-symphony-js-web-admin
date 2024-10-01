@@ -1,18 +1,19 @@
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { AppRouter } from '@routes'
 import { useAuthActions } from '@redux'
 import { api, apiInterceptor } from '@config'
 import { AuthStorage } from '@services'
 
 const App = () => {
+  const [loading, setLoading] = useState(true) // Estado para controlar la carga
   const { dispatchLogin, dispatchLogout } = useAuthActions()
 
   useEffect(() => {
     apiInterceptor()
-    loadUserInfo()
+    loadUserInfo().then(() => setLoading(false))
   }, [])
 
-  const loadUserInfo = useCallback(() => {
+  const loadUserInfo = useCallback(async () => {
     const personalInfo = AuthStorage.getPersonalInfo()
     const tokens = AuthStorage.getTokens()
     if (
@@ -26,7 +27,11 @@ const App = () => {
       AuthStorage.removeTokens()
       dispatchLogout()
     }
-  }, [])
+  }, [dispatchLogin, dispatchLogout])
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
   return <AppRouter />
 }

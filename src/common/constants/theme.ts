@@ -18,3 +18,5 @@ export const COLORS = {
   danger: '#FF4848',
   warning: '#F2CA20',
 }
+
+export type ICOLORS = keyof typeof COLORS

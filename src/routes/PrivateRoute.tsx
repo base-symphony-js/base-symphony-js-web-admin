@@ -9,5 +9,5 @@ export const PrivateRoute = ({
   isAuth,
   element: Element,
 }: PrivateRouteProps) => {
-  return isAuth ? <Element /> : <Navigate to="/login" replace />
+  return isAuth ? <Element /> : <Navigate to="/" replace />
 }

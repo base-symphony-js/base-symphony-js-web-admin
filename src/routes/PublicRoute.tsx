@@ -1,5 +1,4 @@
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 interface PublicRouteProps {
   isAuth: boolean
@@ -7,14 +6,5 @@ interface PublicRouteProps {
 }
 
 export const PublicRoute = ({ isAuth, element: Element }: PublicRouteProps) => {
-  const navigate = useNavigate()
-  useEffect(() => {
-    if (isAuth) {
-      navigate('/dashboard/home', { replace: true })
-    } else {
-      navigate('/login', { replace: true })
-    }
-  }, [isAuth])
-
-  return <Element />
+  return isAuth ? <Navigate to="/dashboard" replace /> : <Element />
 }

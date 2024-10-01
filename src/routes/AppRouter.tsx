@@ -5,7 +5,7 @@ import {
   Navigate,
 } from 'react-router-dom'
 import { ErrorPage, LoginPage } from '@pages'
-import { PublicRoute, PrivateRoute, DashboardRouter } from '@routes'
+import { PrivateRoute, PublicRoute, DashboardRouter } from '@routes'
 import { useAppSelector } from '@redux'
 
 export const AppRouter = () => {
@@ -22,7 +22,16 @@ export const AppRouter = () => {
           element={<PrivateRoute element={DashboardRouter} isAuth={isAuth} />}
         />
         <Route path="/page-error" element={<ErrorPage />} />
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route
+          path="/"
+          element={
+            isAuth ? (
+              <Navigate to="/dashboard" replace />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
         <Route path="*" element={<Navigate to="/page-error" replace />} />
       </Routes>
     </Router>
