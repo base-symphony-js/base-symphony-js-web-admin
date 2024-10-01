@@ -1,13 +1,13 @@
-import { Radio, RadioGroup, RadioProps } from '@mui/material'
-import { ControlLabelCustom, TextCustom } from '@components'
-import { COLORS, ICOLORS } from '@common'
+import { RadioGroup, RadioProps } from '@mui/material'
+import { RadioCustom, TextCustom, TitleInputCustom } from '@components'
+import { ICOLORS } from '@common'
 
 type RadioOptions = {
   id: string
   label: string
 }
 
-interface RadioButtonsCustomProps {
+interface RadioGroupCustomProps {
   name?: string
   value: string
   setValue: (value: string) => void
@@ -18,12 +18,11 @@ interface RadioButtonsCustomProps {
   msgError?: string
   size?: RadioProps['size']
   typeColor?: ICOLORS
-  fontSize?: number
   className?: string
   labelClassName?: string
 }
 
-export const RadioButtonsCustom = ({
+export const RadioGroupCustom = ({
   name = '',
   value = '',
   setValue = () => null,
@@ -34,25 +33,15 @@ export const RadioButtonsCustom = ({
   msgError = '',
   size = undefined,
   typeColor = 'primary',
-  fontSize = undefined,
   className = '',
-}: RadioButtonsCustomProps) => {
+}: RadioGroupCustomProps) => {
   const handleChange = (e: any) => {
     setValue(e.target.value)
   }
 
   return (
     <div className={`flex flex-col ${className}`}>
-      {name && (
-        <div className="flex justify-between items-end">
-          <div className="flex">
-            <TextCustom text={name} className="text-sm sm:text-lg" />
-            {required && (
-              <TextCustom text="*" className="ml-1 text-danger font-bold" />
-            )}
-          </div>
-        </div>
-      )}
+      <TitleInputCustom name={name} required={required} />
       <RadioGroup
         aria-labelledby="demo-controlled-radio-buttons-group"
         name="controlled-radio-buttons-group"
@@ -61,21 +50,15 @@ export const RadioButtonsCustom = ({
         onChange={handleChange}
       >
         {options.map(option => (
-          <ControlLabelCustom
-            key={option?.id}
-            value={option?.id}
+          <RadioCustom
+            key={option.id}
             name={option.label}
-          >
-            <Radio
-              disabled={disabled}
-              size={size}
-              sx={{
-                '& .MuiSvgIcon-root': { fontSize },
-                '&.Mui-checked': { color: COLORS[typeColor] },
-                color: COLORS['light-gray'],
-              }}
-            />
-          </ControlLabelCustom>
+            value={option.id === value}
+            option={option.id}
+            disabled={disabled}
+            size={size}
+            typeColor={typeColor}
+          />
         ))}
       </RadioGroup>
       {msgError && (

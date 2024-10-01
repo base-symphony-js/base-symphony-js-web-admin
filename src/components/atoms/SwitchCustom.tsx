@@ -1,17 +1,15 @@
-import { Switch, SwitchProps } from '@mui/material'
-import { TextCustom } from '@components'
+import { FormControlLabelProps, Switch, SwitchProps } from '@mui/material'
 import { COLORS, ICOLORS } from '@common'
+import { ControlLabelCustom } from '@components'
 
 interface SwitchCustomProps {
   name?: string
   value?: boolean
   setValue?: (value: boolean) => void
   disabled?: boolean
-  msgError?: string
-  required?: boolean
   size?: SwitchProps['size']
   typeColor?: ICOLORS
-  className?: string
+  align?: FormControlLabelProps['labelPlacement']
 }
 
 export const SwitchCustom = ({
@@ -21,29 +19,14 @@ export const SwitchCustom = ({
   disabled = false,
   size = 'medium',
   typeColor = 'primary',
-  msgError = '',
-  required = false,
-  className = '',
+  align = 'end',
 }: SwitchCustomProps) => {
   const handleChange = () => {
     setValue(!value)
   }
 
   return (
-    <div className={`flex flex-col ${className}`}>
-      {name && (
-        <div className="flex justify-between items-end">
-          <div className="flex">
-            <TextCustom
-              text={name}
-              className="text-sm sm:text-lg text-general"
-            />
-            {required && (
-              <TextCustom text="*" className="ml-1 text-danger font-bold" />
-            )}
-          </div>
-        </div>
-      )}
+    <ControlLabelCustom name={name} align={align}>
       <Switch
         checked={value}
         onChange={handleChange}
@@ -60,12 +43,6 @@ export const SwitchCustom = ({
           },
         }}
       />
-      {msgError && (
-        <TextCustom
-          text={msgError}
-          className="text-sm text-danger align-middle ml-1"
-        />
-      )}
-    </div>
+    </ControlLabelCustom>
   )
 }

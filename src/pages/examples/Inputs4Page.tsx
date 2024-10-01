@@ -2,9 +2,8 @@ import { useState } from 'react'
 import { Divider } from '@mui/material'
 import {
   CheckBoxCustom,
-  ControlLabelCustom,
   PageLayout,
-  RadioButtonsCustom,
+  RadioGroupCustom,
   RadioCustom,
   SwitchCustom,
   TextCustom,
@@ -94,21 +93,11 @@ export const Inputs4Page = () => {
         <TextCustom text="Etiquetas" className="text-3xl" />
         <Divider />
         <div className="flex flex-row items-center gap-1">
-          <ControlLabelCustom name={'Default'}>
-            <CheckBoxCustom value />
-          </ControlLabelCustom>
-          <ControlLabelCustom name={'Top'} align="top">
-            <CheckBoxCustom value />
-          </ControlLabelCustom>
-          <ControlLabelCustom name={'Start'} align="start">
-            <CheckBoxCustom value />
-          </ControlLabelCustom>
-          <ControlLabelCustom name={'Bottom'} align="bottom">
-            <CheckBoxCustom value />
-          </ControlLabelCustom>
-          <ControlLabelCustom name={'End'} align="end">
-            <CheckBoxCustom value />
-          </ControlLabelCustom>
+          <CheckBoxCustom value name="Default" />
+          <CheckBoxCustom value name="Top" align="top" />
+          <CheckBoxCustom value name="Start" align="start" />
+          <CheckBoxCustom value name="Bottom" align="bottom" />
+          <CheckBoxCustom value name="End" align="end" />
         </div>
         <Divider />
       </div>
@@ -168,21 +157,11 @@ export const Inputs4Page = () => {
         <TextCustom text="Etiquetas" className="text-3xl" />
         <Divider />
         <div className="flex flex-row items-center gap-1">
-          <ControlLabelCustom name={'Default'}>
-            <RadioCustom value />
-          </ControlLabelCustom>
-          <ControlLabelCustom name={'Top'} align="top">
-            <RadioCustom value />
-          </ControlLabelCustom>
-          <ControlLabelCustom name={'Start'} align="start">
-            <RadioCustom value />
-          </ControlLabelCustom>
-          <ControlLabelCustom name={'Bottom'} align="bottom">
-            <RadioCustom value />
-          </ControlLabelCustom>
-          <ControlLabelCustom name={'End'} align="end">
-            <RadioCustom value />
-          </ControlLabelCustom>
+          <RadioCustom value name="Default" />
+          <RadioCustom value name="Top" align="top" />
+          <RadioCustom value name="Start" align="start" />
+          <RadioCustom value name="Bottom" align="bottom" />
+          <RadioCustom value name="End" align="end" />
         </div>
         <Divider />
       </div>
@@ -191,14 +170,14 @@ export const Inputs4Page = () => {
         <TextCustom text="Grupo de Radio Botones" className="text-3xl" />
         <Divider />
         <div className="flex flex-col gap-1">
-          <RadioButtonsCustom
+          <RadioGroupCustom
             name="Elija su genero"
             options={constGeneros}
             value={genero}
             setValue={setGenero}
             className="mb-3"
           />
-          <RadioButtonsCustom
+          <RadioGroupCustom
             name="Elija su tipo de identidad"
             options={constTiposIdentidad}
             value={tipoIdentidad}
@@ -273,21 +252,11 @@ export const Inputs4Page = () => {
         <TextCustom text="Etiquetas" className="text-3xl" />
         <Divider />
         <div className="flex flex-row items-center gap-1">
-          <ControlLabelCustom name={'Default'}>
-            <SwitchCustom value />
-          </ControlLabelCustom>
-          <ControlLabelCustom name={'Top'} align="top">
-            <SwitchCustom value />
-          </ControlLabelCustom>
-          <ControlLabelCustom name={'Start'} align="start">
-            <SwitchCustom value />
-          </ControlLabelCustom>
-          <ControlLabelCustom name={'Bottom'} align="bottom">
-            <SwitchCustom value />
-          </ControlLabelCustom>
-          <ControlLabelCustom name={'End'} align="end">
-            <SwitchCustom value />
-          </ControlLabelCustom>
+          <SwitchCustom value name="Default" />
+          <SwitchCustom value name="Top" align="top" />
+          <SwitchCustom value name="Start" align="start" />
+          <SwitchCustom value name="Bottom" align="bottom" />
+          <SwitchCustom value name="End" align="end" />
         </div>
         <Divider />
       </div>
