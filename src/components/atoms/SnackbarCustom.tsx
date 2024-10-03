@@ -1,28 +1,23 @@
-import { Alert, AlertProps, AlertTitle, Collapse } from '@mui/material'
-import { TextCustom } from '@components'
+import Snackbar from '@mui/material/Snackbar'
+import Alert, { AlertProps } from '@mui/material/Alert'
+import { IAlert, TextCustom } from '@components'
+import { AlertTitle } from '@mui/material'
 
-export interface IAlert {
-  open: boolean
+interface SnackbarCustomProps {
   title: string
-  description: string
-  severity: AlertProps['severity']
-}
-
-interface AlertCustomProps {
-  title?: string
   description?: string
-  open?: boolean
-  severity?: AlertProps['severity']
+  open: boolean
+  severity: AlertProps['severity']
   setAlert: (value: IAlert) => void
 }
 
-export const AlertCustom = ({
+export const SnackbarCustom = ({
   title = '',
   description = '',
   open = false,
   severity = 'info',
   setAlert = () => null,
-}: AlertCustomProps) => {
+}: SnackbarCustomProps) => {
   const handleClose = () => {
     setAlert({
       open: false,
@@ -33,12 +28,17 @@ export const AlertCustom = ({
   }
 
   return (
-    <Collapse in={open}>
+    <Snackbar
+      open={open}
+      autoHideDuration={6000}
+      onClose={(_e, reason) => (reason === 'clickaway' ? null : handleClose())}
+    >
       <Alert
         severity={severity}
-        variant="filled"
-        onClose={handleClose}
         className={`flex items-center py-0 whitespace-pre-line`}
+        onClose={handleClose}
+        variant="filled"
+        sx={{ width: '100%' }}
       >
         <AlertTitle
           className="text-lg"
@@ -49,6 +49,6 @@ export const AlertCustom = ({
         </AlertTitle>
         <TextCustom text={description} className="text-white" />
       </Alert>
-    </Collapse>
+    </Snackbar>
   )
 }

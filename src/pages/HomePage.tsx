@@ -30,16 +30,12 @@ export const HomePage = () => {
       <div className="flex flex-col gap-2">
         <ButtonCustom text="Home" onClick={() => navigate('/dashboard/home')} />
         <ButtonCustom
-          text="Examples - Alerts"
-          onClick={() => navigate('/dashboard/examples/alerts')}
+          text="Examples - Texts And Colors"
+          onClick={() => navigate('/dashboard/examples/text-and-colors')}
         />
         <ButtonCustom
           text="Examples - Buttons"
           onClick={() => navigate('/dashboard/examples/buttons')}
-        />
-        <ButtonCustom
-          text="Examples - Texts And Colors"
-          onClick={() => navigate('/dashboard/examples/text-and-colors')}
         />
       </div>
       <br />
@@ -60,6 +56,26 @@ export const HomePage = () => {
         <ButtonCustom
           text="Examples - Inputs 4"
           onClick={() => navigate('/dashboard/examples/inputs4')}
+        />
+      </div>
+      <br />
+      <br />
+      <div className="flex flex-col gap-2">
+        <ButtonCustom
+          text="Examples - Alerts"
+          onClick={() => navigate('/dashboard/examples/alerts')}
+        />
+        <ButtonCustom
+          text="Examples - Alerts Modal"
+          onClick={() => navigate('/dashboard/examples/alerts-modal')}
+        />
+        <ButtonCustom
+          text="Examples - Dialogs"
+          onClick={() => navigate('/dashboard/examples/dialogs')}
+        />
+        <ButtonCustom
+          text="Examples - Loaders"
+          onClick={() => navigate('/dashboard/examples/loaders')}
         />
       </div>
       <br />

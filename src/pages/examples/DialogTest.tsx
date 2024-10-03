@@ -6,15 +6,16 @@ import {
   CheckBoxCustom,
   ControlLabelCustom,
   DatePickerCustom,
-  RadioButtonsCustom,
+  RadioGroupCustom,
   SelectCustom,
   TextCustom,
   TextInputCustom,
   DialogCustom,
+  IAlert,
 } from '@components'
 
 // Core
-import { getLegalDate } from '@core'
+import { getLegalDate } from '@common'
 
 // Const
 const constGeneros = [
@@ -30,18 +31,27 @@ const constEstadosCiviles = [
   { id: 'Viud@', label: 'Viudo@' },
 ]
 
-export const DialogTest = ({ open = false, setOpen = () => null }) => {
+interface DialogTestProps {
+  open: boolean
+  setOpen: (value: boolean) => void
+}
+
+export const DialogTest = ({
+  open = false,
+  setOpen = () => null,
+}: DialogTestProps) => {
   const [nombres, setNombres] = useState('')
   const [apellidos, setApellidos] = useState('')
   const [correo, setCorreo] = useState('')
   const [contrasena, setContrasena] = useState('')
   const [confirmContrasena, setConfirmContrasena] = useState('')
-  const [fechaNaicmiento, setFechaNaicmiento] = useState(null)
+  const [fechaNaicmiento, setFechaNaicmiento] = useState<Date | null>(null)
   const [genero, setGenero] = useState('')
   const [estadoCivil, setEstadoCivil] = useState('')
   const [isConfirm, setIsConfirm] = useState(false)
   const [loader, setLoader] = useState(false)
-  const [maxDate, setMaxDate] = useState(undefined)
+  const [maxDate, setMaxDate] = useState<Date | null>(null)
+  const [alert, setAlert] = useState<IAlert>({} as IAlert)
 
   useEffect(() => {
     if (open) {
@@ -62,16 +72,35 @@ export const DialogTest = ({ open = false, setOpen = () => null }) => {
     setGenero('')
     setEstadoCivil('')
     setIsConfirm(false)
-    setMaxDate(undefined)
+    setMaxDate(null)
     setLoader(false)
   }
 
   const handleAccept = () => {
-    setLoader(true)
-    setTimeout(() => {
-      setLoader(false)
-      setOpen(false)
-    }, 2000)
+    if (
+      !nombres ||
+      !apellidos ||
+      !correo ||
+      !fechaNaicmiento ||
+      !contrasena ||
+      !confirmContrasena ||
+      !genero ||
+      !estadoCivil
+    ) {
+      setAlert({
+        open: true,
+        title: 'Adevertencia',
+        description:
+          'Algunos campos están incompletos, debe completarlos primero.',
+        severity: 'warning',
+      })
+    } else {
+      setLoader(true)
+      setTimeout(() => {
+        setLoader(false)
+        setOpen(false)
+      }, 2000)
+    }
   }
 
   return (
@@ -85,6 +114,8 @@ export const DialogTest = ({ open = false, setOpen = () => null }) => {
       labelAction="Guardar"
       onAction={handleAccept}
       disabledAction={!isConfirm}
+      alert={alert}
+      setAlert={setAlert}
     >
       <div className="flex flex-col relative">
         <TextCustom text="Ingrese sus datos" variant="h5" />
@@ -133,7 +164,7 @@ export const DialogTest = ({ open = false, setOpen = () => null }) => {
           type="password"
         />
         <Divider />
-        <RadioButtonsCustom
+        <RadioGroupCustom
           name="Genero"
           options={constGeneros}
           value={genero}
