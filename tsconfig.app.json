@@ -11,6 +11,7 @@
       "@common": ["./src/common"],
       "@components": ["./src/components"],
       "@config": ["./src/config"],
+      "@hooks": ["./src/hooks"],
       "@interfaces": ["./src/interfaces"],
       "@pages": ["./src/pages"],
       "@redux": ["./src/redux"],

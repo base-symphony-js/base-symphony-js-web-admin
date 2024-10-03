@@ -12,10 +12,11 @@ import {
   LoaderPage,
   TextPage,
 } from '@pages'
+import { DashboardLayout } from '@components'
 
 export const DashboardRouter = () => {
   return (
-    <div style={{ padding: 8 }}>
+    <DashboardLayout>
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard/home" />} />
         <Route path="/home" element={<HomePage />} />
@@ -31,6 +32,6 @@ export const DashboardRouter = () => {
         <Route path="/examples/loaders" element={<LoaderPage />} />
         <Route path="*" element={<Navigate to="/page-error" replace />} />
       </Routes>
-    </div>
+    </DashboardLayout>
   )
 }

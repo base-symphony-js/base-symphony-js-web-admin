@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { Divider } from '@mui/material'
 import {
   CheckBoxCustom,
-  ControlLabelCustom,
   DatePickerCustom,
   RadioGroupCustom,
   SelectCustom,
@@ -179,9 +178,11 @@ export const DialogTest = ({
           setValue={setEstadoCivil}
           className="mb-2"
         />
-        <ControlLabelCustom name={'Estoy de acuerdo con los terminos'}>
-          <CheckBoxCustom value={isConfirm} setValue={setIsConfirm} />
-        </ControlLabelCustom>
+        <CheckBoxCustom
+          name="Estoy de acuerdo con los terminos"
+          value={isConfirm}
+          setValue={setIsConfirm}
+        />
       </div>
     </DialogCustom>
   )

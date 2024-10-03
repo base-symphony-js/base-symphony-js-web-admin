@@ -85,7 +85,7 @@ const Component = ({
         </DialogContent>
         <DialogActions>
           <ButtonCustom
-            text={'Cancelar'}
+            text="Cancelar"
             typeColor="danger"
             onClick={handleClose}
             disabled={loader}

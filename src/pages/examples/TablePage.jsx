@@ -177,9 +177,9 @@ export const TablePage = () => {
         actions={['view', 'edit', 'disable', 'delete']}
         disabledActions={['disable']}
         actionClick={handleTableActions}
-        addText={'Agregar'}
+        addText="Agregar"
         onAddRecords={() => setShowAgregar(true)}
-        fileName={'Usuarios'}
+        fileName="Usuarios"
         enabledExport
         enableRowActions
         enableTopToolbar

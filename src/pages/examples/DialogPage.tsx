@@ -3,7 +3,6 @@ import { Divider } from '@mui/material'
 import {
   ButtonCustom,
   CheckBoxCustom,
-  ControlLabelCustom,
   TextCustom,
   DialogCustom,
   PageLayout,
@@ -140,9 +139,11 @@ export const DialogPage = () => {
             text="Ventana modal con boton de accion deshabilitado"
             variant="h6"
           />
-          <ControlLabelCustom name={'Estoy de acuerdo con los terminos'}>
-            <CheckBoxCustom value={check1} setValue={setCheck1} />
-          </ControlLabelCustom>
+          <CheckBoxCustom
+            name="Estoy de acuerdo con los terminos"
+            value={check1}
+            setValue={setCheck1}
+          />
           <div>
             <TextCustom text="Nota: " className="font-bold" />
             <TextCustom
@@ -162,9 +163,11 @@ export const DialogPage = () => {
           disabledAction={!check2}
         >
           <TextCustom text="Ventana modal con evento dismiss" variant="h6" />
-          <ControlLabelCustom name={'Estoy de acuerdo con los terminos'}>
-            <CheckBoxCustom value={check2} setValue={setCheck2} />
-          </ControlLabelCustom>
+          <CheckBoxCustom
+            name="Estoy de acuerdo con los terminos"
+            value={check2}
+            setValue={setCheck2}
+          />
         </DialogCustom>
       </div>
       {/* Ventanas modal avanzada */}

@@ -1,0 +1,17 @@
+export const PATH = {
+  HOME: '/',
+  ERROR_404: '/error404',
+  SEGURIDAD_USUARIOS: '/seguridad/usuarios',
+  SEGURIDAD_GRUPOS: '/seguridad/grupos',
+  EXAMPLE_TEXT_AND_COLORS: '/example/text-and-colors',
+  EXAMPLE_BUTTONS: '/example/buttons',
+  EXAMPLE_INPUTS_1: '/example/inputs-1',
+  EXAMPLE_INPUTS_2: '/example/inputs-2',
+  EXAMPLE_INPUTS_3: '/example/inputs-3',
+  EXAMPLE_INPUTS_4: '/example/inputs-4',
+  EXAMPLE_ALERTS: '/example/alerts',
+  EXAMPLE_ALERTS_MODAL: '/example/alerts-modal',
+  EXAMPLE_LOADERS: '/example/loaders',
+  EXAMPLE_MODAL_WINDOWS: '/example/modal-windows',
+  EXAMPLE_TABLES: '/example/tables',
+}

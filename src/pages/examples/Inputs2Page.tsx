@@ -60,13 +60,13 @@ export const Inputs2Page = () => {
             value={iOnlyNumbers}
             setValue={setIOnlyNumbers}
             name="Solo números"
-            validation={'onlyNumber'}
+            validation="onlyNumber"
           />
           <TextInputCustom
             value={iOnlyLetters}
             setValue={setIOnlyLetters}
             name="Solo letras"
-            validation={'onlyLetters'}
+            validation="onlyLetters"
           />
           <TextInputCustom
             value={iOnlyLettersExtend}
@@ -78,7 +78,7 @@ export const Inputs2Page = () => {
             value={iOnlyAlphanumeric}
             setValue={setIOnlyAlphanumeric}
             name="Solo números y letras"
-            validation={'onlyAlphanumeric'}
+            validation="onlyAlphanumeric"
           />
           <TextInputCustom
             value={iOnlyAlphanumericExtend}

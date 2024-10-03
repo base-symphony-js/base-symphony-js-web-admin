@@ -64,7 +64,7 @@ const Component = ({
       case 'success':
         return (
           <ButtonCustom
-            text={'Guardar'}
+            text="Guardar"
             typeColor="success"
             className="px-8"
             onClick={handleAction}
@@ -73,7 +73,7 @@ const Component = ({
       case 'warning':
         return (
           <ButtonCustom
-            text={'Inhabilitar'}
+            text="Inhabilitar"
             typeColor="warning"
             className="px-8"
             onClick={handleAction}
@@ -82,7 +82,7 @@ const Component = ({
       case 'error':
         return (
           <ButtonCustom
-            text={'Eliminar'}
+            text="Eliminar"
             typeColor="danger"
             className="px-8"
             onClick={handleAction}
@@ -92,7 +92,7 @@ const Component = ({
       default:
         return (
           <ButtonCustom
-            text={'Aceptar'}
+            text="Aceptar"
             typeColor="primary"
             className="px-8"
             onClick={handleAction}
@@ -127,7 +127,7 @@ const Component = ({
       </DialogContent>
       <DialogActions>
         <ButtonCustom
-          text={'Cancelar'}
+          text="Cancelar"
           variant="outlined"
           typeColor="dark-gray"
           className="px-8"
