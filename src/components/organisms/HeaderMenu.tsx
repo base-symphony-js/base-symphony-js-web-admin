@@ -33,7 +33,7 @@ export const HeaderMenu = ({
           onClick={handleDrawerToggle}
           sx={{ mr: 2, display: { xl: 'none' } }}
         >
-          <MenuIcon />
+          <MenuIcon theme="dark" />
         </IconButton>
         <div className="w-full flex justify-between font-poppins">
           <Box className="flex items-center gap-3">

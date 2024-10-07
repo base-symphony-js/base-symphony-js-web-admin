@@ -3,6 +3,7 @@ import { ITheme } from '@common'
 import { api } from '@config'
 import { PreferencesStorage } from '@services'
 import { ILanguages, ITranslation, translations } from '@languages'
+import { ThemeProvider, createTheme } from '@mui/material'
 
 interface PreferenceContextType {
   t: ITranslation
@@ -70,7 +71,11 @@ export const PreferencesContextProvider = ({
     <PreferencesContext.Provider
       value={{ t, lng, theme, setLngEs, setLngEn, setThemeLight, setThemeDark }}
     >
-      {children}
+      <ThemeProvider
+        theme={createTheme({ colorSchemes: { dark: theme === 'dark' } })}
+      >
+        {children}
+      </ThemeProvider>
     </PreferencesContext.Provider>
   )
 }

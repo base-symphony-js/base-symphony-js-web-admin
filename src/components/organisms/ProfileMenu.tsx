@@ -62,12 +62,12 @@ export const ProfileMenu = () => {
           <DrawerItem
             text="Manual de Usuario"
             onClick={() => console.log('Redirigir al manual de usuario')}
-            icon={<MenuBookIcon />}
+            icon={<MenuBookIcon theme="dark" />}
           />
           <DrawerItem
             text="Cerrar Sesión"
             onClick={handleLogout}
-            icon={<PowerSettingsNewIcon />}
+            icon={<PowerSettingsNewIcon theme="dark" />}
           />
         </div>
       </div>

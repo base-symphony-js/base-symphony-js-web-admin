@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { Box, CssBaseline, Drawer, Toolbar } from '@mui/material'
 import { HeaderMenu, ProfileMenu, SideMenu } from '@components'
 import { COLORS, DRAWER_WIDTH } from '@common'
+import { usePreferences } from '@hooks'
 
 interface DashboardLayoutProps {
   children: React.ReactNode
@@ -9,7 +10,9 @@ interface DashboardLayoutProps {
 
 export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const containerRef = useRef<any>(null)
-  const backgroundColor = COLORS.general
+  const { theme } = usePreferences()
+  const backgroundColor =
+    theme === 'dark' ? COLORS['dark-general'] : COLORS.general
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const handleDrawerToggle = () => {
@@ -89,7 +92,10 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         <div
           ref={containerRef}
           className="flex flex-col h-full overflow-y-auto"
-          style={{ backgroundColor: COLORS.optional }}
+          style={{
+            backgroundColor:
+              theme === 'dark' ? COLORS['dark-optional'] : COLORS.optional,
+          }}
         >
           {children}
         </div>

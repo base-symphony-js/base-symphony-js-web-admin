@@ -38,14 +38,14 @@ export const SideMenu = ({ onChange = () => null }: SideMenuProps) => {
           <DrawerItem
             text="Inicio"
             onClick={() => handleItem(PATH.HOME)}
-            icon={<HomeCustomIcon />}
+            icon={<HomeCustomIcon theme="dark" />}
             isSelected={pathname === PATH.HOME}
           />
           <div>
             <DrawerItem
               text="Seguridad"
               onClick={() => setShowSeguridad(!showSeguridad)}
-              icon={<SecurityIcon />}
+              icon={<SecurityIcon theme="dark" />}
               isCollapse
               collapse={showSeguridad}
             />
@@ -53,14 +53,14 @@ export const SideMenu = ({ onChange = () => null }: SideMenuProps) => {
               <DrawerItem
                 text="Usuarios"
                 onClick={() => handleItem(PATH.SEGURIDAD_USUARIOS)}
-                icon={<GroupsIcon />}
+                icon={<GroupsIcon theme="dark" />}
                 isSelected={pathname === PATH.SEGURIDAD_USUARIOS}
                 className="ml-4"
               />
               <DrawerItem
                 text="Grupos"
                 onClick={() => handleItem(PATH.SEGURIDAD_GRUPOS)}
-                icon={<VerifiedUserIcon />}
+                icon={<VerifiedUserIcon theme="dark" />}
                 isSelected={pathname === PATH.SEGURIDAD_GRUPOS}
                 className="ml-4"
               />
@@ -70,7 +70,7 @@ export const SideMenu = ({ onChange = () => null }: SideMenuProps) => {
             <DrawerItem
               text="Ejemplos"
               onClick={() => setShowExamples(!showExamples)}
-              icon={<ScienceIcon />}
+              icon={<ScienceIcon theme="dark" />}
               isCollapse
               collapse={showExamples}
             />
@@ -78,77 +78,77 @@ export const SideMenu = ({ onChange = () => null }: SideMenuProps) => {
               <DrawerItem
                 text="Textos y Colores"
                 onClick={() => handleItem(PATH.EXAMPLE_TEXT_AND_COLORS)}
-                icon={<ExtensionIcon />}
+                icon={<ExtensionIcon theme="dark" />}
                 isSelected={pathname === PATH.EXAMPLE_TEXT_AND_COLORS}
                 className="ml-4"
               />
               <DrawerItem
                 text="Botones y IconButtons"
                 onClick={() => handleItem(PATH.EXAMPLE_BUTTONS)}
-                icon={<ExtensionIcon />}
+                icon={<ExtensionIcon theme="dark" />}
                 isSelected={pathname === PATH.EXAMPLE_BUTTONS}
                 className="ml-4"
               />
               <DrawerItem
                 text="TextInputs"
                 onClick={() => handleItem(PATH.EXAMPLE_INPUTS_1)}
-                icon={<ExtensionIcon />}
+                icon={<ExtensionIcon theme="dark" />}
                 isSelected={pathname === PATH.EXAMPLE_INPUTS_1}
                 className="ml-4"
               />
               <DrawerItem
                 text="Validaciones de TextInputs"
                 onClick={() => handleItem(PATH.EXAMPLE_INPUTS_2)}
-                icon={<ExtensionIcon />}
+                icon={<ExtensionIcon theme="dark" />}
                 isSelected={pathname === PATH.EXAMPLE_INPUTS_2}
                 className="ml-4"
               />
               <DrawerItem
                 text="Selects y DatePickers"
                 onClick={() => handleItem(PATH.EXAMPLE_INPUTS_3)}
-                icon={<ExtensionIcon />}
+                icon={<ExtensionIcon theme="dark" />}
                 isSelected={pathname === PATH.EXAMPLE_INPUTS_3}
                 className="ml-4"
               />
               <DrawerItem
                 text="Chexboxs, RadioButtons y Swtichs"
                 onClick={() => handleItem(PATH.EXAMPLE_INPUTS_4)}
-                icon={<ExtensionIcon />}
+                icon={<ExtensionIcon theme="dark" />}
                 isSelected={pathname === PATH.EXAMPLE_INPUTS_4}
                 className="ml-4"
               />
               <DrawerItem
                 text="Alerts"
                 onClick={() => handleItem(PATH.EXAMPLE_ALERTS)}
-                icon={<ExtensionIcon />}
+                icon={<ExtensionIcon theme="dark" />}
                 isSelected={pathname === PATH.EXAMPLE_ALERTS}
                 className="ml-4"
               />
               <DrawerItem
                 text="Alerts Modal"
                 onClick={() => handleItem(PATH.EXAMPLE_ALERTS_MODAL)}
-                icon={<ExtensionIcon />}
+                icon={<ExtensionIcon theme="dark" />}
                 isSelected={pathname === PATH.EXAMPLE_ALERTS_MODAL}
                 className="ml-4"
               />
               <DrawerItem
                 text="Loaders"
                 onClick={() => handleItem(PATH.EXAMPLE_LOADERS)}
-                icon={<ExtensionIcon />}
+                icon={<ExtensionIcon theme="dark" />}
                 isSelected={pathname === PATH.EXAMPLE_LOADERS}
                 className="ml-4"
               />
               <DrawerItem
                 text="Ventanas Modales"
                 onClick={() => handleItem(PATH.EXAMPLE_MODAL_WINDOWS)}
-                icon={<ExtensionIcon />}
+                icon={<ExtensionIcon theme="dark" />}
                 isSelected={pathname === PATH.EXAMPLE_MODAL_WINDOWS}
                 className="ml-4"
               />
               <DrawerItem
                 text="Tablas"
                 onClick={() => handleItem(PATH.EXAMPLE_TABLES)}
-                icon={<ExtensionIcon />}
+                icon={<ExtensionIcon theme="dark" />}
                 isSelected={pathname === PATH.EXAMPLE_TABLES}
                 className="ml-4"
               />

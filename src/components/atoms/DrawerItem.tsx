@@ -40,7 +40,13 @@ export const DrawerItem = ({
             {text}
           </Typography>
         </div>
-        {isCollapse ? collapse ? <ExpandLessIcon /> : <ExpandMoreIcon /> : null}
+        {isCollapse ? (
+          collapse ? (
+            <ExpandLessIcon theme="dark" />
+          ) : (
+            <ExpandMoreIcon theme="dark" />
+          )
+        ) : null}
       </div>
     </ListItem>
   )

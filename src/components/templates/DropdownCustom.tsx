@@ -41,7 +41,12 @@ export const DropdownCustom = ({
     <Box className="select-none relative text-black" ref={ref}>
       <Box className="flex items-center cursor-pointer" onClick={handleToggle}>
         {component}
-        {isToogleIcon && (open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />)}
+        {isToogleIcon &&
+          (open ? (
+            <ArrowDropUpIcon theme="dark" />
+          ) : (
+            <ArrowDropDownIcon theme="dark" />
+          ))}
       </Box>
       {open && (
         <Box
