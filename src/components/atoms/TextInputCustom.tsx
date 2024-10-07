@@ -1,12 +1,13 @@
 import { memo } from 'react'
 import {
   BaseTextFieldProps,
+  IconButtonProps,
   InputAdornment,
   SvgIconProps,
   TextField,
 } from '@mui/material'
 import { IconButtonCustom, TitleInputCustom } from '@components'
-import { ICOLORS, TypeValidation, validTextInput } from '@common'
+import { TypeValidation, validTextInput } from '@common'
 
 interface TextInputCustomProps {
   name?: string
@@ -27,11 +28,11 @@ interface TextInputCustomProps {
   startIcon?: React.ReactElement<SvgIconProps>
   startIconMode?: 'adornment' | 'button'
   startIconAction?: () => void
-  startIconTypeColor?: ICOLORS
+  startIconColor?: IconButtonProps['color']
   endIcon?: React.ReactElement<SvgIconProps>
   endIconMode?: 'adornment' | 'button'
   endIconAction?: () => void
-  endIconTypeColor?: ICOLORS
+  endIconColor?: IconButtonProps['color']
 }
 
 const Component = ({
@@ -52,11 +53,11 @@ const Component = ({
   startIcon = undefined,
   startIconMode = 'adornment',
   startIconAction = () => null,
-  startIconTypeColor = 'primary',
+  startIconColor = 'primary',
   endIcon = undefined,
   endIconMode = 'adornment',
   endIconAction = () => null,
-  endIconTypeColor = 'primary',
+  endIconColor = 'primary',
 }: TextInputCustomProps) => {
   return (
     <div className={`flex flex-col ${className}`}>
@@ -101,7 +102,7 @@ const Component = ({
                 <IconButtonCustom
                   icon={startIcon}
                   onClick={startIconAction}
-                  typeColor={startIconTypeColor}
+                  color={startIconColor}
                   size={24}
                 />
               )),
@@ -113,7 +114,7 @@ const Component = ({
                 <IconButtonCustom
                   icon={endIcon}
                   onClick={endIconAction}
-                  typeColor={endIconTypeColor}
+                  color={endIconColor}
                   size={24}
                 />
               )),

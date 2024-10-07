@@ -8,9 +8,13 @@ export const getLegalDate = () => {
   return legalDate
 }
 
-export const formatDate = fechaISO => {
-  const opcionesFecha = { year: 'numeric', month: 'long', day: 'numeric' }
-  const opcionesHora = { hour: '2-digit', minute: '2-digit', second: '2-digit' }
+export const formatDate = (fechaISO: any) => {
+  const opcionesFecha: any = { year: 'numeric', month: 'long', day: 'numeric' }
+  const opcionesHora: any = {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  }
 
   const fecha = new Date(fechaISO)
   const fechaFormateada =

@@ -39,148 +39,47 @@ export const ButtonPage = () => {
         <Divider />
         <div className="flex flex-col gap-1">
           <div className="flex gap-1">
-            <ButtonCustom text="Por defecto" />
-            <ButtonCustom text="Por defecto" variant="outlined" />
-            <ButtonCustom text="Por defecto" variant="text" />
-            <ButtonCustom text="Por defecto" disabled />
-            <ButtonCustom text="Por defecto" variant="outlined" disabled />
-            <ButtonCustom text="Por defecto" variant="text" disabled />
+            <ButtonCustom text="Primario" />
+            <ButtonCustom text="Primario" variant="outlined" />
+            <ButtonCustom text="Primario" variant="text" />
           </div>
           <div className="flex gap-1">
-            <ButtonCustom text="Primario" typeColor="primary" />
-            <ButtonCustom
-              text="Primario"
-              typeColor="primary"
-              variant="outlined"
-            />
-            <ButtonCustom text="Primario" typeColor="primary" variant="text" />
-            <ButtonCustom text="Primario" typeColor="primary" disabled />
-            <ButtonCustom
-              text="Primario"
-              typeColor="primary"
-              variant="outlined"
-              disabled
-            />
-            <ButtonCustom
-              text="Primario"
-              typeColor="primary"
-              variant="text"
-              disabled
-            />
-          </div>
-          <div className="flex gap-1">
-            <ButtonCustom text="Secundario" typeColor="secondary" />
+            <ButtonCustom text="Secundario" color="secondary" />
             <ButtonCustom
               text="Secundario"
-              typeColor="secondary"
+              color="secondary"
               variant="outlined"
             />
-            <ButtonCustom
-              text="Secundario"
-              typeColor="secondary"
-              variant="text"
-            />
-            <ButtonCustom text="Secundario" typeColor="secondary" disabled />
-            <ButtonCustom
-              text="Secundario"
-              typeColor="secondary"
-              variant="outlined"
-              disabled
-            />
-            <ButtonCustom
-              text="Secundario"
-              typeColor="secondary"
-              variant="text"
-              disabled
-            />
+            <ButtonCustom text="Secundario" color="secondary" variant="text" />
           </div>
           <div className="flex gap-1">
-            <ButtonCustom text="Exitoso" typeColor="success" />
-            <ButtonCustom
-              text="Exitoso"
-              typeColor="success"
-              variant="outlined"
-            />
-            <ButtonCustom text="Exitoso" typeColor="success" variant="text" />
-            <ButtonCustom text="Exitoso" typeColor="success" disabled />
-            <ButtonCustom
-              text="Exitoso"
-              typeColor="success"
-              variant="outlined"
-              disabled
-            />
-            <ButtonCustom
-              text="Exitoso"
-              typeColor="success"
-              variant="text"
-              disabled
-            />
+            <ButtonCustom text="Información" color="info" />
+            <ButtonCustom text="Información" color="info" variant="outlined" />
+            <ButtonCustom text="Información" color="info" variant="text" />
           </div>
           <div className="flex gap-1">
-            <ButtonCustom text="Alerta" typeColor="danger" />
-            <ButtonCustom text="Alerta" typeColor="danger" variant="outlined" />
-            <ButtonCustom text="Alerta" typeColor="danger" variant="text" />
-            <ButtonCustom text="Alerta" typeColor="danger" disabled />
-            <ButtonCustom
-              text="Alerta"
-              typeColor="danger"
-              variant="outlined"
-              disabled
-            />
-            <ButtonCustom
-              text="Alerta"
-              typeColor="danger"
-              variant="text"
-              disabled
-            />
+            <ButtonCustom text="Exitoso" color="success" />
+            <ButtonCustom text="Exitoso" color="success" variant="outlined" />
+            <ButtonCustom text="Exitoso" color="success" variant="text" />
           </div>
           <div className="flex gap-1">
-            <ButtonCustom text="Advertencia" typeColor="warning" />
+            <ButtonCustom text="Advertencia" color="warning" />
             <ButtonCustom
               text="Advertencia"
-              typeColor="warning"
+              color="warning"
               variant="outlined"
             />
-            <ButtonCustom
-              text="Advertencia"
-              typeColor="warning"
-              variant="text"
-            />
-            <ButtonCustom text="Advertencia" typeColor="warning" disabled />
-            <ButtonCustom
-              text="Advertencia"
-              typeColor="warning"
-              variant="outlined"
-              disabled
-            />
-            <ButtonCustom
-              text="Advertencia"
-              typeColor="warning"
-              variant="text"
-              disabled
-            />
+            <ButtonCustom text="Advertencia" color="warning" variant="text" />
           </div>
           <div className="flex gap-1">
-            <ButtonCustom text="Gris" typeColor="dark-gray" />
-            <ButtonCustom
-              text="Gris"
-              typeColor="dark-gray"
-              variant="outlined"
-            />
-            <ButtonCustom text="Gris" typeColor="dark-gray" variant="text" />
-            <ButtonCustom text="Gris" typeColor="dark-gray" disabled />
-            <ButtonCustom
-              text="Gris"
-              typeColor="dark-gray"
-              variant="outlined"
-              disabled
-            />
-            <ButtonCustom
-              text="Gris"
-              typeColor="dark-gray"
-              variant="text"
-              disabled
-            />
+            <ButtonCustom text="Error" color="error" />
+            <ButtonCustom text="Error" color="error" variant="outlined" />
+            <ButtonCustom text="Error" color="error" variant="text" />
+          </div>
+          <div className="flex gap-1">
+            <ButtonCustom text="Heredado" color="inherit" />
+            <ButtonCustom text="Heredado" color="inherit" variant="outlined" />
+            <ButtonCustom text="Heredado" color="inherit" variant="text" />
           </div>
         </div>
         <Divider />
@@ -193,33 +92,25 @@ export const ButtonPage = () => {
           <ButtonCustom
             text="Contained"
             variant="contained"
-            endIcon={<SendIcon className="text-white" />}
+            endIcon={<SendIcon />}
           />
           <ButtonCustom
             text="Outlined"
             variant="outlined"
-            endIcon={<SendIcon className="text-dark-gray" />}
+            endIcon={<SendIcon />}
           />
-          <ButtonCustom
-            text="Text"
-            variant="text"
-            endIcon={<SendIcon className="text-dark-gray" />}
-          />
+          <ButtonCustom text="Text" variant="text" endIcon={<SendIcon />} />
           <ButtonCustom
             text="Contained"
             variant="contained"
-            startIcon={<ReplyIcon className="text-white" />}
+            startIcon={<ReplyIcon />}
           />
           <ButtonCustom
             text="Outlined"
             variant="outlined"
-            startIcon={<ReplyIcon className="text-dark-gray" />}
+            startIcon={<ReplyIcon />}
           />
-          <ButtonCustom
-            text="Text"
-            variant="text"
-            startIcon={<ReplyIcon className="text-dark-gray" />}
-          />
+          <ButtonCustom text="Text" variant="text" startIcon={<ReplyIcon />} />
         </div>
         <Divider />
       </div>
@@ -257,107 +148,40 @@ export const ButtonPage = () => {
         <Divider />
         <div className="flex flex-col gap-1">
           <div className="flex items-center">
-            <IconButtonCustom icon={<DeleteIcon />} />
+            <IconButtonCustom icon={<DeleteIcon />} color="primary" />
+            <TextCustom text="Icon Button Primario" />
+          </div>
+          <div className="flex items-center">
+            <IconButtonCustom icon={<DeleteIcon />} color="secondary" />
+            <TextCustom text="Icon Button Secundario" />
+          </div>
+          <div className="flex items-center">
+            <IconButtonCustom icon={<DeleteIcon />} color="info" />
+            <TextCustom text="Icon Button Información" />
+          </div>
+          <div className="flex items-center">
+            <IconButtonCustom icon={<DeleteIcon />} color="success" />
+            <TextCustom text="Icon Button Exitoso" />
+          </div>
+          <div className="flex items-center">
+            <IconButtonCustom icon={<DeleteIcon />} color="warning" />
+            <TextCustom text="Icon Button Advertencia" />
+          </div>
+          <div className="flex items-center">
+            <IconButtonCustom icon={<DeleteIcon />} color="error" />
+            <TextCustom text="Icon Button Error" />
+          </div>
+          <div className="flex items-center">
+            <IconButtonCustom icon={<DeleteIcon />} color="default" />
             <TextCustom text="Icon Button Por Defecto" />
+          </div>
+          <div className="flex items-center">
+            <IconButtonCustom icon={<DeleteIcon />} color="inherit" />
+            <TextCustom text="Icon Button Heredado" />
           </div>
           <div className="flex items-center">
             <IconButtonCustom icon={<DeleteIcon />} disabled />
             <TextCustom text="Icon Button Deshabilitado" />
-          </div>
-          <div className="flex items-center">
-            <IconButtonCustom icon={<DeleteIcon />} typeColor="primary" />
-            <TextCustom text="Icon Button Primario" />
-          </div>
-          <div className="flex items-center">
-            <IconButtonCustom icon={<DeleteIcon />} typeColor="secondary" />
-            <TextCustom text="Icon Button Secundario" />
-          </div>
-          <div className="flex items-center">
-            <IconButtonCustom icon={<DeleteIcon />} typeColor="success" />
-            <TextCustom text="Icon Button Exitoso" />
-          </div>
-          <div className="flex items-center">
-            <IconButtonCustom icon={<DeleteIcon />} typeColor="danger" />
-            <TextCustom text="Icon Button Alerta" />
-          </div>
-          <div className="flex items-center">
-            <IconButtonCustom icon={<DeleteIcon />} typeColor="warning" />
-            <TextCustom text="Icon Button Advertencia" />
-          </div>
-          <div className="flex items-center">
-            <IconButtonCustom icon={<DeleteIcon />} typeColor="dark-gray" />
-            <TextCustom text="Icon Button Gris" />
-          </div>
-        </div>
-        <Divider />
-      </div>
-      {/* Colores con Hover */}
-      <div className="px-4 pt-4">
-        <TextCustom text="Colores con Hover" className="text-3xl" />
-        <Divider />
-        <div className="flex flex-col gap-1">
-          <div className="flex items-center">
-            <IconButtonCustom
-              icon={<DeleteIcon />}
-              typeColorHover="dark-gray"
-            />
-            <TextCustom text="Icon Button Por Defecto con hover Gris" />
-          </div>
-          <div className="flex items-center">
-            <IconButtonCustom
-              icon={<DeleteIcon />}
-              typeColorHover="dark-gray"
-              disabled
-            />
-            <TextCustom text="Icon Button Deshabilitado" />
-          </div>
-          <div className="flex items-center">
-            <IconButtonCustom
-              icon={<DeleteIcon />}
-              typeColor="dark-gray"
-              typeColorHover="primary"
-            />
-            <TextCustom text="Icon Button Gris con hover Primario" />
-          </div>
-          <div className="flex items-center">
-            <IconButtonCustom
-              icon={<DeleteIcon />}
-              typeColor="dark-gray"
-              typeColorHover="secondary"
-            />
-            <TextCustom text="Icon Button Gris con hover Secundario" />
-          </div>
-          <div className="flex items-center">
-            <IconButtonCustom
-              icon={<DeleteIcon />}
-              typeColor="dark-gray"
-              typeColorHover="success"
-            />
-            <TextCustom text="Icon Button Gris con hover Exitoso" />
-          </div>
-          <div className="flex items-center">
-            <IconButtonCustom
-              icon={<DeleteIcon />}
-              typeColor="dark-gray"
-              typeColorHover="danger"
-            />
-            <TextCustom text="Icon Button Gris con hover Alerta" />
-          </div>
-          <div className="flex items-center">
-            <IconButtonCustom
-              icon={<DeleteIcon />}
-              typeColor="dark-gray"
-              typeColorHover="warning"
-            />
-            <TextCustom text="Icon Button Gris con hover Advertencia" />
-          </div>
-          <div className="flex items-center">
-            <IconButtonCustom
-              icon={<DeleteIcon />}
-              typeColor="primary"
-              typeColorHover="dark-gray"
-            />
-            <TextCustom text="Icon Button Primario con hover Gris" />
           </div>
         </div>
         <Divider />

@@ -1,5 +1,5 @@
 import { ITheme } from '@common'
-import { usePreferences } from '@hooks'
+import { useColorScheme } from '@mui/material'
 
 interface IconCustomProps {
   defaultTheme?: ITheme
@@ -16,7 +16,7 @@ export const IconCustom = ({
   iconLight: IconLight,
   className = '',
 }: IconCustomProps) => {
-  const { theme } = usePreferences()
+  const { colorScheme: theme } = useColorScheme()
   let isDark = false
 
   if (defaultTheme) {
@@ -27,7 +27,7 @@ export const IconCustom = ({
   if (Icon) {
     return (
       <Icon
-        className={`${className} ${defaultTheme === 'dark' ? 'text-white' : ''}`}
+        className={`${className} ${defaultTheme === 'dark' ? 'text-white' : defaultTheme === 'light' ? 'text-black' : ''}`}
       />
     )
   } else {

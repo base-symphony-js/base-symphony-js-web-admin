@@ -12,7 +12,7 @@ import { api } from '@config'
 import { AuthStorage } from '@services'
 import { UserProfileIcon, PowerSettingsNewIcon, MenuBookIcon } from '@assets'
 
-export const ProfileMenu = () => {
+export const ProfileMenu = ({ backgroundColor = '' }) => {
   const { dispatchLogout } = useAuthActions()
   const { firstName, lastName } = useAppSelector(
     state => state.auth.personalInfo,
@@ -40,6 +40,7 @@ export const ProfileMenu = () => {
         </div>
       }
       isToogleIcon
+      backgroundColor={backgroundColor}
     >
       <div className="flex flex-col gap-4">
         <div className="flex flex-col">

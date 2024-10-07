@@ -1,5 +1,6 @@
 import { Alert, AlertProps, AlertTitle, Collapse } from '@mui/material'
-import { TextCustom } from '@components'
+import { IconButtonCustom, TextCustom } from '@components'
+import { CloseIcon } from '@assets'
 
 export interface IAlert {
   open: boolean
@@ -36,12 +37,18 @@ export const AlertCustom = ({
     <Collapse in={open}>
       <Alert
         severity={severity}
+        action={
+          <IconButtonCustom
+            icon={<CloseIcon theme="dark" />}
+            onClick={handleClose}
+          />
+        }
         variant="filled"
-        onClose={handleClose}
         className={`flex items-center py-0 whitespace-pre-line`}
+        sx={{ '& .MuiAlert-icon': { color: 'white' } }}
       >
         <AlertTitle
-          className="text-lg"
+          className="text-lg text-white"
           sx={{ '&.MuiTypography-root': { margin: 0 } }}
           style={{ fontFamily: 'Poppins' }}
         >

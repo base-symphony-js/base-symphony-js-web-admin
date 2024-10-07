@@ -71,20 +71,13 @@ export const Inputs4Page = () => {
         <TextCustom text="Colores" className="text-3xl" />
         <Divider />
         <div className="flex flex-row items-center gap-1">
-          <CheckBoxCustom value />
-          <CheckBoxCustom />
-          <CheckBoxCustom value typeColor="primary" />
-          <CheckBoxCustom typeColor="primary" />
-          <CheckBoxCustom value typeColor="secondary" />
-          <CheckBoxCustom typeColor="secondary" />
-          <CheckBoxCustom value typeColor="success" />
-          <CheckBoxCustom typeColor="success" />
-          <CheckBoxCustom value typeColor="danger" />
-          <CheckBoxCustom typeColor="danger" />
-          <CheckBoxCustom value typeColor="warning" />
-          <CheckBoxCustom typeColor="warning" />
-          <CheckBoxCustom value typeColor="dark-gray" />
-          <CheckBoxCustom typeColor="dark-gray" />
+          <CheckBoxCustom value color="primary" />
+          <CheckBoxCustom value color="secondary" />
+          <CheckBoxCustom value color="info" />
+          <CheckBoxCustom value color="success" />
+          <CheckBoxCustom value color="error" />
+          <CheckBoxCustom value color="warning" />
+          <CheckBoxCustom value color="default" />
         </div>
         <Divider />
       </div>
@@ -135,20 +128,13 @@ export const Inputs4Page = () => {
         <TextCustom text="Colores" className="text-3xl" />
         <Divider />
         <div className="flex flex-row items-center gap-1">
-          <RadioCustom value />
-          <RadioCustom />
-          <RadioCustom value typeColor="primary" />
-          <RadioCustom typeColor="primary" />
-          <RadioCustom value typeColor="secondary" />
-          <RadioCustom typeColor="secondary" />
-          <RadioCustom value typeColor="success" />
-          <RadioCustom typeColor="success" />
-          <RadioCustom value typeColor="danger" />
-          <RadioCustom typeColor="danger" />
-          <RadioCustom value typeColor="warning" />
-          <RadioCustom typeColor="warning" />
-          <RadioCustom value typeColor="dark-gray" />
-          <RadioCustom typeColor="dark-gray" />
+          <RadioCustom value color="primary" />
+          <RadioCustom value color="secondary" />
+          <RadioCustom value color="info" />
+          <RadioCustom value color="success" />
+          <RadioCustom value color="error" />
+          <RadioCustom value color="warning" />
+          <RadioCustom value color="default" />
         </div>
         <Divider />
       </div>
@@ -216,34 +202,13 @@ export const Inputs4Page = () => {
         <TextCustom text="Colores" className="text-3xl" />
         <Divider />
         <div className="flex flex-row items-center gap-1">
-          <div className="flex flex-col">
-            <SwitchCustom value />
-            <SwitchCustom />
-          </div>
-          <div className="flex flex-col">
-            <SwitchCustom value typeColor="primary" />
-            <SwitchCustom typeColor="primary" />
-          </div>
-          <div className="flex flex-col">
-            <SwitchCustom value typeColor="secondary" />
-            <SwitchCustom typeColor="secondary" />
-          </div>
-          <div className="flex flex-col">
-            <SwitchCustom value typeColor="success" />
-            <SwitchCustom typeColor="success" />
-          </div>
-          <div className="flex flex-col">
-            <SwitchCustom value typeColor="danger" />
-            <SwitchCustom typeColor="danger" />
-          </div>
-          <div className="flex flex-col">
-            <SwitchCustom value typeColor="warning" />
-            <SwitchCustom typeColor="warning" />
-          </div>
-          <div className="flex flex-col">
-            <SwitchCustom value typeColor="dark-gray" />
-            <SwitchCustom typeColor="dark-gray" />
-          </div>
+          <SwitchCustom value color="primary" />
+          <SwitchCustom value color="secondary" />
+          <SwitchCustom value color="info" />
+          <SwitchCustom value color="success" />
+          <SwitchCustom value color="error" />
+          <SwitchCustom value color="warning" />
+          <SwitchCustom value color="default" />
         </div>
         <Divider />
       </div>

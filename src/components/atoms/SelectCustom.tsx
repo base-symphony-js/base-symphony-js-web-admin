@@ -73,7 +73,7 @@ const Component = ({
         ))}
       </Select>
       {msgError && (
-        <TextCustom text={msgError} className="text-sm text-danger ml-1" />
+        <TextCustom text={msgError} className="text-sm text-error ml-1" />
       )}
     </div>
   )

@@ -1,6 +1,6 @@
 import { AlertCustom, IAlert, TextCustom } from '@components'
 import { COLORS } from '@common'
-import { usePreferences } from '@hooks'
+import { useColorScheme } from '@mui/material'
 
 interface PageLayoutProps {
   children: React.ReactNode
@@ -15,13 +15,11 @@ export const PageLayout = ({
   alert,
   setAlert = () => null,
 }: PageLayoutProps) => {
-  const { theme } = usePreferences()
+  const { colorScheme: theme } = useColorScheme()
+
   return (
     <div className="p-8 flex flex-col gap-4">
-      <TextCustom
-        text={title}
-        className={`text-2xl font-bold ${theme === 'dark' ? 'text-white' : 'text-general'}`}
-      />
+      <TextCustom text={title} className="text-2xl font-bold" />
       <div
         className="p-8 flex flex-col rounded-lg"
         style={{

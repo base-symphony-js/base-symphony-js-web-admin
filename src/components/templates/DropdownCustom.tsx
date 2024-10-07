@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import { Box } from '@mui/material'
-import { COLORS } from '@common'
 import { ArrowDropDownIcon, ArrowDropUpIcon } from '@assets'
 
 interface DropdownCustomProps {
@@ -9,6 +8,7 @@ interface DropdownCustomProps {
   isToogleIcon: boolean
   open: boolean
   setOpen: (value: boolean) => void
+  backgroundColor?: string
 }
 
 export const DropdownCustom = ({
@@ -17,6 +17,7 @@ export const DropdownCustom = ({
   isToogleIcon = false,
   open = false,
   setOpen = () => null,
+  backgroundColor = '',
 }: DropdownCustomProps) => {
   const ref = useRef<any>(null)
 
@@ -53,12 +54,7 @@ export const DropdownCustom = ({
           className="bg-transparent rounded-md top-12 right-0 absolute z-1000 overflow-hidden"
           style={{ boxShadow: '0px 0px 20px 4px rgba(0,0,0,0.3)' }}
         >
-          <div
-            className="py-4 sm:w-72 md:w-80"
-            style={{
-              backgroundColor: COLORS.general,
-            }}
-          >
+          <div className="py-4 sm:w-72 md:w-80" style={{ backgroundColor }}>
             {children}
           </div>
         </Box>

@@ -79,7 +79,7 @@ export const LoaderPage = () => {
           <div className="flex items-center">
             <TextCustom text="3rem:" />
             <LoaderCustom />
-            <TextCustom text="por defecto" className="text-danger" />
+            <TextCustom text="por defecto" className="text-error" />
           </div>
           <div className="flex items-center">
             <TextCustom text="4rem:" />
@@ -100,7 +100,7 @@ export const LoaderPage = () => {
           <div className="flex items-center">
             <TextCustom text="x1:" />
             <LoaderCustom speed={1} />
-            <TextCustom text="por defecto" className="text-danger" />
+            <TextCustom text="por defecto" className="text-error" />
           </div>
           <div className="flex items-center">
             <TextCustom text="x2:" />

@@ -2,7 +2,7 @@ import { COLORS, ICOLORS } from '@common'
 import { TextCustom } from '@components'
 
 interface BadgePointProps {
-  typeColor: ICOLORS
+  color: ICOLORS
   text: string
   className?: string
   size?: number
@@ -10,7 +10,7 @@ interface BadgePointProps {
 }
 
 export const BadgePoint = ({
-  typeColor = 'primary',
+  color = 'primary',
   text = '',
   className = '',
   size = 4,
@@ -20,7 +20,7 @@ export const BadgePoint = ({
     <div
       className={`flex justify-start items-center w-fit px-3 py-1 gap-2 rounded-full ${className}`}
       style={{
-        backgroundColor: `${COLORS[typeColor]}2F`,
+        backgroundColor: `${COLORS[color]}2F`,
       }}
     >
       {!disabledPoint && (
@@ -28,15 +28,15 @@ export const BadgePoint = ({
           style={{
             width: size,
             height: size,
-            backgroundColor: `${COLORS[typeColor]}`,
-            color: `${COLORS[typeColor]}`,
+            backgroundColor: `${COLORS[color]}`,
+            color: `${COLORS[color]}`,
             borderRadius: size,
           }}
         ></div>
       )}
       <TextCustom
         text={text}
-        className={`text-${typeColor} text-xs font-medium tracking-tight`}
+        className={`text-${color} text-xs font-medium tracking-tight`}
       />
     </div>
   )

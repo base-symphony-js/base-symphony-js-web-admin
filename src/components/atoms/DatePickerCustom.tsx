@@ -58,7 +58,7 @@ const Component = ({
       {msgError && (
         <TextCustom
           text={msgError}
-          className="text-sm text-danger align-middle ml-1"
+          className="text-sm text-error align-middle ml-1"
         />
       )}
     </div>

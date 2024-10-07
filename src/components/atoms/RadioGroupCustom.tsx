@@ -1,6 +1,5 @@
 import { RadioGroup, RadioProps } from '@mui/material'
 import { RadioCustom, TextCustom, TitleInputCustom } from '@components'
-import { ICOLORS } from '@common'
 
 type RadioOptions = {
   id: string
@@ -17,7 +16,7 @@ interface RadioGroupCustomProps {
   required?: boolean
   msgError?: string
   size?: RadioProps['size']
-  typeColor?: ICOLORS
+  color?: RadioProps['color']
   className?: string
   labelClassName?: string
 }
@@ -32,7 +31,7 @@ export const RadioGroupCustom = ({
   required = false,
   msgError = '',
   size = undefined,
-  typeColor = 'primary',
+  color = 'primary',
   className = '',
 }: RadioGroupCustomProps) => {
   const handleChange = (e: any) => {
@@ -57,12 +56,12 @@ export const RadioGroupCustom = ({
             option={option.id}
             disabled={disabled}
             size={size}
-            typeColor={typeColor}
+            color={color}
           />
         ))}
       </RadioGroup>
       {msgError && (
-        <TextCustom text={msgError} className="text-sm text-danger ml-1" />
+        <TextCustom text={msgError} className="text-sm text-error ml-1" />
       )}
     </div>
   )

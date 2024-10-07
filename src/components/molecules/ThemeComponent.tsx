@@ -1,21 +1,19 @@
-import { useState } from 'react'
 import { TextCustom } from '@components'
 import Switch from '@mui/material/Switch'
 import { usePreferences } from '@hooks'
 import { COLORS } from '@common'
+import { useColorScheme } from '@mui/material'
 
 export const ThemeComponent = () => {
-  const { t, theme, setThemeDark, setThemeLight } = usePreferences()
-  const [isDark, setIsDark] = useState(theme === 'dark')
+  const { t } = usePreferences()
+  const { colorScheme: theme, setMode } = useColorScheme()
 
   const handleChange = () => {
-    const newValue = !isDark
-    if (newValue) {
-      setThemeDark()
+    if (theme !== 'dark') {
+      setMode('dark')
     } else {
-      setThemeLight()
+      setMode('light')
     }
-    setIsDark(newValue)
   }
 
   return (
@@ -25,7 +23,7 @@ export const ThemeComponent = () => {
         className="w-20 font-medium text-white text-end"
       />
       <Switch
-        checked={isDark}
+        checked={theme === 'dark'}
         onChange={handleChange}
         sx={{
           m: 1,
@@ -59,7 +57,7 @@ export const ThemeComponent = () => {
             },
           },
           '& .MuiSwitch-thumb': {
-            backgroundColor: isDark ? COLORS.primary : COLORS.warning,
+            backgroundColor: theme === 'dark' ? COLORS.primary : COLORS.warning,
             '&::before': {
               content: "''",
               position: 'absolute',

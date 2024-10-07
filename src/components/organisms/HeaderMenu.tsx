@@ -1,6 +1,6 @@
 import { AppBar, Box, IconButton, Toolbar } from '@mui/material'
 import { TextCustom } from '@components'
-import { APP_NAME } from '@common'
+import { APP_NAME, VERSION_NUMBER } from '@common'
 import { MenuIcon } from '@assets'
 
 interface HeaderMenuProps {
@@ -23,10 +23,9 @@ export const HeaderMenu = ({
       sx={{
         width: { xl: `calc(100% - ${drawerWidth}px)` },
         ml: { xl: `${drawerWidth}px` },
-        backgroundColor,
       }}
     >
-      <Toolbar>
+      <Toolbar sx={{ backgroundColor }}>
         <IconButton
           aria-label="open drawer"
           edge="start"
@@ -36,10 +35,14 @@ export const HeaderMenu = ({
           <MenuIcon theme="dark" />
         </IconButton>
         <div className="w-full flex justify-between font-poppins">
-          <Box className="flex items-center gap-3">
+          <Box className="flex items-center gap-1">
             <TextCustom
               text={APP_NAME}
               className="text-lg font-semibold text-white"
+            />
+            <TextCustom
+              text={`v${VERSION_NUMBER}`}
+              className="text-white text-sm italic font-bold"
             />
           </Box>
           {children}

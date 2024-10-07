@@ -17,25 +17,25 @@ export const AlertModalPage = () => {
         text="Alert de Información"
         onClick={() => setAlertInfo(true)}
         className="mt-4"
-        typeColor="primary"
+        color="primary"
       />
       <ButtonCustom
         text="Alert de Guardar"
         onClick={() => setAlertSuccess(true)}
         className="mt-4"
-        typeColor="success"
+        color="success"
       />
       <ButtonCustom
         text="Alert de Inhabilitar"
         onClick={() => setAlertWarning(true)}
         className="mt-4"
-        typeColor="warning"
+        color="warning"
       />
       <ButtonCustom
         text="Alert de Eliminar"
         onClick={() => setAlertError(true)}
         className="mt-4"
-        typeColor="danger"
+        color="error"
       />
       <ModalCustom
         action={() => console.log('Ejecutar acción')}

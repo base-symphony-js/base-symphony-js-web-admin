@@ -55,13 +55,13 @@ const columns = [
       if (cell.column.id === 'estadoRegistro') {
         switch (cell.getValue()) {
           case 1:
-            element = <BadgePoint text="Habilitado" typeColor="success" />
+            element = <BadgePoint text="Habilitado" color="success" />
             break
           case 0:
-            element = <BadgePoint text="Inhabilitado" typeColor="warning" />
+            element = <BadgePoint text="Inhabilitado" color="warning" />
             break
           default:
-            element = <BadgePoint text="No definido" typeColor="dark-gray" />
+            element = <BadgePoint text="No definido" color="dark-gray" />
             break
         }
       } else {

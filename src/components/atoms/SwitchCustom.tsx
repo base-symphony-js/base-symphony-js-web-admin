@@ -1,5 +1,4 @@
 import { FormControlLabelProps, Switch, SwitchProps } from '@mui/material'
-import { COLORS, ICOLORS } from '@common'
 import { ControlLabelCustom } from '@components'
 
 interface SwitchCustomProps {
@@ -8,7 +7,7 @@ interface SwitchCustomProps {
   setValue?: (value: boolean) => void
   disabled?: boolean
   size?: SwitchProps['size']
-  typeColor?: ICOLORS
+  color?: SwitchProps['color']
   align?: FormControlLabelProps['labelPlacement']
 }
 
@@ -18,7 +17,7 @@ export const SwitchCustom = ({
   setValue = () => null,
   disabled = false,
   size = 'medium',
-  typeColor = 'primary',
+  color = 'primary',
   align = 'end',
 }: SwitchCustomProps) => {
   const handleChange = () => {
@@ -28,20 +27,12 @@ export const SwitchCustom = ({
   return (
     <ControlLabelCustom name={name} align={align}>
       <Switch
+        color={color}
         checked={value}
         onChange={handleChange}
         inputProps={{ 'aria-label': 'controlled' }}
         disabled={disabled}
         size={size}
-        sx={{
-          '& .MuiSwitch-switchBase.Mui-checked': {
-            color: COLORS[typeColor],
-            '&:hover': { backgroundColor: `${COLORS[typeColor]}2F` },
-          },
-          '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-            backgroundColor: COLORS[typeColor],
-          },
-        }}
       />
     </ControlLabelCustom>
   )

@@ -58,7 +58,7 @@ export const TextPage = () => {
         <Divider />
         <div className="flex flex-col">
           <TextCustom text="Texto blanco" className="text-white bg-black" />
-          <TextCustom text="Texto negro" className="text-black" />
+          <TextCustom text="Texto negro" className="text-black bg-white" />
           <TextCustom text="Texto general" className="text-general" />
           <TextCustom text="Texto primary" className="text-primary" />
           <TextCustom text="Texto secondary" className="text-secondary" />
@@ -66,10 +66,10 @@ export const TextPage = () => {
           <TextCustom text="Texto gray" className="text-dark-gray" />
           <TextCustom text="Texto light" className="text-light-gray" />
           <TextCustom text="Texto green" className="text-success" />
-          <TextCustom text="Texto red" className="text-danger" />
+          <TextCustom text="Texto red" className="text-error" />
           <TextCustom text="Texto orange" className="text-warning" />
           <Divider className="my-2" />
-          <TextCustom text="Fondo blanco" className="bg-white" />
+          <TextCustom text="Fondo blanco" className="bg-white text-black" />
           <TextCustom text="Fondo negro" className="bg-black text-white" />
           <TextCustom text="Fondo general" className="bg-general" />
           <TextCustom text="Fondo primary" className="bg-primary" />
@@ -78,7 +78,7 @@ export const TextPage = () => {
           <TextCustom text="Fondo gray" className="bg-dark-gray" />
           <TextCustom text="Fondo light" className="bg-light-gray" />
           <TextCustom text="Fondo green" className="bg-success" />
-          <TextCustom text="Fondo red" className="bg-danger" />
+          <TextCustom text="Fondo red" className="bg-error" />
           <TextCustom text="Fondo orange" className="bg-warning" />
         </div>
         <Divider />

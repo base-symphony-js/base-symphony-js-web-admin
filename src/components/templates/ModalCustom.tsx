@@ -42,10 +42,10 @@ const Component = ({
       case 'warning':
         return <WarningIcon className="text-warning" />
       case 'error':
-        return <ErrorIcon className="text-danger" />
+        return <ErrorIcon className="text-error" />
       case 'info':
       default:
-        return <InfoIcon className="text-primary" />
+        return <InfoIcon className="text-info" />
     }
   }
 
@@ -65,7 +65,7 @@ const Component = ({
         return (
           <ButtonCustom
             text="Guardar"
-            typeColor="success"
+            color="success"
             className="px-8"
             onClick={handleAction}
           />
@@ -74,7 +74,7 @@ const Component = ({
         return (
           <ButtonCustom
             text="Inhabilitar"
-            typeColor="warning"
+            color="warning"
             className="px-8"
             onClick={handleAction}
           />
@@ -83,7 +83,7 @@ const Component = ({
         return (
           <ButtonCustom
             text="Eliminar"
-            typeColor="danger"
+            color="error"
             className="px-8"
             onClick={handleAction}
           />
@@ -93,7 +93,7 @@ const Component = ({
         return (
           <ButtonCustom
             text="Aceptar"
-            typeColor="primary"
+            color="info"
             className="px-8"
             onClick={handleAction}
           />
@@ -118,18 +118,18 @@ const Component = ({
           <IconButtonCustom
             icon={<CloseIcon />}
             onClick={handleClose}
-            typeColor="dark-gray"
+            color="inherit"
           />
         </div>
       </DialogTitle>
       <DialogContent className="mt-2">
-        <TextCustom text={description} className="text-dark-gray" />
+        <TextCustom text={description} className="italic" />
       </DialogContent>
       <DialogActions>
         <ButtonCustom
           text="Cancelar"
           variant="outlined"
-          typeColor="dark-gray"
+          color="inherit"
           className="px-8"
           onClick={handleClose}
         />

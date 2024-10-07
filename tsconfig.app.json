@@ -36,5 +36,5 @@
     "useUnknownInCatchVariables": false,
     "noImplicitReturns": true
   },
-  "include": ["src"]
+  "include": ["src", "declarations.d.ts"]
 }

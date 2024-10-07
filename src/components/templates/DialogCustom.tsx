@@ -4,6 +4,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  useColorScheme,
 } from '@mui/material'
 import {
   TextCustom,
@@ -14,7 +15,6 @@ import {
   IAlert,
 } from '@components'
 import { CloseIcon } from '@assets'
-import { usePreferences } from '@hooks'
 import { COLORS } from '@common'
 
 interface DialogCustomProps {
@@ -48,7 +48,7 @@ const Component = ({
   alert,
   setAlert = () => null,
 }: DialogCustomProps) => {
-  const { theme } = usePreferences()
+  const { colorScheme: theme } = useColorScheme()
 
   const handleClose = () => {
     onDismiss()
@@ -67,8 +67,7 @@ const Component = ({
       <DialogTitle
         className="pl-5 pr-2 m-0 py-0"
         style={{
-          backgroundColor:
-            theme === 'dark' ? COLORS['dark-general'] : COLORS.general,
+          backgroundColor: theme === 'light' ? COLORS.primary : '',
         }}
       >
         <div className="flex justify-between items-center">
@@ -77,41 +76,35 @@ const Component = ({
             <IconButtonCustom
               icon={<CloseIcon theme="dark" />}
               onClick={handleClose}
-              typeColor="white"
             />
           )}
         </div>
       </DialogTitle>
-      <div
-        style={{
-          backgroundColor: theme === 'dark' ? COLORS.dark : COLORS.white,
-        }}
-      >
-        <DialogContent className="flex flex-col min-w-96">
-          <AlertCustom
-            title={alert?.title}
-            description={alert?.description}
-            open={alert?.open}
-            severity={alert?.severity}
-            setAlert={setAlert}
-          />
-          {children}
-        </DialogContent>
-        <DialogActions>
-          <ButtonCustom
-            text="Cancelar"
-            typeColor="danger"
-            onClick={handleClose}
-            disabled={loader}
-          />
-          <ButtonCustom
-            text={labelAction}
-            typeColor="primary"
-            onClick={onAction}
-            disabled={disabledAction ? true : loader}
-          />
-        </DialogActions>
-      </div>
+      <DialogContent className="flex flex-col min-w-96">
+        <AlertCustom
+          title={alert?.title}
+          description={alert?.description}
+          open={alert?.open}
+          severity={alert?.severity}
+          setAlert={setAlert}
+        />
+        {children}
+      </DialogContent>
+      <DialogActions>
+        <ButtonCustom
+          text="Cancelar"
+          variant="outlined"
+          color="inherit"
+          onClick={handleClose}
+          disabled={loader}
+        />
+        <ButtonCustom
+          text={labelAction}
+          color="primary"
+          onClick={onAction}
+          disabled={disabledAction ? true : loader}
+        />
+      </DialogActions>
       {loader && <LoaderCustom mode="modal" />}
     </Dialog>
   )

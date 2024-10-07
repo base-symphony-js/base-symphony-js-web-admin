@@ -1,18 +1,15 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import { ITheme } from '@common'
 import { api } from '@config'
 import { PreferencesStorage } from '@services'
 import { ILanguages, ITranslation, translations } from '@languages'
 import { ThemeProvider, createTheme } from '@mui/material'
+import { COLORS } from '@common'
 
 interface PreferenceContextType {
   t: ITranslation
   lng: ILanguages
-  theme: ITheme
   setLngEs: () => void
   setLngEn: () => void
-  setThemeLight: () => void
-  setThemeDark: () => void
 }
 
 interface PreferencesContextProviderProps {
@@ -27,7 +24,6 @@ export const PreferencesContextProvider = ({
   children,
 }: PreferencesContextProviderProps) => {
   const [lng, setLng] = useState<ILanguages>('en')
-  const [theme, setTheme] = useState<ITheme>('light')
 
   const t = translations[lng]
 
@@ -37,11 +33,8 @@ export const PreferencesContextProvider = ({
 
   const loadPreferences = () => {
     const saveLng = PreferencesStorage.getLanguages()
-    const saveTheme = PreferencesStorage.getTheme()
     setLng(saveLng)
-    setTheme(saveTheme)
     PreferencesStorage.setLanguages(saveLng)
-    PreferencesStorage.setTheme(saveTheme)
     api.defaults.headers['Accept-Language'] = saveLng
   }
 
@@ -57,25 +50,20 @@ export const PreferencesContextProvider = ({
     api.defaults.headers['Accept-Language'] = 'en'
   }
 
-  const setThemeLight = () => {
-    setTheme('light')
-    PreferencesStorage.setTheme('light')
-  }
-
-  const setThemeDark = () => {
-    setTheme('dark')
-    PreferencesStorage.setTheme('dark')
-  }
+  const currentTheme = createTheme({
+    colorSchemes: { dark: true },
+    palette: {
+      primary: { main: COLORS.primary },
+      secondary: { main: COLORS.secondary },
+      success: { main: COLORS.success },
+      error: { main: COLORS.error },
+      warning: { main: COLORS.warning },
+    },
+  })
 
   return (
-    <PreferencesContext.Provider
-      value={{ t, lng, theme, setLngEs, setLngEn, setThemeLight, setThemeDark }}
-    >
-      <ThemeProvider
-        theme={createTheme({ colorSchemes: { dark: theme === 'dark' } })}
-      >
-        {children}
-      </ThemeProvider>
+    <PreferencesContext.Provider value={{ t, lng, setLngEs, setLngEn }}>
+      <ThemeProvider theme={currentTheme}>{children}</ThemeProvider>
     </PreferencesContext.Provider>
   )
 }

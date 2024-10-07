@@ -22,7 +22,7 @@ export const LanguagesComponent = () => {
         text={t.G_SPANISH}
         className="w-20 font-medium text-white text-end"
       />
-      <SwitchCustom value={isEnglish} setValue={handleChange} />
+      <SwitchCustom value={isEnglish} setValue={handleChange} color="warning" />
       <TextCustom text={t.G_ENGLISH} className="w-20 font-medium text-white" />
     </div>
   )

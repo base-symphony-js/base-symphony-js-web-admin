@@ -1,7 +1,8 @@
 import Snackbar from '@mui/material/Snackbar'
 import Alert, { AlertProps } from '@mui/material/Alert'
-import { IAlert, TextCustom } from '@components'
+import { IAlert, IconButtonCustom, TextCustom } from '@components'
 import { AlertTitle } from '@mui/material'
+import { CloseIcon } from '@assets'
 
 interface SnackbarCustomProps {
   title: string
@@ -35,13 +36,18 @@ export const SnackbarCustom = ({
     >
       <Alert
         severity={severity}
-        className={`flex items-center py-0 whitespace-pre-line`}
-        onClose={handleClose}
+        action={
+          <IconButtonCustom
+            icon={<CloseIcon theme="dark" />}
+            onClick={handleClose}
+          />
+        }
         variant="filled"
-        sx={{ width: '100%' }}
+        className={`flex items-center py-0 whitespace-pre-line`}
+        sx={{ '& .MuiAlert-icon': { color: 'white' } }}
       >
         <AlertTitle
-          className="text-lg"
+          className="text-lg text-white"
           sx={{ '&.MuiTypography-root': { margin: 0 } }}
           style={{ fontFamily: 'Poppins' }}
         >

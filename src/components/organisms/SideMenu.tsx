@@ -1,7 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Collapse, List } from '@mui/material'
 import { DrawerItem, TextCustom } from '@components'
-import { VERSION_NUMBER } from '@common'
 import { PATH } from '@routes'
 import { useState } from 'react'
 import {
@@ -12,6 +11,7 @@ import {
   SecurityIcon,
   VerifiedUserIcon,
 } from '@assets'
+import { DEVELOPMENT_BY } from '@common'
 
 interface SideMenuProps {
   onChange: () => void
@@ -157,20 +157,14 @@ export const SideMenu = ({ onChange = () => null }: SideMenuProps) => {
         </List>
       </div>
       <List className="flex flex-col gap-1 py-2 items-center">
-        <div className="flex gap-1">
-          <TextCustom text="Desarrollado Por:" className="text-white text-sm" />
-          <TextCustom
-            text="Luis Fernando Solano Martínez"
-            className="text-white text-sm font-bold"
-          />
-        </div>
-        <div className="flex gap-1">
-          <TextCustom text="Versión:" className="text-white text-sm italic" />
-          <TextCustom
-            text={VERSION_NUMBER}
-            className="text-white text-sm italic font-bold"
-          />
-        </div>
+        <TextCustom
+          text={`© 2024 ${DEVELOPMENT_BY}`}
+          className="text-white text-sm font-bold text-center"
+        />
+        <TextCustom
+          text="All rights reserved"
+          className="text-white text-sm font-bold text-center"
+        />
       </List>
     </div>
   )

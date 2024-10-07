@@ -1,5 +1,4 @@
 import { Button, ButtonProps, SvgIconProps } from '@mui/material'
-import { COLORS, ICOLORS } from '@common'
 
 interface ButtonCustomProps {
   text: string
@@ -9,7 +8,7 @@ interface ButtonCustomProps {
   startIcon?: React.ReactElement<SvgIconProps> | null
   endIcon?: React.ReactElement<SvgIconProps> | null
   disabled?: boolean
-  typeColor?: ICOLORS
+  color?: ButtonProps['color']
   textTransform?: React.CSSProperties['textTransform']
 }
 
@@ -21,12 +20,12 @@ export const ButtonCustom = ({
   startIcon = null,
   endIcon = null,
   disabled = false,
-  typeColor = 'primary',
+  color = 'primary',
   textTransform = 'none',
 }: ButtonCustomProps) => {
   return (
     <Button
-      color="primary"
+      color={color}
       size="small"
       variant={variant}
       onClick={onClick}
@@ -39,34 +38,9 @@ export const ButtonCustom = ({
         paddingY: 0,
         paddingX: 3,
         textTransform,
-        backgroundColor:
-          variant === 'contained' ? COLORS[typeColor] : undefined,
-        borderColor:
-          variant === 'outlined' || variant === 'text'
-            ? COLORS[typeColor]
-            : undefined,
-        color:
-          variant === 'outlined' || variant === 'text'
-            ? COLORS[typeColor]
-            : undefined,
-        ':disabled': {
-          color: COLORS['light-gray'],
-        },
         borderRadius: '4px',
         fontSize: '12px',
         boxShadow: 'none',
-        '&:hover': {
-          backgroundColor:
-            variant === 'contained'
-              ? `${COLORS[typeColor]}CF`
-              : variant === 'outlined' || variant === 'text'
-                ? `${COLORS[typeColor]}0F`
-                : undefined,
-          borderColor:
-            variant === 'outlined' || variant === 'text'
-              ? COLORS[typeColor]
-              : undefined,
-        },
       }}
       style={{ fontFamily: 'Poppins' }}
     >

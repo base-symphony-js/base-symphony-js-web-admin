@@ -15,7 +15,7 @@ export const TitleInputCustom = ({
         <div className="flex">
           <TextCustom text={name} className="text-sm sm:text-lg" />
           {required && (
-            <TextCustom text="*" className="ml-1 text-danger font-bold" />
+            <TextCustom text="*" className="ml-1 text-error font-bold" />
           )}
         </div>
       </div>

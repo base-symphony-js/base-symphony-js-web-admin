@@ -120,11 +120,11 @@ export const Inputs1Page = () => {
             startIcon={<ReplyIcon />}
             startIconMode="button"
             startIconAction={() => setInputIconButton('')}
-            startIconTypeColor="success"
+            startIconColor="success"
             endIcon={<SendIcon />}
             endIconMode="button"
             endIconAction={() => setInputIconButton('')}
-            endIconTypeColor="danger"
+            endIconColor="error"
           />
           <TextCustom
             text="La accion de los botones es limpiar los inputs"

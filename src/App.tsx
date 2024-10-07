@@ -3,7 +3,6 @@ import { AppRouter } from '@routes'
 import { useAuthActions } from '@redux'
 import { api, apiInterceptor } from '@config'
 import { AuthStorage } from '@services'
-import { PreferencesContextProvider } from '@hooks'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -34,11 +33,7 @@ const App = () => {
     return <div>Loading...</div>
   }
 
-  return (
-    <PreferencesContextProvider>
-      <AppRouter />
-    </PreferencesContextProvider>
-  )
+  return <AppRouter />
 }
 
 export default App

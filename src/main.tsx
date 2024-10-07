@@ -3,9 +3,12 @@ import { Provider } from 'react-redux'
 import { store } from './redux'
 import App from './App.tsx'
 import './index.css'
+import { PreferencesContextProvider } from '@hooks'
 
 createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
-    <App />
+    <PreferencesContextProvider>
+      <App />
+    </PreferencesContextProvider>
   </Provider>,
 )

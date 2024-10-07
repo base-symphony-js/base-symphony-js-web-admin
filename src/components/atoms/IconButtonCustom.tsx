@@ -1,5 +1,4 @@
-import { IconButton, SvgIconProps } from '@mui/material'
-import { COLORS, ICOLORS } from '@common'
+import { IconButton, IconButtonProps, SvgIconProps } from '@mui/material'
 
 interface IconButtonCustomProps {
   onClick?: () => void
@@ -7,8 +6,7 @@ interface IconButtonCustomProps {
   className?: string
   icon: React.ReactElement<SvgIconProps> | null
   disabled?: boolean
-  typeColor?: ICOLORS
-  typeColorHover?: ICOLORS
+  color?: IconButtonProps['color']
 }
 
 export const IconButtonCustom = ({
@@ -17,34 +15,15 @@ export const IconButtonCustom = ({
   className = '',
   icon = null,
   disabled = false,
-  typeColor = 'primary',
-  typeColorHover = 'primary',
+  color = 'primary',
 }: IconButtonCustomProps) => {
   return (
     <IconButton
-      color="primary"
+      color={color}
       disabled={disabled}
       className={className}
       onClick={onClick}
-      sx={{
-        width: size * 1.5,
-        height: size * 1.5,
-        '&:hover, &.Mui-focusVisible': {
-          backgroundColor: `${COLORS[typeColor]}0F`,
-        },
-        '&.MuiButtonBase-root svg': {
-          color: `${COLORS[typeColor]}`,
-          width: size,
-          height: size,
-        },
-        '&:hover.MuiButtonBase-root svg': {
-          color: `${COLORS[typeColorHover]}`,
-        },
-        color: COLORS[typeColor],
-        ':hover': {
-          color: `${COLORS[typeColorHover]}`,
-        },
-      }}
+      sx={{ width: size * 1.5, height: size * 1.5 }}
     >
       {icon}
     </IconButton>

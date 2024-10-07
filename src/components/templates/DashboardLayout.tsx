@@ -1,8 +1,13 @@
 import { useRef, useState } from 'react'
-import { Box, CssBaseline, Drawer, Toolbar } from '@mui/material'
+import {
+  Box,
+  CssBaseline,
+  Drawer,
+  Toolbar,
+  useColorScheme,
+} from '@mui/material'
 import { HeaderMenu, ProfileMenu, SideMenu } from '@components'
 import { COLORS, DRAWER_WIDTH } from '@common'
-import { usePreferences } from '@hooks'
 
 interface DashboardLayoutProps {
   children: React.ReactNode
@@ -10,9 +15,8 @@ interface DashboardLayoutProps {
 
 export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const containerRef = useRef<any>(null)
-  const { theme } = usePreferences()
-  const backgroundColor =
-    theme === 'dark' ? COLORS['dark-general'] : COLORS.general
+  const { colorScheme: theme } = useColorScheme()
+  const backgroundColor = theme === 'dark' ? COLORS.general : COLORS.primary
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const handleDrawerToggle = () => {
@@ -32,7 +36,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         handleDrawerToggle={handleDrawerToggle}
         backgroundColor={backgroundColor}
       >
-        <ProfileMenu />
+        <ProfileMenu backgroundColor={backgroundColor} />
       </HeaderMenu>
       <Box
         component="nav"

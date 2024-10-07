@@ -102,7 +102,7 @@ export const AlertPage = () => {
               severity: 'info',
             })
           }
-          typeColor="primary"
+          color="info"
         />
         <ButtonCustom
           text="Snackbar Success"
@@ -114,7 +114,7 @@ export const AlertPage = () => {
               severity: 'success',
             })
           }
-          typeColor="success"
+          color="success"
         />
         <ButtonCustom
           text="Snackbar Warning"
@@ -126,7 +126,7 @@ export const AlertPage = () => {
               severity: 'warning',
             })
           }
-          typeColor="warning"
+          color="warning"
         />
         <ButtonCustom
           text="Snackbar Error"
@@ -138,7 +138,7 @@ export const AlertPage = () => {
               severity: 'error',
             })
           }
-          typeColor="danger"
+          color="error"
         />
       </div>
       <SnackbarCustom
