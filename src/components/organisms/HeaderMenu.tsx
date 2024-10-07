@@ -1,7 +1,7 @@
 import { AppBar, Box, IconButton, Toolbar } from '@mui/material'
-import { Menu as MenuIcon } from '@mui/icons-material'
 import { TextCustom } from '@components'
 import { APP_NAME } from '@common'
+import { MenuIcon } from '@assets'
 
 interface HeaderMenuProps {
   children: React.ReactNode
@@ -39,11 +39,7 @@ export const HeaderMenu = ({
           <Box className="flex items-center gap-3">
             <TextCustom
               text={APP_NAME}
-              className="hidden md:block text-lg font-semibold text-white"
-            />
-            <TextCustom
-              text={APP_NAME}
-              className="block md:hidden text-lg font-semibold text-white"
+              className="text-lg font-semibold text-white"
             />
           </Box>
           {children}

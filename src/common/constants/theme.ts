@@ -1,5 +1,5 @@
 export const DRAWER_WIDTH = 290
-export const DEFAULT_LANGUAGES = 'es'
+export const DEFAULT_LANGUAGES = 'en'
 export const DEFAULT_THEME = 'light'
 
 export const COLORS = {
@@ -20,3 +20,5 @@ export const COLORS = {
 }
 
 export type ICOLORS = keyof typeof COLORS
+
+export type ITheme = 'dark' | 'light'

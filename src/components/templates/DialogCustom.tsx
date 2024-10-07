@@ -13,7 +13,7 @@ import {
   AlertCustom,
   IAlert,
 } from '@components'
-import { Close as CloseIcon } from '@mui/icons-material'
+import { CloseIcon } from '@assets'
 
 interface DialogCustomProps {
   children: React.ReactNode

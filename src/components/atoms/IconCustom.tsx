@@ -1,32 +1,41 @@
+import { ITheme } from '@common'
+import { usePreferences } from '@hooks'
+
 interface IconCustomProps {
-  defaultTheme?: 'dark' | 'light'
+  defaultTheme?: ITheme
   icon?: React.ElementType
   iconDark?: React.ElementType
   iconLight?: React.ElementType
+  className?: string
 }
 
 export const IconCustom = ({
-  defaultTheme = 'light',
+  defaultTheme,
   icon: Icon,
   iconDark: IconDark,
   iconLight: IconLight,
-  ...res
+  className = '',
 }: IconCustomProps) => {
+  const { theme } = usePreferences()
   let isDark = false
 
   if (defaultTheme) {
     isDark = defaultTheme === 'dark'
   } else {
-    isDark = false // isDark = theme === 'dark'
+    isDark = theme === 'dark'
   }
   if (Icon) {
-    return <Icon className={isDark ? 'text-white' : 'text-black'} {...res} />
+    return (
+      <Icon
+        className={`${className} ${isDark ? 'text-white' : 'text-black'}`}
+      />
+    )
   } else {
     if (IconLight && IconDark) {
       if (isDark) {
-        return <IconLight {...res} />
+        return <IconLight className={className} />
       } else {
-        return <IconDark {...res} />
+        return <IconDark className={className} />
       }
     } else {
       return null

@@ -1,0 +1,27 @@
+{
+  "G_ENGLISH": "English",
+  "G_SPANISH": "Spanish",
+  "G_LIGHT": "Light",
+  "G_DARK": "Dark",
+  "G_DEVELOPED_BY": "Developed by:",
+  "G_VERSION": "Version:",
+
+  "A_I_AGREE": "I agree",
+  "A_RETURN_TO_HOME": "Return to Home",
+  "A_DISABLE": "Disable",
+  "A_CANCEL": "Cancel",
+  "A_DELETE": "Delete",
+  "A_ADD": "Add",
+  "A_CREATE": "Create",
+  "A_UPDATE": "Update",
+  "A_SAVE": "Save",
+  "A_NEXT": "Next",
+  "A_CONTINUE": "Continue",
+  "A_PREVIOUS": "Previous",
+  "A_FINISH": "Finish",
+  "A_REACTIVATE": "Reactivate",
+
+  "V_EMPTY_FIELD": "Empty field",
+  "V_INVALID_VALUE": "Invalid value",
+  "V_INVALID_DATE": "Invalid date"
+}

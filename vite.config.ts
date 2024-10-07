@@ -13,6 +13,7 @@ export default defineConfig({
       '@config': resolve(__dirname, './src/config'),
       '@hooks': resolve(__dirname, './src/hooks'),
       '@interfaces': resolve(__dirname, './src/interfaces'),
+      '@languages': resolve(__dirname, './src/languages'),
       '@pages': resolve(__dirname, './src/pages'),
       '@redux': resolve(__dirname, './src/redux'),
       '@routes': resolve(__dirname, './src/routes'),

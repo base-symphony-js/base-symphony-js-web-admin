@@ -13,6 +13,7 @@
       "@config": ["./src/config"],
       "@hooks": ["./src/hooks"],
       "@interfaces": ["./src/interfaces"],
+      "@languages": ["./src/languages"],
       "@pages": ["./src/pages"],
       "@redux": ["./src/redux"],
       "@routes": ["./src/routes"],

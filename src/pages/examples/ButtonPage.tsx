@@ -5,9 +5,7 @@ import {
   PageLayout,
   TextCustom,
 } from '@components'
-import SendIcon from '@mui/icons-material/Send'
-import ReplyIcon from '@mui/icons-material/Reply'
-import DeleteIcon from '@mui/icons-material/Delete'
+import { DeleteIcon, ReplyIcon, SendIcon } from '@assets'
 
 export const ButtonPage = () => {
   return (

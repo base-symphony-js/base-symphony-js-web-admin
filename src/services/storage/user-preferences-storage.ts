@@ -1,3 +1,6 @@
+import { DEFAULT_LANGUAGES, DEFAULT_THEME, ITheme } from '@common'
+import { ILanguages, translations } from '@languages'
+
 export const PreferencesStorage = {
   getPathName(): string {
     return localStorage.getItem('preferences-path') ?? ''
@@ -8,19 +11,29 @@ export const PreferencesStorage = {
   removePathName() {
     localStorage.removeItem('preferences-path')
   },
-  getTheme(): string {
-    return localStorage.getItem('preferences-theme') ?? ''
+  getTheme(): ITheme {
+    const userTheme = localStorage.getItem('preferences-theme') as ITheme
+    if (userTheme === 'dark' || userTheme === 'light') {
+      return userTheme
+    } else {
+      return DEFAULT_THEME
+    }
   },
-  setTheme(newTheme: string) {
+  setTheme(newTheme: ITheme) {
     localStorage.setItem('preferences-theme', newTheme)
   },
   removeTheme() {
     localStorage.removeItem('preferences-theme')
   },
-  getLanguages(): string {
-    return localStorage.getItem('preferences-languages') ?? ''
+  getLanguages(): ILanguages {
+    const userLng = localStorage.getItem('preferences-languages') as ILanguages
+    if (Object.keys(translations).includes(userLng)) {
+      return userLng
+    } else {
+      return DEFAULT_LANGUAGES
+    }
   },
-  setLanguages(newLanguages: string) {
+  setLanguages(newLanguages: ILanguages) {
     localStorage.setItem('preferences-languages', newLanguages)
   },
   removeLanguages() {

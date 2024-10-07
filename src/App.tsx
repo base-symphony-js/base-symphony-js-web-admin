@@ -3,9 +3,10 @@ import { AppRouter } from '@routes'
 import { useAuthActions } from '@redux'
 import { api, apiInterceptor } from '@config'
 import { AuthStorage } from '@services'
+import { PreferencesContextProvider } from '@hooks'
 
 const App = () => {
-  const [loading, setLoading] = useState(true) // Estado para controlar la carga
+  const [loading, setLoading] = useState(true)
   const { dispatchLogin, dispatchLogout } = useAuthActions()
 
   useEffect(() => {
@@ -33,7 +34,11 @@ const App = () => {
     return <div>Loading...</div>
   }
 
-  return <AppRouter />
+  return (
+    <PreferencesContextProvider>
+      <AppRouter />
+    </PreferencesContextProvider>
+  )
 }
 
 export default App

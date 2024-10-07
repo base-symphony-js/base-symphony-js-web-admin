@@ -1,7 +1,4 @@
-import {
-  ExpandLess as ExpandLessIcon,
-  ExpandMore as ExpandMoreIcon,
-} from '@mui/icons-material'
+import { ExpandLessIcon, ExpandMoreIcon } from '@assets'
 import { ListItem, ListItemIcon, SvgIconProps, Typography } from '@mui/material'
 
 interface DrawerItemProps {

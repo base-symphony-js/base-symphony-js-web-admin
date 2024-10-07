@@ -7,12 +7,12 @@ import {
 } from '@mui/material'
 import { TextCustom, IconButtonCustom, ButtonCustom } from '@components'
 import {
-  CheckCircle as CheckCircleIcon,
-  Close as CloseIcon,
-  Error as ErrorIcon,
-  Info as InfoIcon,
-  Warning as WarningIcon,
-} from '@mui/icons-material'
+  CheckCircleIcon,
+  CloseIcon,
+  ErrorIcon,
+  InfoIcon,
+  WarningIcon,
+} from '@assets'
 
 interface ModalCustomProps {
   title: string

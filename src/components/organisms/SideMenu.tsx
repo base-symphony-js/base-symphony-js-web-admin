@@ -5,13 +5,13 @@ import { VERSION_NUMBER } from '@common'
 import { PATH } from '@routes'
 import { useState } from 'react'
 import {
-  Extension as ExtensionIcon,
-  Groups as GroupsIcon,
-  Home as HomeCustomIcon,
-  Science as ScienceIcon,
-  Security as SecurityIcon,
-  VerifiedUser as VerifiedUserIcon,
-} from '@mui/icons-material'
+  ExtensionIcon,
+  GroupsIcon,
+  HomeCustomIcon,
+  ScienceIcon,
+  SecurityIcon,
+  VerifiedUserIcon,
+} from '@assets'
 
 interface SideMenuProps {
   onChange: () => void

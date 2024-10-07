@@ -1,10 +1,7 @@
 import { memo, useEffect, useRef, useState } from 'react'
 import { useInterval } from '@hooks'
 import { IconButtonCustom } from '@components'
-import {
-  KeyboardArrowLeft as KeyboardArrowLeftIcon,
-  KeyboardArrowRight as KeyboardArrowRightIcon,
-} from '@mui/icons-material'
+import { KeyboardArrowLeftIcon, KeyboardArrowRightIcon } from '@assets'
 
 interface CarruselCoreProps {
   height: number

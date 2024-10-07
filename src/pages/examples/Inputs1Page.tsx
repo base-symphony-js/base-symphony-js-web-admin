@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { Divider } from '@mui/material'
 import { PageLayout, TextCustom, TextInputCustom } from '@components'
-import SendIcon from '@mui/icons-material/Send'
-import ReplyIcon from '@mui/icons-material/Reply'
+import { ReplyIcon, SendIcon } from '@assets'
 
 export const Inputs1Page = () => {
   const [inputDefault, setInputDefault] = useState('')

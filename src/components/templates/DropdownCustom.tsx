@@ -1,10 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { Box } from '@mui/material'
 import { COLORS } from '@common'
-import {
-  ArrowDropDown as ArrowDropDownIcon,
-  ArrowDropUp as ArrowDropUpIcon,
-} from '@mui/icons-material'
+import { ArrowDropDownIcon, ArrowDropUpIcon } from '@assets'
 
 interface DropdownCustomProps {
   component: React.ReactNode

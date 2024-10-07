@@ -1,0 +1,27 @@
+{
+  "G_ENGLISH": "Inglés",
+  "G_SPANISH": "Español",
+  "G_LIGHT": "Claro",
+  "G_DARK": "Oscuro",
+  "G_DEVELOPED_BY": "Desarrollado por:",
+  "G_VERSION": "Versión:",
+
+  "A_I_AGREE": "Estoy de acuerdo",
+  "A_RETURN_TO_HOME": "Regresar a Home",
+  "A_DISABLE": "Inhabilitar",
+  "A_CANCEL": "Cancelar",
+  "A_DELETE": "Eliminar",
+  "A_ADD": "Agregar",
+  "A_CREATE": "Crear",
+  "A_UPDATE": "Actualizar",
+  "A_SAVE": "Guardar",
+  "A_NEXT": "Siguiente",
+  "A_CONTINUE": "Continuar",
+  "A_PREVIOUS": "Anterior",
+  "A_FINISH": "Finalizar",
+  "A_REACTIVATE": "Reactivar",
+
+  "V_EMPTY_FIELD": "Campo vacío",
+  "V_INVALID_VALUE": "Valor no válido",
+  "V_INVALID_DATE": "Fecha no válida"
+}

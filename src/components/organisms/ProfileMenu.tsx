@@ -1,20 +1,16 @@
 import { useState } from 'react'
-// import { Box } from '@mui/material'
+import { Box } from '@mui/material'
 import {
   DrawerItem,
   DropdownCustom,
-  // LanguagesComponent,
-  ProfileComponent,
+  LanguagesComponent,
   TextCustom,
-  // ThemeComponent,
+  ThemeComponent,
 } from '@components'
-import {
-  MenuBook as MenuBookIcon,
-  PowerSettingsNew as PowerSettingsNewIcon,
-} from '@mui/icons-material'
 import { useAppSelector, useAuthActions } from '@redux'
 import { api } from '@config'
 import { AuthStorage } from '@services'
+import { UserProfileIcon, PowerSettingsNewIcon, MenuBookIcon } from '@assets'
 
 export const ProfileMenu = () => {
   const { dispatchLogout } = useAuthActions()
@@ -35,7 +31,14 @@ export const ProfileMenu = () => {
     <DropdownCustom
       open={showDropdown}
       setOpen={setShowDropdown}
-      component={<ProfileComponent name={`${firstName} ${lastName}`} />}
+      component={
+        <div className="flex items-center gap-4">
+          <span className="text-white text-sm w-36 font-semibold text-end">
+            {`${firstName} ${lastName}`}
+          </span>
+          <UserProfileIcon className="w-10 h-10" />
+        </div>
+      }
       isToogleIcon
     >
       <div className="flex flex-col gap-4">
@@ -44,12 +47,12 @@ export const ProfileMenu = () => {
             text="Preferencias"
             className="text-white font-bold text-lg text-center"
           />
-          {/* <Box className="flex items-center justify-center gap-4 px-4">
-            <LanguagesComponent defaultTheme="dark" isLabel />
+          <Box className="flex items-center justify-center gap-4 px-4">
+            <LanguagesComponent />
           </Box>
           <Box className="flex items-center justify-center gap-4 px-4">
             <ThemeComponent />
-          </Box> */}
+          </Box>
         </div>
         <div className="flex flex-col">
           <TextCustom

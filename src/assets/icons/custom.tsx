@@ -1,3 +1,4 @@
+import { ITheme } from '@common'
 import { IconCustom } from '@components'
 import HomeDark from './sidebar/HomeDark.svg?react'
 import HomeLight from './sidebar/HomeLight.svg?react'
@@ -8,22 +9,48 @@ import UserProfileLight from './sidebar/UserProfileLight.svg?react'
 import VolquetaDark from './sidebar/VolquetaDark.svg?react'
 import VolquetaLight from './sidebar/VolquetaLight.svg?react'
 
-export const HomeCustomIcon = ({ ...res }) => (
-  <IconCustom iconDark={HomeDark} iconLight={HomeLight} {...res} />
+interface IconProps {
+  theme?: ITheme
+  className?: string
+}
+
+export const HomeCustomIcon = ({ theme, className }: IconProps) => (
+  <IconCustom
+    iconDark={HomeDark}
+    iconLight={HomeLight}
+    defaultTheme={theme}
+    className={className}
+  />
 )
-export const EnglishIcon = ({ ...res }) => (
-  <IconCustom iconDark={English} iconLight={English} {...res} />
+export const EnglishIcon = ({ theme, className }: IconProps) => (
+  <IconCustom
+    iconDark={English}
+    iconLight={English}
+    defaultTheme={theme}
+    className={className}
+  />
 )
-export const SpanishIcon = ({ ...res }) => (
-  <IconCustom iconDark={Spanish} iconLight={Spanish} {...res} />
+export const SpanishIcon = ({ theme, className }: IconProps) => (
+  <IconCustom
+    iconDark={Spanish}
+    iconLight={Spanish}
+    defaultTheme={theme}
+    className={className}
+  />
 )
-export const UserProfileIcon = ({ ...res }) => (
+export const UserProfileIcon = ({ theme, className }: IconProps) => (
   <IconCustom
     iconDark={UserProfileDark}
     iconLight={UserProfileLight}
-    {...res}
+    defaultTheme={theme}
+    className={className}
   />
 )
-export const VolquetaIcon = ({ ...res }) => (
-  <IconCustom iconDark={VolquetaDark} iconLight={VolquetaLight} {...res} />
+export const VolquetaIcon = ({ theme, className }: IconProps) => (
+  <IconCustom
+    iconDark={VolquetaDark}
+    iconLight={VolquetaLight}
+    defaultTheme={theme}
+    className={className}
+  />
 )

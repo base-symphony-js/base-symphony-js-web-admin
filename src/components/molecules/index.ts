@@ -1,1 +1,2 @@
-export * from './ProfileComponent'
+export * from './LanguagesComponent'
+export * from './ThemeComponent'
