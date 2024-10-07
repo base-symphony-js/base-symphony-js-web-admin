@@ -10,7 +10,7 @@ import {
 import { useAppSelector, useAuthActions } from '@redux'
 import { api } from '@config'
 import { AuthStorage } from '@services'
-import { UserProfileIcon, PowerSettingsNewIcon, MenuBookIcon } from '@assets'
+import { ProfileCustomIcon, PowerSettingsNewIcon, MenuBookIcon } from '@assets'
 
 export const ProfileMenu = ({ backgroundColor = '' }) => {
   const { dispatchLogout } = useAuthActions()
@@ -36,7 +36,7 @@ export const ProfileMenu = ({ backgroundColor = '' }) => {
           <span className="text-white text-sm w-36 font-semibold text-end">
             {`${firstName} ${lastName}`}
           </span>
-          <UserProfileIcon className="w-10 h-10" />
+          <ProfileCustomIcon className="w-10 h-10" />
         </div>
       }
       isToogleIcon

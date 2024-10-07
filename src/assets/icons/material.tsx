@@ -1,4 +1,4 @@
-import { ITheme } from '@common'
+import { SupportedColorScheme } from '@mui/material'
 import { IconCustom } from '@components'
 import {
   Add,
@@ -61,7 +61,7 @@ import {
 } from '@mui/icons-material'
 
 interface IconProps {
-  theme?: ITheme
+  theme?: SupportedColorScheme
   className?: string
 }
 
