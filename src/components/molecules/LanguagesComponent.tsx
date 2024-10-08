@@ -17,7 +17,7 @@ export const LanguagesComponent = () => {
   }
 
   return (
-    <div className="flex items-center gap-2 ">
+    <div className="flex items-center justify-center gap-2 px-4">
       <TextCustom
         text={t.G_SPANISH}
         className="w-20 font-medium text-white text-end"

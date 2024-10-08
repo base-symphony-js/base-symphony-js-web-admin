@@ -6,7 +6,7 @@ import {
   Toolbar,
   useColorScheme,
 } from '@mui/material'
-import { HeaderMenu, ProfileMenu, SideMenu } from '@components'
+import { HeaderMenu, SideMenu } from '@components'
 import { COLORS, DRAWER_WIDTH } from '@common'
 
 interface DashboardLayoutProps {
@@ -35,9 +35,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         drawerWidth={DRAWER_WIDTH}
         handleDrawerToggle={handleDrawerToggle}
         backgroundColor={backgroundColor}
-      >
-        <ProfileMenu backgroundColor={backgroundColor} />
-      </HeaderMenu>
+      />
       <Box
         component="nav"
         sx={{ width: { xl: DRAWER_WIDTH }, flexShrink: { xl: 0 } }}

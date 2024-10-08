@@ -1,21 +1,49 @@
-import { AppBar, Box, IconButton, Toolbar } from '@mui/material'
-import { TextCustom } from '@components'
+import { useState } from 'react'
+import { AppBar, Box, Toolbar } from '@mui/material'
 import { APP_NAME, VERSION_NUMBER } from '@common'
-import { MenuIcon } from '@assets'
+import {
+  IconButtonCustom,
+  DrawerItem,
+  DropdownCustom,
+  LanguagesComponent,
+  TextCustom,
+  ThemeComponent,
+} from '@components'
+import { useAppSelector, useAuthActions } from '@redux'
+import { api } from '@config'
+import { AuthStorage } from '@services'
+import {
+  ProfileCustomIcon,
+  PowerSettingsNewIcon,
+  MenuBookIcon,
+  MenuIcon,
+} from '@assets'
 
 interface HeaderMenuProps {
-  children: React.ReactNode
   drawerWidth: number
   handleDrawerToggle: () => void
   backgroundColor: string
 }
 
 export const HeaderMenu = ({
-  children,
   drawerWidth = 0,
   handleDrawerToggle = () => null,
   backgroundColor = '',
 }: HeaderMenuProps) => {
+  const { dispatchLogout } = useAuthActions()
+  const { firstName, lastName } = useAppSelector(
+    state => state.auth.personalInfo,
+  )
+  const [showDropdown, setShowDropdown] = useState(false)
+
+  const handleLogout = (): string => {
+    api.defaults.headers.Authorization = ''
+    AuthStorage.removePersonalInfo()
+    AuthStorage.removeTokens()
+    dispatchLogout()
+    return ''
+  }
+
   return (
     <AppBar
       position="fixed"
@@ -25,16 +53,13 @@ export const HeaderMenu = ({
         ml: { xl: `${drawerWidth}px` },
       }}
     >
-      <Toolbar sx={{ backgroundColor }}>
-        <IconButton
-          aria-label="open drawer"
-          edge="start"
+      <Toolbar className="px-2" sx={{ backgroundColor }}>
+        <IconButtonCustom
+          icon={<MenuIcon theme="dark" />}
           onClick={handleDrawerToggle}
-          sx={{ mr: 2, display: { xl: 'none' } }}
-        >
-          <MenuIcon theme="dark" />
-        </IconButton>
-        <div className="w-full flex justify-between font-poppins">
+          className="flex xl:none"
+        />
+        <Box className="w-full flex justify-between font-poppins">
           <Box className="flex items-center gap-1">
             <TextCustom
               text={APP_NAME}
@@ -45,8 +70,48 @@ export const HeaderMenu = ({
               className="text-white text-sm italic font-bold"
             />
           </Box>
-          {children}
-        </div>
+          <DropdownCustom
+            open={showDropdown}
+            setOpen={setShowDropdown}
+            component={
+              <div className="flex items-center gap-4">
+                <span className="text-white text-sm w-36 font-semibold text-end">
+                  {`${firstName} ${lastName}`}
+                </span>
+                <ProfileCustomIcon className="w-10 h-10" />
+              </div>
+            }
+            isToogleIcon
+            backgroundColor={backgroundColor}
+          >
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col">
+                <TextCustom
+                  text="Preferencias"
+                  className="text-white font-bold text-lg text-center"
+                />
+                <LanguagesComponent />
+                <ThemeComponent />
+              </div>
+              <div className="flex flex-col">
+                <TextCustom
+                  text="Opciones"
+                  className="text-white font-bold text-lg text-center"
+                />
+                <DrawerItem
+                  text="Manual de Usuario"
+                  onClick={() => console.log('Redirigir al manual de usuario')}
+                  icon={<MenuBookIcon theme="dark" />}
+                />
+                <DrawerItem
+                  text="Cerrar Sesión"
+                  onClick={handleLogout}
+                  icon={<PowerSettingsNewIcon theme="dark" />}
+                />
+              </div>
+            </div>
+          </DropdownCustom>
+        </Box>
       </Toolbar>
     </AppBar>
   )

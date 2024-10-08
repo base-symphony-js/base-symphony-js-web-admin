@@ -1,8 +1,7 @@
 import { TextCustom } from '@components'
-import Switch from '@mui/material/Switch'
 import { usePreferences } from '@hooks'
 import { COLORS } from '@common'
-import { useColorScheme } from '@mui/material'
+import { useColorScheme, Switch } from '@mui/material'
 
 export const ThemeComponent = () => {
   const { t } = usePreferences()
@@ -17,7 +16,7 @@ export const ThemeComponent = () => {
   }
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center justify-center gap-2 px-4">
       <TextCustom
         text={t.G_LIGHT}
         className="w-20 font-medium text-white text-end"
