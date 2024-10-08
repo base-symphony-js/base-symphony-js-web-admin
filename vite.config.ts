@@ -18,6 +18,7 @@ export default defineConfig({
       '@redux': resolve(__dirname, './src/redux'),
       '@routes': resolve(__dirname, './src/routes'),
       '@services': resolve(__dirname, './src/services'),
+      '@tailwind.config.ts': resolve(__dirname, './tailwind.config.ts'),
     },
   },
   optimizeDeps: {

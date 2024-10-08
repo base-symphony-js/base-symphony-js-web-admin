@@ -1,4 +1,4 @@
-import tailwindConfig from '../../../tailwind.config'
+import tailwindConfig from '@tailwind.config.ts'
 export const DRAWER_WIDTH = 290
 export const DEFAULT_LANGUAGES = 'en'
 
