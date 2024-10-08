@@ -57,7 +57,7 @@ export const HeaderMenu = ({
         <IconButtonCustom
           icon={<MenuIcon theme="dark" />}
           onClick={handleDrawerToggle}
-          className="flex xl:none"
+          className="flex xl:hidden"
         />
         <Box className="w-full flex justify-between font-poppins">
           <Box className="flex items-center gap-1">
