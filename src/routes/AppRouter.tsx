@@ -10,6 +10,7 @@ import { useAppSelector } from '@redux'
 
 export const AppRouter = () => {
   const isAuth = useAppSelector(state => state.auth.isAuth)
+
   return (
     <Router>
       <Routes>

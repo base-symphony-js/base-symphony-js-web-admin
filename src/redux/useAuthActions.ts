@@ -4,17 +4,23 @@ import {
   logout,
   updatePersonalInfo,
   updateTokens,
+  updateRoles,
 } from './features/authSlice'
-import { IPersonalInfo, ITokens } from '@interfaces'
+import { IPersonalInfo, IRole, ITokens } from '@interfaces'
 
 export const useAuthActions = () => {
   const dispatch = useAppDispatch()
 
-  const dispatchLogin = (personalInfo: IPersonalInfo, tokens: ITokens) => {
+  const dispatchLogin = (
+    personalInfo: IPersonalInfo,
+    tokens: ITokens,
+    roles: IRole[],
+  ) => {
     dispatch(
       login({
         personalInfo,
         tokens,
+        roles,
       }),
     )
   }
@@ -35,6 +41,14 @@ export const useAuthActions = () => {
     )
   }
 
+  const dispatchUpdateRoles = (roles: IRole[]) => {
+    dispatch(
+      updateRoles({
+        roles,
+      }),
+    )
+  }
+
   const dispatchLogout = () => {
     dispatch(logout())
   }
@@ -43,6 +57,7 @@ export const useAuthActions = () => {
     dispatchLogout,
     dispatchUpdatePersonalInfo,
     dispatchUpdateTokens,
+    dispatchUpdateRoles,
     dispatchLogin,
   }
 }

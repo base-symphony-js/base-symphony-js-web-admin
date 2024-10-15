@@ -1,8 +1,8 @@
 export const PATH = {
-  HOME: '/',
   ERROR_404: '/error404',
-  SEGURIDAD_USUARIOS: '/seguridad/usuarios',
-  SEGURIDAD_GRUPOS: '/seguridad/grupos',
+  HOME: '/dashboard/home',
+  SEGURIDAD_USUARIOS: '/dashboard/seguridad/usuarios',
+  SEGURIDAD_GRUPOS: '/dashboard/seguridad/grupos',
   EXAMPLE_TEXT_AND_COLORS: '/dashboard/examples/text-and-colors',
   EXAMPLE_BUTTONS: '/dashboard/examples/buttons',
   EXAMPLE_INPUTS_1: '/dashboard/examples/inputs1',

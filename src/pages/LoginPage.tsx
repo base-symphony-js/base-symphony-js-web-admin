@@ -1,14 +1,25 @@
 import { useState } from 'react'
 import { useAuthActions } from '@redux'
-import { apiGetProfile, apiLogin, AuthStorage } from '@services'
+import { apiLogin, AuthStorage } from '@services'
 import { api } from '@config'
+import { Paper, useColorScheme } from '@mui/material'
+import {
+  ButtonCustom,
+  LoaderCustom,
+  TextCustom,
+  TextInputCustom,
+} from '@components'
+import { COLORS } from '@common'
 
 export const LoginPage = () => {
+  const { colorScheme: theme } = useColorScheme()
   const { dispatchLogin } = useAuthActions()
+  const [loader, setLoader] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const handleLogin = async () => {
+    setLoader(true)
     const response = await apiLogin({ body: { email, password } })
     const { success, data } = response
     if (success) {
@@ -25,6 +36,7 @@ export const LoginPage = () => {
           accessToken: data?.tokens?.accessToken,
           refreshToken: data?.tokens?.accessToken,
         },
+        data?.roles ?? [],
       )
       AuthStorage.setPersonalInfo({
         firstName: data?.user?.firstName,
@@ -38,44 +50,42 @@ export const LoginPage = () => {
         refreshToken: data?.tokens?.accessToken,
       })
     }
-  }
-
-  const handleProfile = async () => {
-    const response = await apiGetProfile()
-    console.log('HANDLE_PROFILE', response)
+    setLoader(false)
   }
 
   return (
-    <div className="border rounded-md p-2 shadow-md m-2">
-      <p>Login</p>
-      <div>
-        <label htmlFor="">Email:</label>
-        <input
-          className="border rounded-md p-2 mx-2"
-          onChange={e => setEmail(e.target.value)}
-          value={email}
-        />
+    <div
+      className="w-screen h-screen flex justify-center items-center"
+      style={{
+        backgroundColor: theme === 'dark' ? COLORS.general : COLORS.primary,
+      }}
+    >
+      <div className="flex flex-col items-center justify-center h-full">
+        <Paper
+          elevation={3}
+          className="py-8 px-6 min-w-48 sm:min-w-80 flex flex-col gap-4"
+        >
+          <TextCustom
+            text="Inicio de Sesión"
+            className="self-center text-2xl font-bold"
+          />
+          <TextInputCustom
+            name="Correo"
+            value={email}
+            setValue={setEmail}
+            onEnter={handleLogin}
+          />
+          <TextInputCustom
+            name="Contraseña"
+            value={password}
+            setValue={setPassword}
+            onEnter={handleLogin}
+            type="password"
+          />
+          <ButtonCustom text="Iniciar sesión" onClick={handleLogin} />
+        </Paper>
       </div>
-      <div>
-        <label htmlFor="">Password:</label>
-        <input
-          className="border rounded-md p-2 mx-2"
-          onChange={e => setPassword(e.target.value)}
-          value={password}
-        />
-      </div>
-      <button
-        onClick={handleProfile}
-        className="bg-violet-500  text-white rounded-md px-4 py-2 cursor-pointer hover:bg-violet-600 active:bg-violet-700"
-      >
-        Profile
-      </button>
-      <button
-        onClick={handleLogin}
-        className="bg-violet-500  text-white rounded-md px-4 py-2 cursor-pointer hover:bg-violet-600 active:bg-violet-700"
-      >
-        Login
-      </button>
+      {loader && <LoaderCustom mode="modal" />}
     </div>
   )
 }

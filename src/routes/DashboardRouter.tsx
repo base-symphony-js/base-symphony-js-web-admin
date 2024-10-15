@@ -13,8 +13,12 @@ import {
   TextPage,
 } from '@pages'
 import { DashboardLayout } from '@components'
+import { useAppSelector } from '@redux'
 
 export const DashboardRouter = () => {
+  const auth = useAppSelector(state => state.auth)
+  console.log('auth', auth)
+
   return (
     <DashboardLayout>
       <Routes>

@@ -40,6 +40,7 @@ export const HeaderMenu = ({
     api.defaults.headers.Authorization = ''
     AuthStorage.removePersonalInfo()
     AuthStorage.removeTokens()
+    AuthStorage.removeRoles()
     dispatchLogout()
     return ''
   }

@@ -4,7 +4,7 @@
  */
 const env = import.meta.env
 
-export const VITE_APP_API = env.VITE_APP_API ?? ''
+export const VITE_API_URL = env.VITE_API_URL ?? ''
 
 export const VITE_CLOUDINARY_CLOUD_NAME = env.VITE_CLOUDINARY_CLOUD_NAME ?? ''
 export const VITE_CLOUDINARY_API_KEY = env.VITE_CLOUDINARY_API_KEY ?? ''

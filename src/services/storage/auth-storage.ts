@@ -19,8 +19,13 @@ export const AuthStorage = {
   removePersonalInfo() {
     localStorage.removeItem('auth-personal-info')
   },
-  getRoles(): IRole[] {
-    return JSON.parse(localStorage.getItem('auth-roles') ?? '[]')
+  getRoles(): IRole[] | null {
+    const roles = localStorage.getItem('auth-roles')
+    if (roles) {
+      return JSON.parse(roles)
+    } else {
+      return null
+    }
   },
   setRoles(newTokens: IRole[]) {
     localStorage.setItem('auth-roles', JSON.stringify(newTokens))

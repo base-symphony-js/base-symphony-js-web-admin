@@ -5,23 +5,25 @@ import { api, apiInterceptor } from '@config'
 import { AuthStorage } from '@services'
 
 const App = () => {
-  const [loading, setLoading] = useState(true)
+  const [loader, setLoader] = useState(true)
   const { dispatchLogin, dispatchLogout } = useAuthActions()
 
   useEffect(() => {
     apiInterceptor()
-    loadUserInfo().then(() => setLoading(false))
+    loadUserInfo().then(() => setLoader(false))
   }, [])
 
   const loadUserInfo = useCallback(async () => {
     const personalInfo = AuthStorage.getPersonalInfo()
     const tokens = AuthStorage.getTokens()
+    const roles = AuthStorage.getRoles()
     if (
       Object.keys(personalInfo).length !== 0 &&
-      Object.keys(tokens).length !== 0
+      Object.keys(tokens).length !== 0 &&
+      roles
     ) {
       api.defaults.headers.Authorization = `Bearer ${tokens?.accessToken}`
-      dispatchLogin(personalInfo, tokens)
+      dispatchLogin(personalInfo, tokens, roles)
     } else {
       AuthStorage.removePersonalInfo()
       AuthStorage.removeTokens()
@@ -29,7 +31,7 @@ const App = () => {
     }
   }, [dispatchLogin, dispatchLogout])
 
-  if (loading) {
+  if (loader) {
     return <div>Loading...</div>
   }
 
