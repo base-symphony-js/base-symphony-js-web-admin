@@ -4,36 +4,36 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom'
-import { ErrorPage, LoginPage } from '@pages'
-import { PrivateRoute, PublicRoute, DashboardRouter } from '@routes'
+import { PrivateRoute, PublicRoute, DashboardRouter, ROUTES } from '@routes'
 import { useAppSelector } from '@redux'
 
 export const AppRouter = () => {
   const isAuth = useAppSelector(state => state.auth.isAuth)
+  const { LOGIN, DASHBOARD, NOT_FOUND } = ROUTES
 
   return (
     <Router>
       <Routes>
         <Route
-          path="/login"
-          element={<PublicRoute element={LoginPage} isAuth={isAuth} />}
+          path={LOGIN.path}
+          element={<PublicRoute element={LOGIN.Page} isAuth={isAuth} />}
         />
         <Route
-          path="/dashboard/*"
+          path={DASHBOARD.path + '/*'}
           element={<PrivateRoute element={DashboardRouter} isAuth={isAuth} />}
         />
-        <Route path="/page-error" element={<ErrorPage />} />
+        <Route path={NOT_FOUND.path} element={<NOT_FOUND.Page />} />
         <Route
           path="/"
           element={
             isAuth ? (
-              <Navigate to="/dashboard" replace />
+              <Navigate to={DASHBOARD.path} replace />
             ) : (
-              <Navigate to="/login" replace />
+              <Navigate to={LOGIN.path} replace />
             )
           }
         />
-        <Route path="*" element={<Navigate to="/page-error" replace />} />
+        <Route path="*" element={<Navigate to={NOT_FOUND.path} replace />} />
       </Routes>
     </Router>
   )

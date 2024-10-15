@@ -1,4 +1,6 @@
 export * from './examples'
-export * from './ErrorPage'
+export * from './security'
 export * from './HomePage'
 export * from './LoginPage'
+export * from './NotAuthorizedPage'
+export * from './NotFoundPage'

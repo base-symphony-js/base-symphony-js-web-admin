@@ -1,6 +1,6 @@
-type Modules = 'security' | 'business' | 'products' | 'billing'
+type IModules = 'security' | 'business' | 'products' | 'billing'
 
-type Sections =
+type ISections =
   // security
   | 'users'
   | 'roles'
@@ -24,11 +24,11 @@ type Sections =
 export type Actions = 'read' | 'add' | 'edit' | 'delete'
 
 interface ISection {
-  section: Sections
+  section: ISections
   actions: Actions[]
 }
 
 export interface IModule {
-  module: Modules
+  module: IModules
   sections: ISection[]
 }

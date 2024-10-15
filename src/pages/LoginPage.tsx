@@ -49,6 +49,7 @@ export const LoginPage = () => {
         accessToken: data?.tokens?.accessToken,
         refreshToken: data?.tokens?.accessToken,
       })
+      AuthStorage.setRoles(data?.roles ?? [])
     }
     setLoader(false)
   }
