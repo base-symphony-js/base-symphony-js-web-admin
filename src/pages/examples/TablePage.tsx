@@ -1,7 +1,9 @@
+import { PageLayout } from '@components'
+
 export const TablePage = () => {
   return (
-    <div>
+    <PageLayout title="TablePage">
       <p>TablePage</p>
-    </div>
+    </PageLayout>
   )
 }

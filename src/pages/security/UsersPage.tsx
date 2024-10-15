@@ -1,7 +1,9 @@
+import { PageLayout } from '@components'
+
 export const UsersPage = () => {
   return (
-    <div>
+    <PageLayout title="UsersPage">
       <p>UsersPage</p>
-    </div>
+    </PageLayout>
   )
 }

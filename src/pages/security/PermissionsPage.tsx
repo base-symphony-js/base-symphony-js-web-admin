@@ -1,7 +1,9 @@
+import { PageLayout } from '@components'
+
 export const PermissionsPage = () => {
   return (
-    <div>
+    <PageLayout title="PermissionsPage">
       <p>PermissionsPage</p>
-    </div>
+    </PageLayout>
   )
 }
