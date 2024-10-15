@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Collapse, List } from '@mui/material'
 import { DrawerItem, TextCustom } from '@components'
-import { ROUTES } from '@routes'
-
+import { getRoutesLng } from '@routes'
 import { DEVELOPMENT_BY } from '@common'
+import { usePreferences } from '@hooks'
 
 interface SideMenuProps {
   onChange: () => void
@@ -13,7 +13,8 @@ interface SideMenuProps {
 export const SideMenu = ({ onChange = () => null }: SideMenuProps) => {
   const navigate = useNavigate()
   const { pathname } = useLocation()
-  const { DASHBOARD, HOME, EXAMPLE } = ROUTES
+  const { lng } = usePreferences()
+  const { DASHBOARD, HOME, EXAMPLE } = getRoutesLng(lng)
 
   const handleItem = (path = '') => {
     navigate(path)

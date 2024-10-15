@@ -3,10 +3,14 @@ import { AppRouter } from '@routes'
 import { useAuthActions } from '@redux'
 import { api, apiInterceptor } from '@config'
 import { AuthStorage } from '@services'
+import { COLORS } from '@common'
+import { useColorScheme } from '@mui/material'
+import { LoaderCustom, TextCustom } from '@components'
 
 const App = () => {
   const [loader, setLoader] = useState(true)
   const { dispatchLogin, dispatchLogout } = useAuthActions()
+  const { colorScheme: theme } = useColorScheme()
 
   useEffect(() => {
     apiInterceptor()
@@ -32,10 +36,30 @@ const App = () => {
   }, [dispatchLogin, dispatchLogout])
 
   if (loader) {
-    return <div>Loading...</div>
+    return (
+      <div
+        className="h-screen w-screen"
+        style={{
+          backgroundColor:
+            theme === 'dark' ? COLORS['dark-optional'] : COLORS.optional,
+        }}
+      >
+        <LoaderCustom mode="screen" size="8rem" />
+      </div>
+    )
   }
 
-  return <AppRouter />
+  return (
+    <div
+      className="h-screen w-screen"
+      style={{
+        backgroundColor:
+          theme === 'dark' ? COLORS['dark-optional'] : COLORS.optional,
+      }}
+    >
+      <AppRouter />
+    </div>
+  )
 }
 
 export default App
