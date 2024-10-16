@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AppBar, Box, Toolbar } from '@mui/material'
-import { APP_NAME, VERSION_NUMBER } from '@common'
+import { APP_NAME } from '@common'
 import {
   IconButtonCustom,
   DrawerItem,
@@ -65,10 +65,6 @@ export const HeaderMenu = ({
             <TextCustom
               text={APP_NAME}
               className="text-lg font-semibold text-white"
-            />
-            <TextCustom
-              text={`v${VERSION_NUMBER}`}
-              className="text-white text-sm italic font-bold"
             />
           </Box>
           <DropdownCustom

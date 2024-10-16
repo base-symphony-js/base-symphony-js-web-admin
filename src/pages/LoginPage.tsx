@@ -1,11 +1,18 @@
 import { useState } from 'react'
+import { CredentialResponse, GoogleLogin } from '@react-oauth/google'
 import { useAuthActions } from '@redux'
-import { apiLogin, AuthStorage } from '@services'
+import {
+  apiLoginWithEmailAndPass,
+  apiLoginWithGoogle,
+  AuthStorage,
+} from '@services'
 import { api } from '@config'
 import { Paper, useColorScheme } from '@mui/material'
 import {
   ButtonCustom,
+  IAlert,
   LoaderCustom,
+  SnackbarCustom,
   TextCustom,
   TextInputCustom,
 } from '@components'
@@ -17,11 +24,26 @@ export const LoginPage = () => {
   const [loader, setLoader] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [alert, setAlert] = useState<IAlert>({} as IAlert)
 
-  const handleLogin = async () => {
+  const handleLogin = async (
+    provider: 'email-and-pass' | 'google',
+    providerCredentials?: { google: CredentialResponse },
+  ) => {
     setLoader(true)
-    const response = await apiLogin({ body: { email, password } })
-    const { success, data } = response
+    let response
+    if (provider === 'email-and-pass') {
+      response = await apiLoginWithEmailAndPass({
+        body: { email, password },
+      })
+    } else if (provider === 'google') {
+      response = await apiLoginWithGoogle({
+        body: { idToken: providerCredentials?.google.credential },
+      })
+    } else {
+      return
+    }
+    const { success, data, message } = response
     if (success) {
       api.defaults.headers.Authorization = `Bearer ${data?.tokens?.accessToken}`
       dispatchLogin(
@@ -50,6 +72,13 @@ export const LoginPage = () => {
         refreshToken: data?.tokens?.accessToken,
       })
       AuthStorage.setRoles(data?.roles ?? [])
+    } else {
+      setAlert({
+        open: true,
+        title: 'Error',
+        description: message,
+        severity: 'error',
+      })
     }
     setLoader(false)
   }
@@ -74,18 +103,45 @@ export const LoginPage = () => {
             name="Correo"
             value={email}
             setValue={setEmail}
-            onEnter={handleLogin}
+            onEnter={() => handleLogin('email-and-pass')}
           />
           <TextInputCustom
             name="Contraseña"
             value={password}
             setValue={setPassword}
-            onEnter={handleLogin}
+            onEnter={() => handleLogin('email-and-pass')}
             type="password"
           />
-          <ButtonCustom text="Iniciar sesión" onClick={handleLogin} />
+          <ButtonCustom
+            text="Iniciar sesión"
+            onClick={() => handleLogin('email-and-pass')}
+          />
+          <div className="flex flex-col gap-2">
+            <TextCustom
+              text="Proveedores:"
+              className="self-center font-semibold"
+            />
+            <div className="flex justify-center">
+              <GoogleLogin
+                size="large"
+                onSuccess={credentialResponse => {
+                  handleLogin('google', { google: credentialResponse })
+                }}
+                onError={() => {
+                  console.log('Login Failed')
+                }}
+              />
+            </div>
+          </div>
         </Paper>
       </div>
+      <SnackbarCustom
+        open={alert.open}
+        title={alert.title}
+        description={alert.description}
+        severity={alert.severity}
+        setAlert={setAlert}
+      />
       {loader && <LoaderCustom mode="modal" />}
     </div>
   )

@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { Collapse, List } from '@mui/material'
 import { DrawerItem, TextCustom } from '@components'
 import { getRoutesLng } from '@routes'
-import { DEVELOPMENT_BY } from '@common'
+import { DEVELOPMENT_BY, VERSION_NUMBER } from '@common'
 import { usePreferences } from '@hooks'
 
 interface SideMenuProps {
@@ -56,14 +56,18 @@ export const SideMenu = ({ onChange = () => null }: SideMenuProps) => {
           />
         </List>
       </div>
-      <List className="flex flex-col gap-1 py-2 items-center">
+      <List className="flex flex-col py-2 items-center">
         <TextCustom
           text={`© 2024 ${DEVELOPMENT_BY}`}
-          className="text-white text-sm font-bold text-center"
+          className="text-white text-xs font-bold text-center"
         />
         <TextCustom
           text="All rights reserved"
-          className="text-white text-sm font-bold text-center"
+          className="text-white text-xs font-bold text-center"
+        />
+        <TextCustom
+          text={`v${VERSION_NUMBER}`}
+          className="text-white text-xs italic font-bold"
         />
       </List>
     </div>
