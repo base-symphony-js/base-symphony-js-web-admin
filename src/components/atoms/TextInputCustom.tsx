@@ -88,10 +88,6 @@ const Component = ({
         required={required}
         helperText={msgError}
         error={msgError ? true : false}
-        sx={{
-          '& .MuiInputBase-root': { fontFamily: 'Poppins' },
-          '& .MuiInputLabel-root': { fontFamily: 'Poppins' },
-        }}
         slotProps={{
           input: {
             startAdornment:

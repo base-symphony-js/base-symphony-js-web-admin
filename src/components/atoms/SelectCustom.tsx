@@ -49,25 +49,19 @@ const Component = ({
         error={msgError ? true : false}
         renderValue={selected =>
           selected.length === 0 ? (
-            <em className="text-light-gray not-italic font-poppins">
-              {placeholder}
-            </em>
+            <em className="text-light-gray not-italic">{placeholder}</em>
           ) : (
             options.find(item => item.id === selected)?.label
           )
         }
       >
         {placeholder && (
-          <MenuItem disabled className="font-poppins italic">
+          <MenuItem disabled className="italic">
             {placeholder}
           </MenuItem>
         )}
         {options.map(option => (
-          <MenuItem
-            key={option?.id}
-            value={option?.id}
-            className="font-poppins"
-          >
+          <MenuItem key={option?.id} value={option?.id}>
             {option?.label}
           </MenuItem>
         ))}

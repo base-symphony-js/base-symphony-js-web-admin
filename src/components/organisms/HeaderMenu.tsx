@@ -60,7 +60,7 @@ export const HeaderMenu = ({
           onClick={handleDrawerToggle}
           className="flex xl:hidden"
         />
-        <Box className="w-full flex justify-between font-poppins">
+        <Box className="w-full flex justify-between">
           <Box className="flex items-center gap-1">
             <TextCustom
               text={APP_NAME}

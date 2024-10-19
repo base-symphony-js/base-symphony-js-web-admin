@@ -13,7 +13,7 @@ export const NotFoundPage = () => {
       <div className="rounded-lg text-center">
         <TextCustom
           text="404 - Página No Encontrada"
-          className="text-2xl font-bold text-error font-poppins"
+          className="text-2xl font-bold text-error"
         />
         <TextCustom
           text="La página que buscas no existe o ha sido movida."

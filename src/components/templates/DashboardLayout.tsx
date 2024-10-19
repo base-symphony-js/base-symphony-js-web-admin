@@ -58,6 +58,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
               boxSizing: 'border-box',
               width: DRAWER_WIDTH,
               backgroundColor,
+              backgroundImage: 'none',
             },
           }}
         >
@@ -79,6 +80,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
               boxSizing: 'border-box',
               width: DRAWER_WIDTH,
               backgroundColor,
+              backgroundImage: 'none',
             },
           }}
         >
@@ -94,10 +96,6 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         <div
           ref={containerRef}
           className="flex flex-col h-full overflow-y-auto"
-          style={{
-            backgroundColor:
-              theme === 'dark' ? COLORS['dark-optional'] : COLORS.optional,
-          }}
         >
           {children}
         </div>

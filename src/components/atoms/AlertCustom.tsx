@@ -50,7 +50,6 @@ export const AlertCustom = ({
         <AlertTitle
           className="text-lg text-white"
           sx={{ '&.MuiTypography-root': { margin: 0 } }}
-          style={{ fontFamily: 'Poppins' }}
         >
           {title}
         </AlertTitle>

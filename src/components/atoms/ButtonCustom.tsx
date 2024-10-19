@@ -42,7 +42,6 @@ export const ButtonCustom = ({
         fontSize: '12px',
         boxShadow: 'none',
       }}
-      style={{ fontFamily: 'Poppins' }}
     >
       {text}
     </Button>

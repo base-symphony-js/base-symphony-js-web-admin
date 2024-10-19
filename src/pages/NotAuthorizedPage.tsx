@@ -13,7 +13,7 @@ export const NotAuthorizedPage = () => {
       <div className="rounded-lg text-center">
         <TextCustom
           text="Acceso Denegado"
-          className="text-2xl font-bold text-error font-poppins"
+          className="text-2xl font-bold text-error"
         />
         <TextCustom
           text="No tienes permisos para acceder a esta página."

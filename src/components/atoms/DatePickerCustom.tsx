@@ -43,8 +43,6 @@ const Component = ({
             textField: {
               size: 'small',
               sx: {
-                '& .MuiInputBase-root': { fontFamily: 'Poppins' },
-                '& .MuiInputLabel-root': { fontFamily: 'Poppins' },
                 '& .MuiOutlinedInput-root': {
                   '& fieldset': { borderColor: msgError && 'red' },
                   '&:hover fieldset': { borderColor: msgError && 'red' },

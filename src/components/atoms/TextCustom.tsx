@@ -21,7 +21,6 @@ export const TextCustom = ({
       variant={variant}
       whiteSpace={whiteSpace}
       className={className}
-      style={{ fontFamily: 'Poppins' }}
     >
       {text}
     </Typography>

@@ -20,11 +20,11 @@ export const PageLayout = ({
   const { colorScheme: theme } = useColorScheme()
 
   return (
-    <Box className="p-8 flex flex-col gap-4">
+    <Box className="p-6 flex flex-col gap-4">
       <CssBaseline />
       <TextCustom text={title} className="text-2xl font-bold" />
       <div
-        className="p-8 flex flex-col rounded-lg shadow-lg"
+        className="p-6 flex flex-col rounded-lg shadow-lg"
         style={{
           backgroundColor: theme === 'dark' ? COLORS.dark : COLORS.white,
         }}

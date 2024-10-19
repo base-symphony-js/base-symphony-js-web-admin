@@ -33,10 +33,7 @@ export const DrawerItem = ({
           <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: 'auto' } }}>
             {icon}
           </ListItemIcon>
-          <Typography
-            noWrap={false}
-            className="font-light tracking-tight font-poppins"
-          >
+          <Typography noWrap={false} className="font-light tracking-tight">
             {text}
           </Typography>
         </div>

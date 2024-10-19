@@ -33,7 +33,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #545f64;
+  font-family: 'Poppins';
 }
 
 ::-webkit-scrollbar {
@@ -41,15 +41,15 @@ body {
   height: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #0e40ae;
+  background: #842196;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #004bce;
+  background: #9c27b0;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 ::-webkit-scrollbar-thumb:active {
-  background-color: #004bce;
+  background-color: #9c27b0;
 }
 ::-webkit-scrollbar-track {
   background: #ebebeb;

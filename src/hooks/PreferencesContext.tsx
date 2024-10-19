@@ -55,9 +55,13 @@ export const PreferencesContextProvider = ({
     palette: {
       primary: { main: COLORS.primary },
       secondary: { main: COLORS.secondary },
+      info: { main: COLORS.info },
       success: { main: COLORS.success },
       error: { main: COLORS.error },
       warning: { main: COLORS.warning },
+    },
+    typography: {
+      fontFamily: 'Poppins',
     },
   })
 

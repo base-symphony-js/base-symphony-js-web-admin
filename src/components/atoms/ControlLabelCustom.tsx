@@ -22,10 +22,7 @@ export const ControlLabelCustom = ({
       label={name}
       labelPlacement={align}
       className={className}
-      sx={{
-        '&.MuiFormControlLabel-root': { margin: 0 },
-        '& .MuiFormControlLabel-label': { fontFamily: 'Poppins' },
-      }}
+      sx={{ '&.MuiFormControlLabel-root': { margin: 0 } }}
     />
   )
 }

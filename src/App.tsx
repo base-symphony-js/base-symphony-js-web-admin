@@ -35,20 +35,6 @@ const App = () => {
     }
   }, [dispatchLogin, dispatchLogout])
 
-  if (loader) {
-    return (
-      <div
-        className="h-screen w-screen"
-        style={{
-          backgroundColor:
-            theme === 'dark' ? COLORS['dark-optional'] : COLORS.optional,
-        }}
-      >
-        <LoaderCustom mode="screen" size="8rem" />
-      </div>
-    )
-  }
-
   return (
     <div
       className="h-screen w-screen"
@@ -57,7 +43,7 @@ const App = () => {
           theme === 'dark' ? COLORS['dark-optional'] : COLORS.optional,
       }}
     >
-      <AppRouter />
+      {loader ? <LoaderCustom mode="screen" size="8rem" /> : <AppRouter />}
     </div>
   )
 }

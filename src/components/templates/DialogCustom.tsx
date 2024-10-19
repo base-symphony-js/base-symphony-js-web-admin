@@ -4,7 +4,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  useColorScheme,
+  Divider,
 } from '@mui/material'
 import {
   TextCustom,
@@ -15,7 +15,6 @@ import {
   IAlert,
 } from '@components'
 import { CloseIcon } from '@assets'
-import { COLORS } from '@common'
 
 interface DialogCustomProps {
   children: React.ReactNode
@@ -48,8 +47,6 @@ const Component = ({
   alert,
   setAlert = () => null,
 }: DialogCustomProps) => {
-  const { colorScheme: theme } = useColorScheme()
-
   const handleClose = () => {
     onDismiss()
     setOpen(false)
@@ -64,14 +61,9 @@ const Component = ({
       onClose={() => !disabledDismiss && handleClose()}
       maxWidth="xl"
     >
-      <DialogTitle
-        className="pl-5 pr-2 m-0 py-0"
-        style={{
-          backgroundColor: theme === 'light' ? COLORS.primary : '',
-        }}
-      >
+      <DialogTitle className="pl-5 pr-2 m-0 py-0">
         <div className="flex justify-between items-center">
-          <TextCustom text={title} className="font-medium py-2 text-white" />
+          <TextCustom text={title} className="font-medium py-2" />
           {!disabledIconClose && (
             <IconButtonCustom
               icon={<CloseIcon theme="dark" />}
@@ -80,6 +72,7 @@ const Component = ({
           )}
         </div>
       </DialogTitle>
+      <Divider />
       <DialogContent className="flex flex-col min-w-96">
         <AlertCustom
           title={alert?.title}
