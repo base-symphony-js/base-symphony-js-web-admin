@@ -28,6 +28,7 @@ interface DialogCustomProps {
   loader?: boolean
   disabledDismiss?: boolean
   disabledIconClose?: boolean
+  disabledDialogActions?: boolean
   alert?: IAlert
   setAlert?: (value: IAlert) => void
 }
@@ -44,6 +45,7 @@ const Component = ({
   loader = false,
   disabledDismiss = false,
   disabledIconClose = false,
+  disabledDialogActions = false,
   alert,
   setAlert = () => null,
 }: DialogCustomProps) => {
@@ -65,10 +67,7 @@ const Component = ({
         <div className="flex justify-between items-center">
           <TextCustom text={title} className="font-medium py-2" />
           {!disabledIconClose && (
-            <IconButtonCustom
-              icon={<CloseIcon theme="dark" />}
-              onClick={handleClose}
-            />
+            <IconButtonCustom icon={<CloseIcon />} onClick={handleClose} />
           )}
         </div>
       </DialogTitle>
@@ -83,21 +82,23 @@ const Component = ({
         />
         {children}
       </DialogContent>
-      <DialogActions>
-        <ButtonCustom
-          text="Cancelar"
-          variant="outlined"
-          color="inherit"
-          onClick={handleClose}
-          disabled={loader}
-        />
-        <ButtonCustom
-          text={labelAction}
-          color="primary"
-          onClick={onAction}
-          disabled={disabledAction ? true : loader}
-        />
-      </DialogActions>
+      {!disabledDialogActions && (
+        <DialogActions>
+          <ButtonCustom
+            text="Cancelar"
+            variant="outlined"
+            color="inherit"
+            onClick={handleClose}
+            disabled={loader}
+          />
+          <ButtonCustom
+            text={labelAction}
+            color="primary"
+            onClick={onAction}
+            disabled={disabledAction ? true : loader}
+          />
+        </DialogActions>
+      )}
       {loader && <LoaderCustom mode="modal" />}
     </Dialog>
   )

@@ -25,6 +25,7 @@ import {
   ExpandMore,
   Extension,
   Flag,
+  FileDownload,
   FilterList,
   FilterListOff,
   Fullscreen,
@@ -144,6 +145,9 @@ export const ExtensionIcon = ({ theme, className }: IconProps) => (
 )
 export const FlagIcon = ({ theme, className }: IconProps) => (
   <IconCustom icon={Flag} defaultTheme={theme} className={className} />
+)
+export const FileDownloadIcon = ({ theme, className }: IconProps) => (
+  <IconCustom icon={FileDownload} defaultTheme={theme} className={className} />
 )
 export const FilterListIcon = ({ theme, className }: IconProps) => (
   <IconCustom icon={FilterList} defaultTheme={theme} className={className} />

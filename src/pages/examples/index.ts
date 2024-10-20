@@ -1,5 +1,4 @@
 export * from './AlertPage'
-export * from './AlertModalPage'
 export * from './ButtonPage'
 export * from './DialogPage'
 export * from './Inputs1Page'

@@ -7,7 +7,6 @@ import {
   VerifiedUserIcon,
 } from '@assets'
 import {
-  AlertModalPage,
   AlertPage,
   ButtonPage,
   DialogPage,
@@ -110,13 +109,6 @@ const ROUTES = {
         path: '/alerts',
         pathname: 'alerts',
         Page: AlertPage,
-      },
-      {
-        name: 'Alertas modales',
-        Icon: ExtensionIcon,
-        path: '/alerts-modal',
-        pathname: 'alerts-modal',
-        Page: AlertModalPage,
       },
       {
         name: 'Animaciones de carga',

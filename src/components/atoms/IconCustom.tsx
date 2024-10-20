@@ -26,7 +26,7 @@ export const IconCustom = ({
   if (Icon) {
     return (
       <Icon
-        className={`${className} ${theme === 'dark' ? 'text-white' : theme === 'light' ? 'text-black' : ''}`}
+        className={`${className} ${defaultTheme === 'dark' ? 'text-white' : defaultTheme === 'light' ? 'text-black' : ''}`}
       />
     )
   } else {
