@@ -1,7 +1,5 @@
 import { Divider } from '@mui/material'
 import {
-  AlertCustom,
-  ModalAlert,
   BadgePoint,
   PageLayout,
   TableCustom,
@@ -233,16 +231,15 @@ export const TablePage = () => {
   }
 
   return (
-    <PageLayout title="Ejemplos de Tablas">
+    <PageLayout
+      title="Ejemplos de Tablas"
+      alert={alert}
+      setAlert={setAlert}
+      modalAlert={modalAlert}
+      setModalAlert={setModalAlert}
+    >
       <TextCustom text="Tablas" className="text-6xl" />
       <Divider className="mb-4" />
-      <AlertCustom
-        open={alert.open}
-        title={alert.title}
-        description={alert.description}
-        severity={alert.severity}
-        setAlert={setAlert}
-      />
       {/* Tipos de Tablas */}
       <TableCustom
         /* DATA */
@@ -295,15 +292,6 @@ export const TablePage = () => {
         }
       />
       <Divider />
-      <ModalAlert
-        open={modalAlert.open}
-        title={modalAlert.title}
-        description={modalAlert.description}
-        severity={modalAlert.severity}
-        action={modalAlert.action}
-        onDismiss={modalAlert.onDismiss}
-        setAlert={setModalAlert}
-      />
     </PageLayout>
   )
 }

@@ -5,10 +5,10 @@ import { AlertTitle } from '@mui/material'
 import { CloseIcon } from '@assets'
 
 interface SnackbarCustomProps {
-  title: string
+  title?: string
   description?: string
-  open: boolean
-  severity: AlertProps['severity']
+  open?: boolean
+  severity?: AlertProps['severity']
   setAlert: (value: IAlert) => void
 }
 

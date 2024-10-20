@@ -1,4 +1,11 @@
-import { AlertCustom, IAlert, LoaderCustom, TextCustom } from '@components'
+import {
+  IAlert,
+  IModalAlert,
+  LoaderCustom,
+  ModalAlert,
+  SnackbarCustom,
+  TextCustom,
+} from '@components'
 import { COLORS } from '@common'
 import { Box, CssBaseline, useColorScheme } from '@mui/material'
 
@@ -7,14 +14,18 @@ interface PageLayoutProps {
   title?: string
   alert?: IAlert
   setAlert?: (value: IAlert) => void
+  modalAlert?: IModalAlert
+  setModalAlert?: (value: IModalAlert) => void
   loader?: boolean
 }
 
 export const PageLayout = ({
   children,
   title = '',
-  alert,
+  alert = {} as IAlert,
   setAlert = () => null,
+  modalAlert = {} as IModalAlert,
+  setModalAlert = () => null,
   loader = false,
 }: PageLayoutProps) => {
   const { colorScheme: theme } = useColorScheme()
@@ -29,16 +40,25 @@ export const PageLayout = ({
           backgroundColor: theme === 'dark' ? COLORS.dark : COLORS.white,
         }}
       >
-        <AlertCustom
-          title={alert?.title}
-          description={alert?.description}
-          open={alert?.open}
-          severity={alert?.severity}
-          setAlert={setAlert}
-        />
         {children}
         {loader && <LoaderCustom mode="screen" />}
       </div>
+      <SnackbarCustom
+        open={alert.open}
+        title={alert.title}
+        description={alert.description}
+        severity={alert.severity}
+        setAlert={setAlert}
+      />
+      <ModalAlert
+        open={modalAlert.open}
+        title={modalAlert.title}
+        description={modalAlert.description}
+        severity={modalAlert.severity}
+        action={modalAlert.action}
+        onDismiss={modalAlert.onDismiss}
+        setAlert={setModalAlert}
+      />
     </Box>
   )
 }
