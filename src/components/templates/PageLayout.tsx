@@ -8,6 +8,9 @@ import {
 } from '@components'
 import { COLORS } from '@common'
 import { Box, CssBaseline, useColorScheme } from '@mui/material'
+import { useEffect } from 'react'
+import { api } from '@config'
+import { useAuthActions } from '@redux'
 
 interface PageLayoutProps {
   children: React.ReactNode
@@ -17,6 +20,7 @@ interface PageLayoutProps {
   modalAlert?: IModalAlert
   setModalAlert?: (value: IModalAlert) => void
   loader?: boolean
+  isSessionExpired?: boolean
 }
 
 export const PageLayout = ({
@@ -27,8 +31,17 @@ export const PageLayout = ({
   modalAlert = {} as IModalAlert,
   setModalAlert = () => null,
   loader = false,
+  isSessionExpired = false,
 }: PageLayoutProps) => {
+  const { dispatchLogout } = useAuthActions()
   const { colorScheme: theme } = useColorScheme()
+
+  useEffect(() => {
+    if (isSessionExpired) {
+      api.defaults.headers.Authorization = ''
+      dispatchLogout()
+    }
+  }, [isSessionExpired])
 
   return (
     <Box className="p-6 flex flex-col gap-4">

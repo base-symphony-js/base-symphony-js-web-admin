@@ -1,11 +1,7 @@
 import { useState } from 'react'
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google'
 import { useAuthActions } from '@redux'
-import {
-  apiLoginWithEmailAndPass,
-  apiLoginWithGoogle,
-  AuthStorage,
-} from '@services'
+import { apiLoginWithEmailAndPass, apiLoginWithGoogle } from '@services'
 import { api } from '@config'
 import { Paper, useColorScheme } from '@mui/material'
 import {
@@ -56,22 +52,10 @@ export const LoginPage = () => {
         },
         {
           accessToken: data?.tokens?.accessToken,
-          refreshToken: data?.tokens?.accessToken,
+          refreshToken: data?.tokens?.refreshToken,
         },
         data?.roles ?? [],
       )
-      AuthStorage.setPersonalInfo({
-        firstName: data?.user?.firstName,
-        lastName: data?.user?.lastName,
-        email: data?.user?.email,
-        photo: data?.user?.photo,
-        phoneNumber: data?.user?.phoneNumber,
-      })
-      AuthStorage.setTokens({
-        accessToken: data?.tokens?.accessToken,
-        refreshToken: data?.tokens?.accessToken,
-      })
-      AuthStorage.setRoles(data?.roles ?? [])
     } else {
       setAlert({
         open: true,

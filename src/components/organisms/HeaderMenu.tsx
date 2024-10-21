@@ -11,7 +11,6 @@ import {
 } from '@components'
 import { useAppSelector, useAuthActions } from '@redux'
 import { api } from '@config'
-import { AuthStorage } from '@services'
 import {
   ProfileCustomIcon,
   PowerSettingsNewIcon,
@@ -38,9 +37,6 @@ export const HeaderMenu = ({
 
   const handleLogout = (): string => {
     api.defaults.headers.Authorization = ''
-    AuthStorage.removePersonalInfo()
-    AuthStorage.removeTokens()
-    AuthStorage.removeRoles()
     dispatchLogout()
     return ''
   }

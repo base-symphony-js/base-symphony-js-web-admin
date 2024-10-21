@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IPersonalInfo, IRole, ITokens } from '@interfaces'
+import { AuthStorage } from '@services'
 
 export interface AuthState {
   isAuth: boolean
@@ -33,6 +34,9 @@ export const AuthSlice = createSlice({
         roles: IRole[]
       }>,
     ) => {
+      AuthStorage.setPersonalInfo(action.payload.personalInfo)
+      AuthStorage.setTokens(action.payload.tokens)
+      AuthStorage.setRoles(action.payload.roles)
       state.isAuth = true
       state.personalInfo = action.payload.personalInfo
       state.tokens = action.payload.tokens
@@ -42,15 +46,21 @@ export const AuthSlice = createSlice({
       state,
       action: PayloadAction<{ personalInfo: IPersonalInfo }>,
     ) => {
+      AuthStorage.setPersonalInfo(action.payload.personalInfo)
       state.personalInfo = action.payload.personalInfo
     },
     updateTokens: (state, action: PayloadAction<{ tokens: ITokens }>) => {
+      AuthStorage.setTokens(action.payload.tokens)
       state.tokens = action.payload.tokens
     },
     updateRoles: (state, action: PayloadAction<{ roles: IRole[] }>) => {
+      AuthStorage.setRoles(action.payload.roles)
       state.roles = action.payload.roles
     },
     logout: state => {
+      AuthStorage.removePersonalInfo()
+      AuthStorage.removeTokens()
+      AuthStorage.removeRoles()
       state.isAuth = initialState.isAuth
       state.personalInfo = initialState.personalInfo
       state.tokens = initialState.tokens

@@ -5,7 +5,7 @@ import { api, apiInterceptor } from '@config'
 import { AuthStorage } from '@services'
 import { COLORS } from '@common'
 import { useColorScheme } from '@mui/material'
-import { LoaderCustom, TextCustom } from '@components'
+import { LoaderCustom } from '@components'
 
 const App = () => {
   const [loader, setLoader] = useState(true)
