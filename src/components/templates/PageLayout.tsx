@@ -1,4 +1,5 @@
 import {
+  DialogSessionExpired,
   IAlert,
   IModalAlert,
   LoaderCustom,
@@ -8,9 +9,6 @@ import {
 } from '@components'
 import { COLORS } from '@common'
 import { Box, CssBaseline, useColorScheme } from '@mui/material'
-import { useEffect } from 'react'
-import { api } from '@config'
-import { useAuthActions } from '@redux'
 
 interface PageLayoutProps {
   children: React.ReactNode
@@ -21,6 +19,7 @@ interface PageLayoutProps {
   setModalAlert?: (value: IModalAlert) => void
   loader?: boolean
   isSessionExpired?: boolean
+  setIsSessionExpired?: (value: boolean) => void
 }
 
 export const PageLayout = ({
@@ -32,16 +31,9 @@ export const PageLayout = ({
   setModalAlert = () => null,
   loader = false,
   isSessionExpired = false,
+  setIsSessionExpired = () => null,
 }: PageLayoutProps) => {
-  const { dispatchLogout } = useAuthActions()
   const { colorScheme: theme } = useColorScheme()
-
-  useEffect(() => {
-    if (isSessionExpired) {
-      api.defaults.headers.Authorization = ''
-      dispatchLogout()
-    }
-  }, [isSessionExpired])
 
   return (
     <Box className="p-6 flex flex-col gap-4">
@@ -71,6 +63,10 @@ export const PageLayout = ({
         action={modalAlert.action}
         onDismiss={modalAlert.onDismiss}
         setAlert={setModalAlert}
+      />
+      <DialogSessionExpired
+        open={isSessionExpired}
+        setOpen={setIsSessionExpired}
       />
     </Box>
   )

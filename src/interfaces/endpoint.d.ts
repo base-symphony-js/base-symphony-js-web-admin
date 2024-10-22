@@ -6,7 +6,7 @@ export interface IDataResponse {
 }
 
 export interface IRequest {
-  params?: object
-  body?: object
-  query?: object
+  params?: any
+  body?: any
+  query?: any
 }
