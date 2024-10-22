@@ -43,7 +43,7 @@ export const ExamplesPage = () => {
           onClick={() => navigate(ROUTES.DASHBOARD.EXAMPLES.INPUTS_3.path)}
         />
         <CardMenu
-          title="Gestión de permisos"
+          title="Checkboxs, radio botones y switchs"
           icon={<ExtensionIcon className="mb-2 w-24 h-24 text-success" />}
           onClick={() => navigate(ROUTES.DASHBOARD.EXAMPLES.INPUTS_4.path)}
         />
