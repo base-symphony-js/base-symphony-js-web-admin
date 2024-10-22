@@ -20,9 +20,7 @@ export const LoaderPage = () => {
   }
 
   return (
-    <PageLayout title="Ejemplos de Loaders">
-      <TextCustom text="Loaders" className="text-6xl" />
-      <Divider />
+    <PageLayout title="Ejemplos de Animaciones">
       {/* Data */}
       <div className="px-4 pt-4">
         <TextCustom text="Data" className="text-3xl" />

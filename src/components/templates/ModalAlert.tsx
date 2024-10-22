@@ -127,7 +127,11 @@ const Component = ({
         </div>
       </DialogTitle>
       <DialogContent className="mt-2">
-        <TextCustom text={description} className="italic" />
+        <TextCustom
+          text={description}
+          className="italic"
+          color="textSecondary"
+        />
       </DialogContent>
       <DialogActions>
         <ButtonCustom

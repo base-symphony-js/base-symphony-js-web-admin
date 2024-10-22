@@ -10,14 +10,12 @@ import { DeleteIcon, ReplyIcon, SendIcon } from '@assets'
 export const ButtonPage = () => {
   return (
     <PageLayout title="Ejemplos de Botones">
-      <TextCustom text="Componentes para botones" className="text-6xl" />
-      <Divider />
-      <ButtonCustom text="Por defecto" />
       {/* Variante de Botones */}
       <div className="px-4 pt-4">
         <TextCustom text="Variantes" className="text-3xl" />
         <Divider />
         <div className="flex flex-col gap-1">
+          <ButtonCustom text="Por defecto" />
           <div className="flex gap-1">
             <ButtonCustom text="Contained" variant="contained" />
             <ButtonCustom text="Contained" variant="contained" disabled />

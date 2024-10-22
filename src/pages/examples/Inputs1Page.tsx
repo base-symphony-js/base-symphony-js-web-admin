@@ -20,8 +20,6 @@ export const Inputs1Page = () => {
 
   return (
     <PageLayout title="Ejemplos de TextInputs">
-      <TextCustom text="Componentes para TextInputs" className="text-6xl" />
-      <Divider />
       {/* Variante de TextInputs */}
       <div className="px-4 pt-4">
         <TextCustom text="Variantes de TextInputs" className="text-3xl" />

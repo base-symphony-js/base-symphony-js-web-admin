@@ -24,8 +24,6 @@ export const AlertPage = () => {
 
   return (
     <PageLayout title="Ejemplos de Alertas">
-      <TextCustom text="Alerts" className="text-6xl" />
-      <Divider />
       {/* Tipos de Alerts */}
       <div className="px-4 py-4">
         <TextCustom text="Tipos de Alerts" className="text-3xl" />

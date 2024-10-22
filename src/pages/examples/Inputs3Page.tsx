@@ -29,8 +29,6 @@ export const Inputs3Page = () => {
 
   return (
     <PageLayout title="Ejemplos de Selects y DatePickets">
-      <TextCustom text="Selects" className="text-6xl" />
-      <Divider />
       {/* Estados */}
       <div className="px-4 pt-4">
         <TextCustom text="Estados" className="text-3xl" />

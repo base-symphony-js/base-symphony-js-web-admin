@@ -25,8 +25,6 @@ export const DialogPage = () => {
 
   return (
     <PageLayout title="Ejemplos de Ventanas Modales">
-      <TextCustom text="Ventanas Modales" className="text-6xl" />
-      <Divider />
       {/* Tipos */}
       <div className="px-4 pt-4">
         <TextCustom text="Tipos" className="text-3xl" />

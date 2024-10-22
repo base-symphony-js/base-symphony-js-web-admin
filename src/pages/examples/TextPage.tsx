@@ -4,8 +4,6 @@ import { PageLayout, TextCustom } from '@components'
 export const TextPage = () => {
   return (
     <PageLayout title="Ejemplos de Textos y Colores">
-      <TextCustom text="Componentes para textos" className="text-6xl" />
-      <Divider />
       <div className="px-4 pt-4">
         <TextCustom text="Variantes" className="text-3xl" />
         <Divider />

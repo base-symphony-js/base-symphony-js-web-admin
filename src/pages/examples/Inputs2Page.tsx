@@ -44,8 +44,6 @@ export const Inputs2Page = () => {
 
   return (
     <PageLayout title="Ejemplos de TextInputs con Validaciones">
-      <TextCustom text="Validaciones para TextInputs" className="text-6xl" />
-      <Divider />
       {/* Validaciones de TextInputs */}
       <div className="px-4 pt-4">
         <TextCustom text="Validaciones de escritura" className="text-3xl" />

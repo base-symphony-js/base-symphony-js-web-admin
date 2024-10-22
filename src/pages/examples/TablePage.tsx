@@ -238,8 +238,6 @@ export const TablePage = () => {
       modalAlert={modalAlert}
       setModalAlert={setModalAlert}
     >
-      <TextCustom text="Tablas" className="text-6xl" />
-      <Divider className="mb-4" />
       {/* Tipos de Tablas */}
       <TableCustom
         /* DATA */

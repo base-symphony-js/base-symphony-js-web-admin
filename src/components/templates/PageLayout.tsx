@@ -8,7 +8,7 @@ import {
   TextCustom,
 } from '@components'
 import { COLORS } from '@common'
-import { Box, CssBaseline, useColorScheme } from '@mui/material'
+import { Box, CssBaseline, Divider, useColorScheme } from '@mui/material'
 
 interface PageLayoutProps {
   children: React.ReactNode
@@ -38,13 +38,16 @@ export const PageLayout = ({
   return (
     <Box className="p-6 flex flex-col gap-4">
       <CssBaseline />
-      <TextCustom text={title} className="text-2xl font-bold" />
       <div
         className="p-6 flex flex-col rounded-lg shadow-lg"
         style={{
           backgroundColor: theme === 'dark' ? COLORS.dark : COLORS.white,
         }}
       >
+        <div className="mb-4">
+          <TextCustom text={title} className="text-3xl font-bold" />
+          <Divider />
+        </div>
         {children}
         {loader && <LoaderCustom mode="screen" />}
       </div>

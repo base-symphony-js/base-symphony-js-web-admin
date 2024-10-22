@@ -6,6 +6,7 @@ interface TextCustomProps {
   isWrap?: boolean
   whiteSpace?: TypographyProps['whiteSpace']
   className?: string
+  color?: TypographyProps['color']
 }
 
 export const TextCustom = ({
@@ -14,6 +15,7 @@ export const TextCustom = ({
   isWrap = false,
   whiteSpace = undefined,
   className = '',
+  color = 'textPrimary',
 }: TextCustomProps) => {
   return (
     <Typography
@@ -21,6 +23,7 @@ export const TextCustom = ({
       variant={variant}
       whiteSpace={whiteSpace}
       className={className}
+      color={color}
     >
       {text}
     </Typography>

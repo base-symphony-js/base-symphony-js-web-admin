@@ -38,8 +38,6 @@ export const Inputs4Page = () => {
 
   return (
     <PageLayout title="Ejemplos de Checkbox, RadioButtons y Switchs">
-      <TextCustom text="CheckBox" className="text-6xl" />
-      <Divider />
       {/* Estados */}
       <div className="px-4 pt-4">
         <TextCustom text="Estados" className="text-3xl" />
