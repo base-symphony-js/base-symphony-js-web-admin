@@ -76,6 +76,8 @@ export const DialogSessionExpired = ({
       onAction={() => handleLogin('email-and-pass')}
       alert={alert}
       setAlert={setAlert}
+      disabledIconClose
+      disabledDismiss
     >
       <TextCustom
         text="¡Tu sesión ha expirado!"

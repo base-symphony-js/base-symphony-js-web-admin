@@ -44,10 +44,12 @@ export const PageLayout = ({
           backgroundColor: theme === 'dark' ? COLORS.dark : COLORS.white,
         }}
       >
-        <div className="mb-4">
-          <TextCustom text={title} className="text-3xl font-bold" />
-          <Divider />
-        </div>
+        {title && (
+          <div className="mb-4">
+            <TextCustom text={title} className="text-3xl font-bold" />
+            <Divider />
+          </div>
+        )}
         {children}
         {loader && <LoaderCustom mode="screen" />}
       </div>

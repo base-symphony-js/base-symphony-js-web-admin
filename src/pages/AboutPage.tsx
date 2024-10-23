@@ -1,9 +1,11 @@
+import ReactMarkdown from 'react-markdown'
 import { PageLayout } from '@components'
+import { ABOUT } from '@assets'
 
 export const AboutPage = () => {
   return (
-    <PageLayout title="Acerca de">
-      <p>AboutPage</p>
+    <PageLayout>
+      <ReactMarkdown>{ABOUT}</ReactMarkdown>
     </PageLayout>
   )
 }

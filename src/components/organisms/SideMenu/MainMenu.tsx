@@ -1,6 +1,6 @@
 import { List } from '@mui/material'
 import { DrawerItem, TextCustom } from '@components'
-import { HomeCustomIcon, ScienceIcon, SecurityIcon } from '@assets'
+import { HomeIcon, ScienceIcon, SecurityIcon } from '@assets'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ROUTES } from '@routes'
 
@@ -28,17 +28,17 @@ export const MainMenu = ({
       <DrawerItem
         text="Inicio"
         onClick={() => handleItem(DASHBOARD.path)}
-        icon={<HomeCustomIcon theme="dark" />}
+        icon={<HomeIcon theme="dark" />}
         isSelected={pathname === DASHBOARD.path}
       />
       <DrawerItem
-        text="Seguridad"
+        text="Módulo de Seguridad"
         onClick={() => handleItem(SECURITY.path)}
         icon={<SecurityIcon theme="dark" />}
         isSelected={pathname === SECURITY.path}
       />
       <DrawerItem
-        text="Desarrollo"
+        text="Módulo de Desarrollo"
         onClick={() => handleItem(EXAMPLES.path)}
         icon={<ScienceIcon theme="dark" />}
         isSelected={pathname === EXAMPLES.path}

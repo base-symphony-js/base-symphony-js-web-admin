@@ -22,7 +22,7 @@ export const InformationMenu = ({
   return (
     <List className="flex flex-col py-0">
       <TextCustom
-        text="INFORMACIÓN"
+        text="MÁS INFORMACIÓN"
         className="text-center text-white text-xs font-medium tracking-widest"
       />
       <DrawerItem
@@ -32,7 +32,7 @@ export const InformationMenu = ({
         isSelected={pathname === PRIVACY_POLICY.path}
       />
       <DrawerItem
-        text="Térmionos y condiciones"
+        text="Términos y condiciones"
         onClick={() => handleItem(TERMS_AND_CONDITIONS.path)}
         icon={<ContentPasteIcon theme="dark" />}
         isSelected={pathname === TERMS_AND_CONDITIONS.path}

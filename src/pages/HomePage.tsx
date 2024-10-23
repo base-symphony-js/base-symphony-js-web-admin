@@ -75,7 +75,7 @@ export const HomePage = () => {
         />
         <CardMenu
           title="Módulo de Desarrollo"
-          icon={<CodeIcon className="mb-2 w-24 h-24 text-dark" />}
+          icon={<CodeIcon className="mb-2 w-24 h-24" />}
           onClick={() => navigate(ROUTES.DASHBOARD.EXAMPLES.path)}
         />
       </div>

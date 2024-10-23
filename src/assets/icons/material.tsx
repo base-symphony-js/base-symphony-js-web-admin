@@ -33,6 +33,7 @@ import {
   GpsFixed,
   Groups,
   History,
+  Home,
   Info,
   KeyboardArrowLeft,
   KeyboardArrowRight,
@@ -173,6 +174,9 @@ export const GroupsIcon = ({ theme, className }: IconProps) => (
 )
 export const HistoryIcon = ({ theme, className }: IconProps) => (
   <IconCustom icon={History} defaultTheme={theme} className={className} />
+)
+export const HomeIcon = ({ theme, className }: IconProps) => (
+  <IconCustom icon={Home} defaultTheme={theme} className={className} />
 )
 export const InfoIcon = ({ theme, className }: IconProps) => (
   <IconCustom icon={Info} defaultTheme={theme} className={className} />

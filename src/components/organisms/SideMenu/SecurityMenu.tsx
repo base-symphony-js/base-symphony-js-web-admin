@@ -34,19 +34,19 @@ export const SecurityMenu = ({
         className="text-center text-white text-xs font-medium tracking-widest mt-8"
       />
       <DrawerItem
-        text="Users"
+        text="Gestión de Users"
         onClick={() => handleItem(SECURITY.USERS.path)}
         icon={<SecurityIcon theme="dark" />}
         isSelected={pathname === SECURITY.USERS.path}
       />
       <DrawerItem
-        text="Roles"
+        text="Gestión de Roles"
         onClick={() => handleItem(SECURITY.ROLES.path)}
         icon={<VerifiedUserIcon theme="dark" />}
         isSelected={pathname === SECURITY.ROLES.path}
       />
       <DrawerItem
-        text="Permisos"
+        text="Gestión de Permisos"
         onClick={() => handleItem(SECURITY.PERMISSIONS.path)}
         icon={<VerifiedUserIcon theme="dark" />}
         isSelected={pathname === SECURITY.PERMISSIONS.path}
