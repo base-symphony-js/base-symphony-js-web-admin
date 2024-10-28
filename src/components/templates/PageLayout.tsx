@@ -4,11 +4,13 @@ import {
   IModalAlert,
   LoaderCustom,
   ModalAlert,
+  BreadcrumbsCustom,
   SnackbarCustom,
   TextCustom,
 } from '@components'
 import { COLORS } from '@common'
 import { Box, CssBaseline, Divider, useColorScheme } from '@mui/material'
+import { useLocation } from 'react-router-dom'
 
 interface PageLayoutProps {
   children: React.ReactNode
@@ -33,11 +35,13 @@ export const PageLayout = ({
   isSessionExpired = false,
   setIsSessionExpired = () => null,
 }: PageLayoutProps) => {
+  const { pathname } = useLocation()
   const { colorScheme: theme } = useColorScheme()
 
   return (
     <Box className="p-6 flex flex-col gap-4">
       <CssBaseline />
+      <BreadcrumbsCustom route={pathname} />
       <div
         className="p-6 flex flex-col rounded-lg shadow-lg"
         style={{

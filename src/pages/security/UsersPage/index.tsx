@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   BadgePoint,
   ButtonCustom,
@@ -11,6 +12,7 @@ import { apiDeleteUser, apiDisableUser, apiGetUsers } from './services'
 import { useCustomFetch } from '@hooks'
 
 export const UsersPage = () => {
+  const navigate = useNavigate()
   const { customFetch } = useCustomFetch()
   const [idUser, setIdUser] = useState<string | null>(null)
   const [users, setUsers] = useState<any[]>([])
@@ -98,9 +100,8 @@ export const UsersPage = () => {
       setIdUser(id)
       console.log('view:', obj)
     },
-    edit: (id: string, obj: any) => {
-      setIdUser(id)
-      console.log('edit:', obj)
+    edit: (id: string, _obj: any) => {
+      navigate('/dashboard/security/users/' + id)
     },
     disable: (id: string, obj: any) => {
       setModalAlert({

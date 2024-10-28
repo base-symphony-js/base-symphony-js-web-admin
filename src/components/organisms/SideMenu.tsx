@@ -20,7 +20,9 @@ export const SideMenu = ({
     if (
       pathname === DASHBOARD.path ||
       pathname === DASHBOARD.path + '/' ||
-      pathname.includes(DASHBOARD.path + '/info') ||
+      pathname.includes(DASHBOARD.publicSections[0].path) ||
+      pathname.includes(DASHBOARD.publicSections[1].path) ||
+      pathname.includes(DASHBOARD.publicSections[2].path) ||
       pathname.includes(ROUTES.NOT_FOUND) ||
       pathname.includes(ROUTES.NOT_AUTHORIZED)
     ) {

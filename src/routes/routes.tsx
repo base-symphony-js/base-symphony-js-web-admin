@@ -104,8 +104,8 @@ export const ROUTES: IROUTES = {
       {
         name: 'Políticas de privacidad',
         id: 'privacy-policy',
-        route: '/info/privacy-policy',
-        path: '/dashboard/info/privacy-policy',
+        route: '/privacy-policy',
+        path: '/dashboard/privacy-policy',
         icon: <PolicyIcon className="text-white" />,
         pageName: 'PrivacyPolicyPage',
         pages: [],
@@ -113,8 +113,8 @@ export const ROUTES: IROUTES = {
       {
         name: 'Términos y condiciones',
         id: 'terms-and-conditions',
-        route: '/info/terms-and-conditions',
-        path: '/dashboard/info/terms-and-conditions',
+        route: '/terms-and-conditions',
+        path: '/dashboard/terms-and-conditions',
         icon: <ContentPasteIcon className="text-white" />,
         pageName: 'TermsAndConditionsPage',
         pages: [],
@@ -122,8 +122,8 @@ export const ROUTES: IROUTES = {
       {
         name: 'Acerca de',
         id: 'about',
-        route: '/info/about',
-        path: '/dashboard/info/about',
+        route: '/about',
+        path: '/dashboard/about',
         icon: <InfoIcon className="text-white" />,
         pageName: 'AboutPage',
         pages: [],
