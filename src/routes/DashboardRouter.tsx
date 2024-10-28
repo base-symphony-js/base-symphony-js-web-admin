@@ -2,153 +2,114 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { DashboardLayout } from '@components'
 import { useAppSelector } from '@redux'
 import { ROUTES, canAccess } from '@routes'
-import {
-  AboutPage,
-  AlertPage,
-  ButtonPage,
-  DialogPage,
-  ExamplesPage,
-  HomePage,
-  Inputs1Page,
-  Inputs2Page,
-  Inputs3Page,
-  Inputs4Page,
-  LoaderPage,
-  NotAuthorizedPage,
-  NotFoundPage,
-  PermissionsPage,
-  PrivacyPolicyPage,
-  RolesPage,
-  SecurityPage,
-  TablePage,
-  TermsAndConditionsPage,
-  TextPage,
-  UsersPage,
-} from '@pages'
+import * as pages from '@pages'
+import { IModules, ISections } from '@interfaces'
 
 export const DashboardRouter = () => {
   const roles = useAppSelector(state => state.auth.roles)
   const { DASHBOARD, NOT_FOUND, NOT_AUTHORIZED } = ROUTES
+  const { NotAuthorizedPage, NotFoundPage, HomePage } = pages
+  const pagesMap: any = pages
 
-  const routes = [
-    // DASHBOARD
-    {
-      access: true,
-      path: DASHBOARD.route,
-      Component: HomePage,
-    },
-    {
-      access: true,
-      path: DASHBOARD.PRIVACY_POLICY.route,
-      Component: PrivacyPolicyPage,
-    },
-    {
-      access: true,
-      path: DASHBOARD.TERMS_AND_CONDITIONS.route,
-      Component: TermsAndConditionsPage,
-    },
-    {
-      access: true,
-      path: DASHBOARD.ABOUT.route,
-      Component: AboutPage,
-    },
-    // SECURITY
-    {
-      access: true,
-      path: DASHBOARD.SECURITY.route,
-      Component: SecurityPage,
-    },
-    {
-      access: canAccess(roles, 'security', 'users'),
-      path: DASHBOARD.SECURITY.USERS.route,
-      Component: UsersPage,
-    },
-    {
-      access: canAccess(roles, 'security', 'roles'),
-      path: DASHBOARD.SECURITY.ROLES.route,
-      Component: RolesPage,
-    },
-    {
-      access: canAccess(roles, 'security', 'permissions'),
-      path: DASHBOARD.SECURITY.PERMISSIONS.route,
-      Component: PermissionsPage,
-    },
-    // EXAMPLES
-    {
-      access: true,
-      path: DASHBOARD.EXAMPLES.route,
-      Component: ExamplesPage,
-    },
-    {
-      access: true,
-      path: DASHBOARD.EXAMPLES.ALERTS.route,
-      Component: AlertPage,
-    },
-    {
-      access: true,
-      path: DASHBOARD.EXAMPLES.BUTTONS.route,
-      Component: ButtonPage,
-    },
-    {
-      access: true,
-      path: DASHBOARD.EXAMPLES.INPUTS_1.route,
-      Component: Inputs1Page,
-    },
-    {
-      access: true,
-      path: DASHBOARD.EXAMPLES.INPUTS_2.route,
-      Component: Inputs2Page,
-    },
-    {
-      access: true,
-      path: DASHBOARD.EXAMPLES.INPUTS_3.route,
-      Component: Inputs3Page,
-    },
-    {
-      access: true,
-      path: DASHBOARD.EXAMPLES.INPUTS_4.route,
-      Component: Inputs4Page,
-    },
-    {
-      access: true,
-      path: DASHBOARD.EXAMPLES.LOADERS.route,
-      Component: LoaderPage,
-    },
-    {
-      access: true,
-      path: DASHBOARD.EXAMPLES.MODAL_WINDOWS.route,
-      Component: DialogPage,
-    },
-    {
-      access: true,
-      path: DASHBOARD.EXAMPLES.TABLES.route,
-      Component: TablePage,
-    },
-    {
-      access: true,
-      path: DASHBOARD.EXAMPLES.TEXT_AND_COLORS.route,
-      Component: TextPage,
-    },
-  ]
+  const getAllRoutes = () => {
+    // Public routes
+    const publicRoutes = DASHBOARD.publicSections.flatMap(section => {
+      return [
+        {
+          access: true,
+          path: section.route,
+          Component: pagesMap[section.pageName],
+        },
+        ...section.pages.map(page => ({
+          access: true,
+          path: page.route,
+          Component: pagesMap[page.pageName],
+        })),
+      ]
+    })
+
+    // Protected routes
+    const moduleRoutes = DASHBOARD.modules.flatMap(module => {
+      const moduleSections = module.sections.flatMap(section => {
+        return [
+          {
+            access: canAccess(
+              roles,
+              module.id as IModules,
+              section.id as ISections,
+            ),
+            path: section.route,
+            Component: pagesMap[section.pageName],
+          },
+          ...section.pages.map(page => ({
+            access: canAccess(
+              roles,
+              module.id as IModules,
+              section.id as ISections,
+            ),
+            path: page.route,
+            Component: pagesMap[page.pageName],
+          })),
+        ]
+      })
+      return [
+        {
+          access: true,
+          path: module.route,
+          Component: pagesMap[module.pageName],
+        },
+        ...moduleSections,
+      ]
+    })
+
+    // Custom routes
+    const customRoutes = [
+      {
+        access: canAccess(roles, 'security', 'users'),
+        path: '/security/users/:idUser',
+        Component: pages.UserPage,
+      },
+    ]
+
+    // All routes
+    return [
+      {
+        access: true,
+        path: DASHBOARD.route,
+        Component: pagesMap[DASHBOARD.pageName],
+      },
+      ...publicRoutes,
+      ...moduleRoutes,
+      ...customRoutes,
+    ]
+  }
 
   return (
     <DashboardLayout>
       <Routes>
-        {/* Protected and public routes */}
-        {routes.map(({ access, path, Component }) => (
+        {/* Main route */}
+        <Route path="/" element={<HomePage />} />
+        {/* Public and protected routes */}
+        {getAllRoutes().map(({ access, path, Component }) => (
           <Route
             key={path}
             path={path}
             element={
-              access ? <Component /> : <Navigate to={NOT_AUTHORIZED.route} />
+              access ? (
+                <Component />
+              ) : (
+                <Navigate to={DASHBOARD.path + NOT_AUTHORIZED} />
+              )
             }
           />
         ))}
-
         {/* Auxiliary routes */}
-        <Route path={NOT_AUTHORIZED.route} element={<NotAuthorizedPage />} />
-        <Route path={NOT_FOUND.route} element={<NotFoundPage />} />
-        <Route path="*" element={<Navigate to={NOT_FOUND.route} replace />} />
+        <Route path={NOT_AUTHORIZED} element={<NotAuthorizedPage />} />
+        <Route path={NOT_FOUND} element={<NotFoundPage />} />
+        <Route
+          path="*"
+          element={<Navigate to={DASHBOARD.path + NOT_FOUND} replace />}
+        />
       </Routes>
     </DashboardLayout>
   )

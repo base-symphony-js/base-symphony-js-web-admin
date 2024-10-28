@@ -16,25 +16,25 @@ export const AppRouter = () => {
     <Router>
       <Routes>
         <Route
-          path={LOGIN.route}
+          path={LOGIN}
           element={<PublicRoute element={LoginPage} isAuth={isAuth} />}
         />
         <Route
           path={DASHBOARD.path + '/*'}
           element={<PrivateRoute element={DashboardRouter} isAuth={isAuth} />}
         />
-        <Route path={NOT_FOUND.route} element={<NotFoundPage />} />
+        <Route path={NOT_FOUND} element={<NotFoundPage />} />
         <Route
-          path={MAIN.route}
+          path={MAIN}
           element={
             isAuth ? (
               <Navigate to={DASHBOARD.path} replace />
             ) : (
-              <Navigate to={LOGIN.route} replace />
+              <Navigate to={LOGIN} replace />
             )
           }
         />
-        <Route path="*" element={<Navigate to={NOT_FOUND.route} replace />} />
+        <Route path="*" element={<Navigate to={NOT_FOUND} replace />} />
       </Routes>
     </Router>
   )

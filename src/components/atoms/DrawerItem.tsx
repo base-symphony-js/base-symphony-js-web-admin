@@ -39,9 +39,9 @@ export const DrawerItem = ({
         </div>
         {isCollapse ? (
           collapse ? (
-            <ExpandLessIcon theme="dark" />
+            <ExpandLessIcon className="text-white" />
           ) : (
-            <ExpandMoreIcon theme="dark" />
+            <ExpandMoreIcon className="text-white" />
           )
         ) : null}
       </div>

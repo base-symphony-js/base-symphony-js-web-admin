@@ -2,18 +2,18 @@ import { SupportedColorScheme, useColorScheme } from '@mui/material'
 
 interface IconCustomProps {
   defaultTheme?: SupportedColorScheme
-  icon?: React.ElementType
   iconDark?: React.ElementType
   iconLight?: React.ElementType
   className?: string
+  onClick?: () => void
 }
 
 export const IconCustom = ({
   defaultTheme,
-  icon: Icon,
   iconDark: IconDark,
   iconLight: IconLight,
   className = '',
+  onClick = () => null,
 }: IconCustomProps) => {
   const { colorScheme } = useColorScheme()
   let theme: SupportedColorScheme | undefined
@@ -23,21 +23,13 @@ export const IconCustom = ({
   } else {
     theme = colorScheme
   }
-  if (Icon) {
-    return (
-      <Icon
-        className={`${className} ${defaultTheme === 'dark' ? 'text-white' : defaultTheme === 'light' ? 'text-black' : ''}`}
-      />
-    )
-  } else {
-    if (IconLight && IconDark) {
-      if (theme === 'dark') {
-        return <IconLight className={className} />
-      } else {
-        return <IconDark className={className} />
-      }
+  if (IconLight && IconDark) {
+    if (theme === 'dark') {
+      return <IconLight className={className} onClick={onClick} />
     } else {
-      return null
+      return <IconDark className={className} onClick={onClick} />
     }
+  } else {
+    return null
   }
 }

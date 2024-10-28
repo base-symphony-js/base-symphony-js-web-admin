@@ -28,7 +28,6 @@ export const UsersPage = () => {
     const response = await customFetch(apiGetUsers, {})
     const { success, statusCode, message, data } = response
     if (success) {
-      console.log(data.totalUsers, data.users)
       setUsers(data.users)
     } else {
       if (statusCode === 401) setIsSessionExpired(true)

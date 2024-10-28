@@ -1,13 +1,14 @@
 import { useState } from 'react'
-import { SecurityIcon } from '@assets'
+import {
+  BusinessIcon,
+  CategoryIcon,
+  CodeIcon,
+  DescriptionIcon,
+  GroupsIcon,
+  SecurityIcon,
+} from '@assets'
 import { CardMenu, IAlert, PageLayout, TextCustom } from '@components'
-import BusinessIcon from '@mui/icons-material/Business'
-import CodeIcon from '@mui/icons-material/Code'
-import GroupsIcon from '@mui/icons-material/Groups'
-import DescriptionIcon from '@mui/icons-material/Description'
-import CategoryIcon from '@mui/icons-material/Category'
 import { useNavigate } from 'react-router-dom'
-import { ROUTES } from '@routes'
 
 export const HomePage = () => {
   const [alert, setAlert] = useState<IAlert>({} as IAlert)
@@ -23,7 +24,7 @@ export const HomePage = () => {
         <CardMenu
           title="Módulo de seguridad"
           icon={<SecurityIcon className="mb-2 w-24 h-24 text-info" />}
-          onClick={() => navigate(ROUTES.DASHBOARD.SECURITY.path)}
+          onClick={() => navigate('/dashboard/security')}
         />
         <CardMenu
           title="Módulo de negocio"
@@ -76,7 +77,7 @@ export const HomePage = () => {
         <CardMenu
           title="Módulo de Desarrollo"
           icon={<CodeIcon className="mb-2 w-24 h-24" />}
-          onClick={() => navigate(ROUTES.DASHBOARD.EXAMPLES.path)}
+          onClick={() => navigate('/dashboard/development')}
         />
       </div>
     </PageLayout>

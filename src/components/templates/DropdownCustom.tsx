@@ -44,9 +44,9 @@ export const DropdownCustom = ({
         {component}
         {isToogleIcon &&
           (open ? (
-            <ArrowDropUpIcon theme="dark" />
+            <ArrowDropUpIcon className="text-white" />
           ) : (
-            <ArrowDropDownIcon theme="dark" />
+            <ArrowDropDownIcon className="text-white" />
           ))}
       </Box>
       {open && (

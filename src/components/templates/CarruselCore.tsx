@@ -118,7 +118,7 @@ const Component = ({
           style={{ zIndex: 999 }}
         >
           <IconButtonCustom
-            icon={<KeyboardArrowLeftIcon theme="dark" />}
+            icon={<KeyboardArrowLeftIcon className="text-white" />}
             onClick={moveToLeft}
           />
           <div>
@@ -136,7 +136,7 @@ const Component = ({
             ))}
           </div>
           <IconButtonCustom
-            icon={<KeyboardArrowRightIcon theme="dark" />}
+            icon={<KeyboardArrowRightIcon className="text-white" />}
             onClick={moveToRight}
           />
         </div>

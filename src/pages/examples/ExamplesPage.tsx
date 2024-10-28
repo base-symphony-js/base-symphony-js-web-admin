@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { CardMenu, IAlert, PageLayout, TextCustom } from '@components'
 import { useNavigate } from 'react-router-dom'
-import { ROUTES } from '@routes'
 import { ExtensionIcon } from '@assets'
 
 export const ExamplesPage = () => {
@@ -18,54 +17,52 @@ export const ExamplesPage = () => {
         <CardMenu
           title="Textos y colores"
           icon={<ExtensionIcon className="mb-2 w-24 h-24 text-info" />}
-          onClick={() =>
-            navigate(ROUTES.DASHBOARD.EXAMPLES.TEXT_AND_COLORS.path)
-          }
+          onClick={() => navigate('/dashboard/development/text-and-colors')}
         />
         <CardMenu
           title="Botones"
           icon={<ExtensionIcon className="mb-2 w-24 h-24 text-success" />}
-          onClick={() => navigate(ROUTES.DASHBOARD.EXAMPLES.BUTTONS.path)}
+          onClick={() => navigate('/dashboard/development/buttons')}
         />
         <CardMenu
           title="Cajas de texto"
           icon={<ExtensionIcon className="mb-2 w-24 h-24 text-warning" />}
-          onClick={() => navigate(ROUTES.DASHBOARD.EXAMPLES.INPUTS_1.path)}
+          onClick={() => navigate('/dashboard/development/inputs/text-box')}
         />
         <CardMenu
           title="Cajas de texto con validación"
           icon={<ExtensionIcon className="mb-2 w-24 h-24 text-error" />}
-          onClick={() => navigate(ROUTES.DASHBOARD.EXAMPLES.INPUTS_2.path)}
+          onClick={() => navigate('/dashboard/development/inputs/text-box')}
         />
         <CardMenu
           title="Selects y datepickers"
           icon={<ExtensionIcon className="mb-2 w-24 h-24 text-info" />}
-          onClick={() => navigate(ROUTES.DASHBOARD.EXAMPLES.INPUTS_3.path)}
+          onClick={() => navigate('/dashboard/development/inputs/text-box')}
         />
         <CardMenu
           title="Checkboxs, radio botones y switchs"
           icon={<ExtensionIcon className="mb-2 w-24 h-24 text-success" />}
-          onClick={() => navigate(ROUTES.DASHBOARD.EXAMPLES.INPUTS_4.path)}
+          onClick={() => navigate('/dashboard/development/inputs/text-box')}
         />
         <CardMenu
           title="Alertas"
           icon={<ExtensionIcon className="mb-2 w-24 h-24 text-warning" />}
-          onClick={() => navigate(ROUTES.DASHBOARD.EXAMPLES.ALERTS.path)}
+          onClick={() => navigate('/dashboard/development/alerts')}
         />
         <CardMenu
           title="Animaciones"
           icon={<ExtensionIcon className="mb-2 w-24 h-24 text-error" />}
-          onClick={() => navigate(ROUTES.DASHBOARD.EXAMPLES.LOADERS.path)}
+          onClick={() => navigate('/dashboard/development/loaders')}
         />
         <CardMenu
           title="Ventanas modales"
           icon={<ExtensionIcon className="mb-2 w-24 h-24 text-info" />}
-          onClick={() => navigate(ROUTES.DASHBOARD.EXAMPLES.MODAL_WINDOWS.path)}
+          onClick={() => navigate('/dashboard/development/modal-windows')}
         />
         <CardMenu
           title="Tablas"
           icon={<ExtensionIcon className="mb-2 w-24 h-24 text-warning" />}
-          onClick={() => navigate(ROUTES.DASHBOARD.EXAMPLES.TABLES.path)}
+          onClick={() => navigate('/dashboard/development/tables')}
         />
       </div>
     </PageLayout>

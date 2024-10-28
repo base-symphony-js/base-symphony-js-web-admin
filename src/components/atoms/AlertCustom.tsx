@@ -39,7 +39,7 @@ export const AlertCustom = ({
         severity={severity}
         action={
           <IconButtonCustom
-            icon={<CloseIcon theme="dark" />}
+            icon={<CloseIcon className="text-white" />}
             onClick={handleClose}
           />
         }

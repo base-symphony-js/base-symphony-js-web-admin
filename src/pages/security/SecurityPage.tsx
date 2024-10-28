@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import { CardMenu, IAlert, PageLayout, TextCustom } from '@components'
 import { useNavigate } from 'react-router-dom'
-import { ROUTES } from '@routes'
-import GroupsIcon from '@mui/icons-material/Groups'
-import { VerifiedUserIcon } from '@assets'
+import { GroupsIcon, VerifiedUserIcon } from '@assets'
 
 export const SecurityPage = () => {
   const [alert, setAlert] = useState<IAlert>({} as IAlert)
@@ -19,17 +17,17 @@ export const SecurityPage = () => {
         <CardMenu
           title="Gestión de usuarios"
           icon={<GroupsIcon className="mb-2 w-24 h-24 text-info" />}
-          onClick={() => navigate(ROUTES.DASHBOARD.SECURITY.USERS.path)}
+          onClick={() => navigate('/dashboard/security/users')}
         />
         <CardMenu
           title="Gestión de roles"
           icon={<VerifiedUserIcon className="mb-2 w-24 h-24 text-success" />}
-          onClick={() => navigate(ROUTES.DASHBOARD.SECURITY.ROLES.path)}
+          onClick={() => navigate('/dashboard/security/roles')}
         />
         <CardMenu
           title="Gestión de permisos"
           icon={<VerifiedUserIcon className="mb-2 w-24 h-24 text-warning" />}
-          onClick={() => navigate(ROUTES.DASHBOARD.SECURITY.PERMISSIONS.path)}
+          onClick={() => navigate('/dashboard/security/permissions')}
         />
       </div>
     </PageLayout>

@@ -52,7 +52,7 @@ export const HeaderMenu = ({
     >
       <Toolbar className="px-2" sx={{ backgroundColor }}>
         <IconButtonCustom
-          icon={<MenuIcon theme="dark" />}
+          icon={<MenuIcon className="text-white" />}
           onClick={handleDrawerToggle}
           className="flex xl:hidden"
         />
@@ -94,12 +94,12 @@ export const HeaderMenu = ({
                 <DrawerItem
                   text="Manual de Usuario"
                   onClick={() => console.log('Redirigir al manual de usuario')}
-                  icon={<MenuBookIcon theme="dark" />}
+                  icon={<MenuBookIcon className="text-white" />}
                 />
                 <DrawerItem
                   text="Cerrar Sesión"
                   onClick={handleLogout}
-                  icon={<PowerSettingsNewIcon theme="dark" />}
+                  icon={<PowerSettingsNewIcon className="text-white" />}
                 />
               </div>
             </div>
