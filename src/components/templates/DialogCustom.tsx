@@ -10,49 +10,44 @@ import {
   TextCustom,
   LoaderCustom,
   IconButtonCustom,
-  ButtonCustom,
   AlertCustom,
   IAlert,
+  ButtonCustom,
 } from '@components'
 import { CloseIcon } from '@assets'
 
 interface DialogCustomProps {
   children: React.ReactNode
+  dialogActions?: React.ReactNode
   title?: string
   open: boolean
   setOpen: (value: boolean) => void
   onDismiss?: () => void
-  labelAction?: string
-  onAction?: () => void
-  disabledAction?: boolean
   loader?: boolean
   disabledDismiss?: boolean
   disabledIconClose?: boolean
-  disabledDialogActions?: boolean
+  disabledCancelAction?: boolean
   alert?: IAlert
   setAlert?: (value: IAlert) => void
 }
 
 const Component = ({
   children = null,
+  dialogActions = null,
   title = '',
   open = false,
   setOpen = () => null,
   onDismiss = () => null,
-  labelAction = '',
-  onAction = () => null,
-  disabledAction = false,
   loader = false,
   disabledDismiss = false,
   disabledIconClose = false,
-  disabledDialogActions = false,
+  disabledCancelAction = false,
   alert,
   setAlert = () => null,
 }: DialogCustomProps) => {
   const handleClose = () => {
     onDismiss()
     setOpen(false)
-    return false
   }
 
   return (
@@ -82,23 +77,19 @@ const Component = ({
         />
         {children}
       </DialogContent>
-      {!disabledDialogActions && (
-        <DialogActions>
-          <ButtonCustom
-            text="Cancelar"
-            variant="outlined"
-            color="inherit"
-            onClick={handleClose}
-            disabled={loader}
-          />
-          <ButtonCustom
-            text={labelAction}
-            color="primary"
-            onClick={onAction}
-            disabled={disabledAction ? true : loader}
-          />
-        </DialogActions>
-      )}
+      <DialogActions>
+        <>
+          {!disabledCancelAction && (
+            <ButtonCustom
+              text="Cerrar"
+              variant="outlined"
+              color="inherit"
+              onClick={handleClose}
+            />
+          )}
+          {dialogActions}
+        </>
+      </DialogActions>
       {loader && <LoaderCustom mode="modal" />}
     </Dialog>
   )

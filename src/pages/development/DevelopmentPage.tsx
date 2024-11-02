@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { ExtensionIcon } from '@assets'
 
 export const DevelopmentPage = () => {
-  const [alert, setAlert] = useState<IAlert>({} as IAlert)
+  const [alert, setAlert] = useState({} as IAlert)
   const navigate = useNavigate()
 
   return (

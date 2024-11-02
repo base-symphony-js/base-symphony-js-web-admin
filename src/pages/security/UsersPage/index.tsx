@@ -18,8 +18,8 @@ export const UsersPage = () => {
   const [users, setUsers] = useState<any[]>([])
   const [loader, setLoader] = useState(false)
   const [isSessionExpired, setIsSessionExpired] = useState(false)
-  const [alert, setAlert] = useState<IAlert>({} as IAlert)
-  const [modalAlert, setModalAlert] = useState<IModalAlert>({} as IModalAlert)
+  const [alert, setAlert] = useState({} as IAlert)
+  const [modalAlert, setModalAlert] = useState({} as IModalAlert)
 
   useEffect(() => {
     loadUsers()

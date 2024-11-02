@@ -53,7 +53,7 @@ export const ExportTable = ({
         title="Opción de Descarga"
         open={showOptions}
         setOpen={setShowOptions}
-        disabledDialogActions
+        disabledCancelAction
       >
         <div className="flex flex-col gap-4">
           <TextCustom text="Descargar la información en formato (.csv)." />

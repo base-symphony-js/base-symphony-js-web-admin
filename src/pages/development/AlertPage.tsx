@@ -12,9 +12,9 @@ import {
 } from '@components'
 
 export const AlertPage = () => {
-  const [alert, setAlert] = useState<IAlert>({} as IAlert)
-  const [snackbar, setSnackbar] = useState<IAlert>({} as IAlert)
-  const [modalAlert, setModalAlert] = useState<IModalAlert>({} as IModalAlert)
+  const [alert, setAlert] = useState({} as IAlert)
+  const [snackbar, setSnackbar] = useState({} as IAlert)
+  const [modalAlert, setModalAlert] = useState({} as IModalAlert)
 
   const handleInfo = () => console.log('Aceptar..')
   const handleSuccess = () => console.log('Guardar..')

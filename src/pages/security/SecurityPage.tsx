@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { GroupsIcon, VerifiedUserIcon } from '@assets'
 
 export const SecurityPage = () => {
-  const [alert, setAlert] = useState<IAlert>({} as IAlert)
+  const [alert, setAlert] = useState({} as IAlert)
   const navigate = useNavigate()
 
   return (

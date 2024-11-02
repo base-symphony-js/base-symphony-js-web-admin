@@ -11,7 +11,7 @@ import { CardMenu, IAlert, PageLayout, TextCustom } from '@components'
 import { useNavigate } from 'react-router-dom'
 
 export const HomePage = () => {
-  const [alert, setAlert] = useState<IAlert>({} as IAlert)
+  const [alert, setAlert] = useState({} as IAlert)
   const navigate = useNavigate()
 
   return (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 // Components
 import { Divider } from '@mui/material'
@@ -11,6 +11,7 @@ import {
   TextInputCustom,
   DialogCustom,
   IAlert,
+  ButtonCustom,
 } from '@components'
 
 // Core
@@ -30,15 +31,15 @@ const constEstadosCiviles = [
   { id: 'Viud@', label: 'Viudo@' },
 ]
 
-interface DialogTestProps {
+interface DialogAdvancedProps {
   open: boolean
   setOpen: (value: boolean) => void
 }
 
-export const DialogTest = ({
+export const DialogAdvanced = ({
   open = false,
   setOpen = () => null,
-}: DialogTestProps) => {
+}: DialogAdvancedProps) => {
   const [nombres, setNombres] = useState('')
   const [apellidos, setApellidos] = useState('')
   const [correo, setCorreo] = useState('')
@@ -49,17 +50,7 @@ export const DialogTest = ({
   const [estadoCivil, setEstadoCivil] = useState('')
   const [isConfirm, setIsConfirm] = useState(false)
   const [loader, setLoader] = useState(false)
-  const [maxDate, setMaxDate] = useState<Date | null>(null)
-  const [alert, setAlert] = useState<IAlert>({} as IAlert)
-
-  useEffect(() => {
-    if (open) {
-      const legalDate = getLegalDate()
-      setMaxDate(legalDate)
-    } else {
-      resetValues()
-    }
-  }, [open])
+  const [alert, setAlert] = useState({} as IAlert)
 
   const resetValues = () => {
     setNombres('')
@@ -71,7 +62,6 @@ export const DialogTest = ({
     setGenero('')
     setEstadoCivil('')
     setIsConfirm(false)
-    setMaxDate(null)
     setLoader(false)
   }
 
@@ -98,6 +88,7 @@ export const DialogTest = ({
       setTimeout(() => {
         setLoader(false)
         setOpen(false)
+        resetValues()
       }, 2000)
     }
   }
@@ -110,11 +101,17 @@ export const DialogTest = ({
       disabledDismiss
       disabledIconClose
       loader={loader}
-      labelAction="Guardar"
-      onAction={handleAccept}
-      disabledAction={!isConfirm}
       alert={alert}
       setAlert={setAlert}
+      onDismiss={resetValues}
+      dialogActions={
+        <ButtonCustom
+          text="Guardar"
+          color="primary"
+          onClick={handleAccept}
+          disabled={!isConfirm}
+        />
+      }
     >
       <div className="flex flex-col relative">
         <TextCustom text="Ingrese sus datos" variant="h5" />
@@ -137,7 +134,7 @@ export const DialogTest = ({
             name="Fecha Nacimiento"
             value={fechaNaicmiento}
             setValue={setFechaNaicmiento}
-            maxDate={maxDate}
+            maxDate={getLegalDate()}
             className="w-full"
           />
           <TextInputCustom

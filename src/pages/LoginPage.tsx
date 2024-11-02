@@ -20,7 +20,7 @@ export const LoginPage = () => {
   const [loader, setLoader] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [alert, setAlert] = useState<IAlert>({} as IAlert)
+  const [alert, setAlert] = useState({} as IAlert)
 
   const handleLogin = async (
     provider: 'email-and-pass' | 'google',

@@ -178,8 +178,8 @@ const data = [
 
 export const TablePage = () => {
   const [idUser, setIdUser] = useState<number | null>(null)
-  const [alert, setAlert] = useState<IAlert>({} as IAlert)
-  const [modalAlert, setModalAlert] = useState<IModalAlert>({} as IModalAlert)
+  const [alert, setAlert] = useState({} as IAlert)
+  const [modalAlert, setModalAlert] = useState({} as IModalAlert)
 
   const handleClean = () => setIdUser(null)
 

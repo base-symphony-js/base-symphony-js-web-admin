@@ -36,23 +36,17 @@ export const SnackbarCustom = ({
     >
       <Alert
         severity={severity}
-        action={
-          <IconButtonCustom
-            icon={<CloseIcon className="text-white" />}
-            onClick={handleClose}
-          />
-        }
+        onClose={handleClose}
         variant="filled"
         className={`flex items-center py-0 whitespace-pre-line`}
-        sx={{ '& .MuiAlert-icon': { color: 'white' } }}
       >
         <AlertTitle
-          className="text-lg text-white"
+          className="text-lg"
           sx={{ '&.MuiTypography-root': { margin: 0 } }}
         >
           {title}
         </AlertTitle>
-        <TextCustom text={description} className="text-white" />
+        <TextCustom text={description} color="inherit" />
       </Alert>
     </Snackbar>
   )
