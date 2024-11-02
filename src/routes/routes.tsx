@@ -173,7 +173,7 @@ export const ROUTES: IROUTES = {
         route: '/development',
         path: '/dashboard/development',
         icon: <ScienceIcon className="text-white" />,
-        pageName: 'ExamplesPage',
+        pageName: 'DevelopmentPage',
         sections: [
           {
             name: 'Textos y colores',

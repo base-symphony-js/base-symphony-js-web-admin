@@ -1,4 +1,4 @@
-export * from './examples'
+export * from './development'
 export * from './security'
 export * from './AboutPage'
 export * from './HomePage'

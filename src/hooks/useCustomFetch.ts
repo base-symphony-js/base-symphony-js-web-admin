@@ -23,7 +23,6 @@ export const useCustomFetch = () => {
   }
 
   const handleRefreshToken = async () => {
-    console.log(refreshToken)
     const response = await apiRefreshTokens({
       body: { refreshToken },
     })

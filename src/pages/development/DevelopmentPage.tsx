@@ -3,12 +3,12 @@ import { CardMenu, IAlert, PageLayout, TextCustom } from '@components'
 import { useNavigate } from 'react-router-dom'
 import { ExtensionIcon } from '@assets'
 
-export const ExamplesPage = () => {
+export const DevelopmentPage = () => {
   const [alert, setAlert] = useState<IAlert>({} as IAlert)
   const navigate = useNavigate()
 
   return (
-    <PageLayout title="Módulo de seguridad" alert={alert} setAlert={setAlert}>
+    <PageLayout title="Módulo de Desarrollo" alert={alert} setAlert={setAlert}>
       <TextCustom
         text="Selecciona la sección a la cual desea acceder."
         color="textSecondary"
