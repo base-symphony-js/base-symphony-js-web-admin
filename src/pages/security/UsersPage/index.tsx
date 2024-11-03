@@ -10,14 +10,16 @@ import {
 } from '@components'
 import { apiDeleteUser, apiDisableUser, apiGetUsers } from './services'
 import { useCustomFetch } from '@hooks'
+import { DialogUser } from './DialogUser'
 
 export const UsersPage = () => {
   const navigate = useNavigate()
   const { customFetch } = useCustomFetch()
-  const [idUser, setIdUser] = useState<string | null>(null)
+  const [idUser, setIdUser] = useState<any>(null)
   const [users, setUsers] = useState<any[]>([])
   const [loader, setLoader] = useState(false)
   const [isSessionExpired, setIsSessionExpired] = useState(false)
+  const [showUser, setShowUser] = useState(false)
   const [alert, setAlert] = useState({} as IAlert)
   const [modalAlert, setModalAlert] = useState({} as IModalAlert)
 
@@ -96,9 +98,9 @@ export const UsersPage = () => {
   }
 
   const handleActions = {
-    view: (id: string, obj: any) => {
+    view: (id: string, _obj: any) => {
       setIdUser(id)
-      console.log('view:', obj)
+      setShowUser(true)
     },
     edit: (id: string, _obj: any) => {
       navigate('/dashboard/security/users/' + id)
@@ -201,6 +203,13 @@ export const UsersPage = () => {
             onClick={() => console.log('Agregar ususarios')}
           />
         }
+      />
+      <DialogUser
+        open={showUser}
+        setOpen={setShowUser}
+        onDismiss={loadUsers}
+        idUser={idUser}
+        setIsSessionExpired={setIsSessionExpired}
       />
     </PageLayout>
   )

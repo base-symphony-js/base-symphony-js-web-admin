@@ -1,3 +1,6 @@
+import dayjs from 'dayjs'
+import { ILanguages } from '@languages'
+
 export const getLegalDate = () => {
   const today = new Date()
   const legalDate = new Date(
@@ -8,19 +11,30 @@ export const getLegalDate = () => {
   return legalDate
 }
 
-export const formatDate = (fechaISO: any) => {
-  const opcionesFecha: any = { year: 'numeric', month: 'long', day: 'numeric' }
-  const opcionesHora: any = {
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
+export const formatDate = (
+  date: Date | null,
+  lng: ILanguages = 'en',
+  type: 'date' | 'time' | 'date-time' = 'date',
+) => {
+  let result = ''
+  if (date) {
+    const newDate = new Date(date)
+    let dateFormat = ''
+    if (lng === 'es') {
+      dateFormat = 'DD-MM-YYYY'
+    } else {
+      dateFormat = 'YYYY-MM-DD'
+    }
+    const timeFormat = 'HH:mm:ss'
+    let dateTimeFormat = ''
+    if (type === 'date') {
+      dateTimeFormat = dateFormat
+    } else if (type === 'time') {
+      dateTimeFormat = timeFormat
+    } else {
+      dateTimeFormat = `${dateFormat} ${timeFormat}`
+    }
+    result = dayjs(newDate).format(dateTimeFormat)
   }
-
-  const fecha = new Date(fechaISO)
-  const fechaFormateada =
-    fecha.toLocaleDateString('es', opcionesFecha) +
-    ' ' +
-    fecha.toLocaleTimeString('es', opcionesHora)
-
-  return fechaFormateada
+  return result
 }

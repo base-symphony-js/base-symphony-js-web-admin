@@ -22,9 +22,8 @@ export const apiLoginWithEmailAndPass = async (request: IRequest) => {
       dataResponse.message = `Error inesperado. Código: ${error.code}`
       dataResponse.data = error
     } else {
-      const msg = error.response.data?.message || error.message
       dataResponse.statusCode = error.response.status
-      dataResponse.message = `${msg}: ` + error.response.data?.data?.toString()
+      dataResponse.message = error.response.data?.message || error.message
       dataResponse.data = error.response.data?.data || null
     }
     return dataResponse
@@ -52,9 +51,8 @@ export const apiLoginWithGoogle = async (request: IRequest) => {
       dataResponse.message = `Error inesperado. Código: ${error.code}`
       dataResponse.data = error
     } else {
-      const msg = error.response.data?.message || error.message
       dataResponse.statusCode = error.response.status
-      dataResponse.message = `${msg}: ` + error.response.data?.data?.toString()
+      dataResponse.message = error.response.data?.message || error.message
       dataResponse.data = error.response.data?.data || null
     }
     return dataResponse
@@ -82,9 +80,8 @@ export const apiRefreshTokens = async (request: IRequest) => {
       dataResponse.message = `Error inesperado. Código: ${error.code}`
       dataResponse.data = error
     } else {
-      const msg = error.response.data?.message || error.message
       dataResponse.statusCode = error.response.status
-      dataResponse.message = `${msg}: ` + error.response.data?.data?.toString()
+      dataResponse.message = error.response.data?.message || error.message
       dataResponse.data = error.response.data?.data || null
     }
     return dataResponse
