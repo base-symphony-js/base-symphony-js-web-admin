@@ -2,7 +2,7 @@ import { ButtonCustom, DialogCustom, IAlert, TextCustom } from '@components'
 import { useCustomFetch } from '@hooks'
 import { Box } from '@mui/material'
 import { useEffect, useState } from 'react'
-import { apiGetUser, apiUnlockedUser } from './services'
+import { apiGetUser, apiUnlockedUser } from '@services'
 import { formatDate } from '@common'
 
 interface DialogUserProps {

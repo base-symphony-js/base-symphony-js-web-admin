@@ -8,7 +8,7 @@ import {
   PageLayout,
   TableCustom,
 } from '@components'
-import { apiDeleteUser, apiDisableUser, apiGetUsers } from './services'
+import { apiDeleteUser, apiDisableUser, apiGetUsers } from '@services'
 import { useCustomFetch } from '@hooks'
 import { DialogUser } from './DialogUser'
 
