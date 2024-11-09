@@ -1,5 +1,6 @@
 export {
   Add as AddIcon,
+  AccountCircle as AccountCircleIcon,
   ArrowDropDown as ArrowDropDownIcon,
   ArrowDropUp as ArrowDropUpIcon,
   BuildOutlined as BuildOutlinedIcon,

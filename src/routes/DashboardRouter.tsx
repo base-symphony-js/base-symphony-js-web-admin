@@ -69,6 +69,11 @@ export const DashboardRouter = () => {
         path: '/security/users/:idUser',
         Component: pages.UserPage,
       },
+      {
+        access: true,
+        path: '/profile',
+        Component: pages.ProfilePage,
+      },
     ]
 
     // All routes

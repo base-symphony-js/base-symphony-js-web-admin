@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { AppBar, Box, Toolbar } from '@mui/material'
 import { APP_NAME } from '@common'
 import {
@@ -16,6 +17,7 @@ import {
   PowerSettingsNewIcon,
   MenuBookIcon,
   MenuIcon,
+  AccountCircleIcon,
 } from '@assets'
 
 interface HeaderMenuProps {
@@ -29,6 +31,7 @@ export const HeaderMenu = ({
   handleDrawerToggle = () => null,
   backgroundColor = '',
 }: HeaderMenuProps) => {
+  const navigate = useNavigate()
   const { dispatchLogout } = useAuthActions()
   const { firstName, lastName } = useAppSelector(
     state => state.auth.personalInfo,
@@ -90,6 +93,11 @@ export const HeaderMenu = ({
                 <TextCustom
                   text="Opciones"
                   className="text-white font-bold text-lg text-center"
+                />
+                <DrawerItem
+                  text="Perfil"
+                  onClick={() => navigate('/dashboard/profile')}
+                  icon={<AccountCircleIcon className="text-white" />}
                 />
                 <DrawerItem
                   text="Manual de Usuario"

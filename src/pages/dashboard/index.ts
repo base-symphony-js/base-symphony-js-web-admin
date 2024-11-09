@@ -1,0 +1,7 @@
+export * from './development'
+export * from './security'
+export * from './AboutPage'
+export * from './HomePage'
+export * from './PrivacyPolicyPage'
+export * from './ProfilePage'
+export * from './TermsAndConditionsPage'
