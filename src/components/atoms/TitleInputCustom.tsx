@@ -13,7 +13,7 @@ export const TitleInputCustom = ({
     return (
       <div className="flex justify-between items-end">
         <div className="flex">
-          <TextCustom text={name} className="text-sm sm:text-lg" />
+          <TextCustom text={name} className="text-md" />
           {required && (
             <TextCustom text="*" className="ml-1 text-error font-bold" />
           )}

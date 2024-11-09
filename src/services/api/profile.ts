@@ -29,7 +29,7 @@ export const apiGetProfile = async () => {
   }
 }
 
-export const apiGetRoles = async () => {
+export const apiGetRolesProfile = async () => {
   const dataResponse: IDataResponse = {
     success: false,
     statusCode: 0,

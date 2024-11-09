@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { apiGetUser, apiUnlockedUser } from '@services'
 import { formatDate } from '@common'
 
-interface DialogUserProps {
+interface DialogViewUserProps {
   open: boolean
   setOpen: (value: boolean) => void
   setIsSessionExpired: (value: boolean) => void
@@ -13,15 +13,16 @@ interface DialogUserProps {
   idUser: any
 }
 
-export const DialogUser = ({
+export const DialogViewUser = ({
   open = false,
   setOpen = () => null,
   setIsSessionExpired = () => null,
   onDismiss = () => null,
   idUser = null,
-}: DialogUserProps) => {
+}: DialogViewUserProps) => {
   const { customFetch } = useCustomFetch()
   const [user, setUser] = useState<any>(null)
+  const [roles, setRoles] = useState<any>(null)
   const [alert, setAlert] = useState({} as IAlert)
   const [loader, setLoader] = useState(false)
 
@@ -34,7 +35,8 @@ export const DialogUser = ({
     const response = await customFetch(apiGetUser, { params: { idUser } })
     const { success, statusCode, message, data } = response
     if (success) {
-      setUser(data.user)
+      setUser(data?.user)
+      setRoles(data?.roles.assignedRoles)
     } else {
       if (statusCode === 401) setIsSessionExpired(true)
       setAlert({
@@ -161,7 +163,7 @@ export const DialogUser = ({
         <Box>
           <TextCustom text="Roles del usuario:" className="font-semibold" />
           <div className="flex flex-col gap-4">
-            {user?.roleIds.map((role: any, index: number) => (
+            {roles?.map((role: any, index: number) => (
               <div key={role._id} className="flex gap-4 items-center">
                 <TextCustom text={`${index + 1}`} />
                 <div className="flex flex-col">

@@ -57,6 +57,64 @@ export const apiGetUser = async (request: IRequest) => {
   }
 }
 
+export const apiCreateUser = async (request: IRequest) => {
+  const { body } = request
+  const dataResponse: IDataResponse = {
+    success: false,
+    statusCode: 0,
+    message: 'Error interno en la aplicación',
+    data: null,
+  }
+  try {
+    const url = `/security/users`
+    const response = await api.post(url, body)
+    dataResponse.success = response.status >= 200 || response.status < 300
+    dataResponse.statusCode = response.status
+    dataResponse.message = response.data?.message
+    dataResponse.data = response.data?.data
+    return dataResponse
+  } catch (error) {
+    if (!error.response) {
+      dataResponse.message = `Error inesperado. Código: ${error.code}`
+      dataResponse.data = error
+    } else {
+      dataResponse.statusCode = error.response.status
+      dataResponse.message = error.response.data?.message || error.message
+      dataResponse.data = error.response.data?.data || null
+    }
+    return dataResponse
+  }
+}
+
+export const apiUpdateUser = async (request: IRequest) => {
+  const { params, body } = request
+  const dataResponse: IDataResponse = {
+    success: false,
+    statusCode: 0,
+    message: 'Error interno en la aplicación',
+    data: null,
+  }
+  try {
+    const url = `/security/users/${params.idUser}`
+    const response = await api.put(url, body)
+    dataResponse.success = response.status >= 200 || response.status < 300
+    dataResponse.statusCode = response.status
+    dataResponse.message = response.data?.message
+    dataResponse.data = response.data?.data
+    return dataResponse
+  } catch (error) {
+    if (!error.response) {
+      dataResponse.message = `Error inesperado. Código: ${error.code}`
+      dataResponse.data = error
+    } else {
+      dataResponse.statusCode = error.response.status
+      dataResponse.message = error.response.data?.message || error.message
+      dataResponse.data = error.response.data?.data || null
+    }
+    return dataResponse
+  }
+}
+
 export const apiDisableUser = async (request: IRequest) => {
   const { params } = request
   const dataResponse: IDataResponse = {
@@ -126,6 +184,64 @@ export const apiDeleteUser = async (request: IRequest) => {
   try {
     const url = `/security/users/${params.idUser}`
     const response = await api.delete(url)
+    dataResponse.success = response.status >= 200 || response.status < 300
+    dataResponse.statusCode = response.status
+    dataResponse.message = response.data?.message
+    dataResponse.data = response.data?.data
+    return dataResponse
+  } catch (error) {
+    if (!error.response) {
+      dataResponse.message = `Error inesperado. Código: ${error.code}`
+      dataResponse.data = error
+    } else {
+      dataResponse.statusCode = error.response.status
+      dataResponse.message = error.response.data?.message || error.message
+      dataResponse.data = error.response.data?.data || null
+    }
+    return dataResponse
+  }
+}
+
+export const apiAssignRole = async (request: IRequest) => {
+  const { params, body } = request
+  const dataResponse: IDataResponse = {
+    success: false,
+    statusCode: 0,
+    message: 'Error interno en la aplicación',
+    data: null,
+  }
+  try {
+    const url = `/security/users/${params.idUser}/assignRole`
+    const response = await api.patch(url, body)
+    dataResponse.success = response.status >= 200 || response.status < 300
+    dataResponse.statusCode = response.status
+    dataResponse.message = response.data?.message
+    dataResponse.data = response.data?.data
+    return dataResponse
+  } catch (error) {
+    if (!error.response) {
+      dataResponse.message = `Error inesperado. Código: ${error.code}`
+      dataResponse.data = error
+    } else {
+      dataResponse.statusCode = error.response.status
+      dataResponse.message = error.response.data?.message || error.message
+      dataResponse.data = error.response.data?.data || null
+    }
+    return dataResponse
+  }
+}
+
+export const apiRemoveRole = async (request: IRequest) => {
+  const { params, body } = request
+  const dataResponse: IDataResponse = {
+    success: false,
+    statusCode: 0,
+    message: 'Error interno en la aplicación',
+    data: null,
+  }
+  try {
+    const url = `/security/users/${params.idUser}/removeRole`
+    const response = await api.patch(url, body)
     dataResponse.success = response.status >= 200 || response.status < 300
     dataResponse.statusCode = response.status
     dataResponse.message = response.data?.message

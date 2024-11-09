@@ -32,17 +32,21 @@ export const DevelopmentPage = () => {
         <CardMenu
           title="Cajas de texto con validación"
           icon={<ExtensionIcon className="mb-2 w-24 h-24 text-error" />}
-          onClick={() => navigate('/dashboard/development/inputs/text-box')}
+          onClick={() =>
+            navigate('/dashboard/development/inputs/text-box-validations')
+          }
         />
         <CardMenu
           title="Selects y datepickers"
           icon={<ExtensionIcon className="mb-2 w-24 h-24 text-info" />}
-          onClick={() => navigate('/dashboard/development/inputs/text-box')}
+          onClick={() =>
+            navigate('/dashboard/development/inputs/selects-and-datepickers')
+          }
         />
         <CardMenu
           title="Checkboxs, radio botones y switchs"
           icon={<ExtensionIcon className="mb-2 w-24 h-24 text-success" />}
-          onClick={() => navigate('/dashboard/development/inputs/text-box')}
+          onClick={() => navigate('/dashboard/development/inputs/others')}
         />
         <CardMenu
           title="Alertas"

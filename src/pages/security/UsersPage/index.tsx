@@ -10,7 +10,8 @@ import {
 } from '@components'
 import { apiDeleteUser, apiDisableUser, apiGetUsers } from '@services'
 import { useCustomFetch } from '@hooks'
-import { DialogUser } from './DialogUser'
+import { DialogViewUser } from './DialogViewUser'
+import { DialogAddUser } from './DialogAddUser'
 
 export const UsersPage = () => {
   const navigate = useNavigate()
@@ -20,6 +21,7 @@ export const UsersPage = () => {
   const [loader, setLoader] = useState(false)
   const [isSessionExpired, setIsSessionExpired] = useState(false)
   const [showUser, setShowUser] = useState(false)
+  const [showAddUser, setShowAddUser] = useState(false)
   const [alert, setAlert] = useState({} as IAlert)
   const [modalAlert, setModalAlert] = useState({} as IModalAlert)
 
@@ -198,17 +200,20 @@ export const UsersPage = () => {
         enableFullScreenToggle
         /* RENDERS */
         customToolbar={
-          <ButtonCustom
-            text="Agregar"
-            onClick={() => console.log('Agregar ususarios')}
-          />
+          <ButtonCustom text="Agregar" onClick={() => setShowAddUser(true)} />
         }
       />
-      <DialogUser
+      <DialogViewUser
         open={showUser}
         setOpen={setShowUser}
         onDismiss={loadUsers}
         idUser={idUser}
+        setIsSessionExpired={setIsSessionExpired}
+      />
+      <DialogAddUser
+        open={showAddUser}
+        setOpen={setShowAddUser}
+        onDismiss={loadUsers}
         setIsSessionExpired={setIsSessionExpired}
       />
     </PageLayout>

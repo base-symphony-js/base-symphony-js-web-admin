@@ -9,6 +9,7 @@ interface SwitchCustomProps {
   size?: SwitchProps['size']
   color?: SwitchProps['color']
   align?: FormControlLabelProps['labelPlacement']
+  className?: string
 }
 
 export const SwitchCustom = ({
@@ -19,21 +20,24 @@ export const SwitchCustom = ({
   size = 'medium',
   color = 'primary',
   align = 'end',
+  className = '',
 }: SwitchCustomProps) => {
   const handleChange = () => {
     setValue(!value)
   }
 
   return (
-    <ControlLabelCustom name={name} align={align}>
-      <Switch
-        color={color}
-        checked={value}
-        onChange={handleChange}
-        inputProps={{ 'aria-label': 'controlled' }}
-        disabled={disabled}
-        size={size}
-      />
-    </ControlLabelCustom>
+    <div className={`flex flex-row ${className}`}>
+      <ControlLabelCustom name={name} align={align}>
+        <Switch
+          color={color}
+          checked={value}
+          onChange={handleChange}
+          inputProps={{ 'aria-label': 'controlled' }}
+          disabled={disabled}
+          size={size}
+        />
+      </ControlLabelCustom>
+    </div>
   )
 }
