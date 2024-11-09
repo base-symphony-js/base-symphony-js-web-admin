@@ -76,6 +76,7 @@ interface IROUTES {
   LOGIN: string
   NOT_FOUND: string
   NOT_AUTHORIZED: string
+  PROFILE: string
   DASHBOARD: {
     name: string
     id: string
@@ -93,6 +94,7 @@ export const ROUTES: IROUTES = {
   LOGIN: '/login',
   NOT_FOUND: '/page-not-found',
   NOT_AUTHORIZED: '/page-not-authorized',
+  PROFILE: '/profile',
   DASHBOARD: {
     name: 'Inicio',
     id: 'dashboard',

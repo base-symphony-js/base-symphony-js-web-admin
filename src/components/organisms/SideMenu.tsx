@@ -24,7 +24,8 @@ export const SideMenu = ({
       pathname.includes(DASHBOARD.publicSections[1].path) ||
       pathname.includes(DASHBOARD.publicSections[2].path) ||
       pathname.includes(ROUTES.NOT_FOUND) ||
-      pathname.includes(ROUTES.NOT_AUTHORIZED)
+      pathname.includes(ROUTES.NOT_AUTHORIZED) ||
+      pathname.includes(ROUTES.PROFILE)
     ) {
       setShowMainMenu(true)
     } else {
