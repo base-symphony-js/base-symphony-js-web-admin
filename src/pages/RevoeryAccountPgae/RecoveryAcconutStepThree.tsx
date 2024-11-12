@@ -1,21 +1,45 @@
-import { ButtonCustom, TextCustom, TextInputCustom } from '@components'
+import { ButtonCustom, IAlert, TextCustom, TextInputCustom } from '@components'
 import { Box } from '@mui/material'
+import { apiRecoveryAccount } from '@services'
 import { useState } from 'react'
 
 interface RecoveryAcconutStepThreeProps {
   timeLeft: string
+  setAlert: (value: IAlert) => void
+  setLoader: (value: boolean) => void
   nextPage: () => void
+  email: string
+  otp: string
 }
 
 export const RecoveryAcconutStepThree = ({
   timeLeft = '',
+  setAlert = () => null,
+  setLoader = () => null,
   nextPage = () => null,
+  email = '',
+  otp = '',
 }: RecoveryAcconutStepThreeProps) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
-  const handleRecoveryAccount = () => {
-    nextPage()
+  const handleRecoveryAccount = async () => {
+    setLoader(true)
+    const response = await apiRecoveryAccount({
+      body: { otp, email, password },
+    })
+    const { success, statusCode, message } = response
+    if (success) {
+      nextPage()
+    } else {
+      setAlert({
+        open: true,
+        title: statusCode >= 500 ? 'Error' : 'Advertencia',
+        description: message,
+        severity: statusCode >= 500 ? 'error' : 'warning',
+      })
+    }
+    setLoader(false)
   }
 
   return (

@@ -1,20 +1,41 @@
-import { ButtonCustom, TextCustom, TextInputCustom } from '@components'
+import { ButtonCustom, IAlert, TextCustom, TextInputCustom } from '@components'
 import { Box } from '@mui/material'
-import { useState } from 'react'
+import { apiRecoveryAccountVerifyOtp } from '@services'
 
 interface RecoveryAcconutStepTwoProps {
   timeLeft: string
+  setAlert: (value: IAlert) => void
+  setLoader: (value: boolean) => void
   nextPage: () => void
+  email: string
+  otp: string
+  setOtp: (value: string) => void
 }
 
 export const RecoveryAcconutStepTwo = ({
   timeLeft = '',
+  setAlert = () => null,
+  setLoader = () => null,
   nextPage = () => null,
+  email = '',
+  otp = '',
+  setOtp = () => null,
 }: RecoveryAcconutStepTwoProps) => {
-  const [otp, setOtp] = useState('')
-
-  const handleConfirmOtp = () => {
-    nextPage()
+  const handleConfirmOtp = async () => {
+    setLoader(true)
+    const response = await apiRecoveryAccountVerifyOtp({ body: { otp, email } })
+    const { success, statusCode, message } = response
+    if (success) {
+      nextPage()
+    } else {
+      setAlert({
+        open: true,
+        title: statusCode >= 500 ? 'Error' : 'Advertencia',
+        description: message,
+        severity: statusCode >= 500 ? 'error' : 'warning',
+      })
+    }
+    setLoader(false)
   }
 
   return (

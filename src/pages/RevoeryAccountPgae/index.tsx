@@ -1,5 +1,13 @@
 import { useEffect, useState } from 'react'
-import { CarruselCore, LinkCustom, TabsCustom, TextCustom } from '@components'
+import {
+  CarruselCore,
+  IAlert,
+  LinkCustom,
+  LoaderCustom,
+  SnackbarCustom,
+  TabsCustom,
+  TextCustom,
+} from '@components'
 import { COLORS } from '@common'
 import { useColorScheme } from '@mui/material'
 import { RecoveryAcconutStepOne } from './RecoveryAcconutStepOne'
@@ -9,8 +17,12 @@ import { RecoveryAcconutStepFour } from './RecoveryAcconutStepFour'
 
 export const RecoveryAcconutPage = () => {
   const { colorScheme: theme } = useColorScheme()
+  const [email, setEmail] = useState('')
+  const [otp, setOtp] = useState('')
   const [page, setPage] = useState(0)
   const [timeLeft, setTimeLeft] = useState(300)
+  const [loader, setLoader] = useState(false)
+  const [alert, setAlert] = useState({} as IAlert)
   const backgroundColor = theme === 'dark' ? COLORS.dark : COLORS.white
 
   useEffect(() => {
@@ -72,17 +84,40 @@ export const RecoveryAcconutPage = () => {
         />
       </div>
       <CarruselCore pagination={page + 1} isHandlePagination>
-        <RecoveryAcconutStepOne nextPage={() => setPage(1)} />
+        <RecoveryAcconutStepOne
+          setAlert={setAlert}
+          setLoader={setLoader}
+          email={email}
+          setEmail={setEmail}
+          nextPage={() => setPage(1)}
+        />
         <RecoveryAcconutStepTwo
+          setAlert={setAlert}
+          setLoader={setLoader}
           timeLeft={`Tiempo restante: ${formatTime(timeLeft)}`}
           nextPage={() => setPage(2)}
+          email={email}
+          otp={otp}
+          setOtp={setOtp}
         />
         <RecoveryAcconutStepThree
+          setAlert={setAlert}
+          setLoader={setLoader}
           timeLeft={`Tiempo restante: ${formatTime(timeLeft)}`}
           nextPage={() => setPage(3)}
+          email={email}
+          otp={otp}
         />
         <RecoveryAcconutStepFour />
       </CarruselCore>
+      <SnackbarCustom
+        open={alert.open}
+        title={alert.title}
+        description={alert.description}
+        severity={alert.severity}
+        setAlert={setAlert}
+      />
+      {loader && <LoaderCustom mode="modal" />}
     </div>
   )
 }
