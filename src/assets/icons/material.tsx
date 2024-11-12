@@ -47,6 +47,7 @@ export {
   Microsoft as MicrosoftIcon,
   NotInterested as NotInterestedIcon,
   Payments as PaymentsIcon,
+  PhotoCamera as PhotoCameraIcon,
   Policy as PolicyIcon,
   PowerSettingsNew as PowerSettingsNewIcon,
   Reply as ReplyIcon,

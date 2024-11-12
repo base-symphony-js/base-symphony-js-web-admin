@@ -33,7 +33,7 @@ export const HeaderMenu = ({
 }: HeaderMenuProps) => {
   const navigate = useNavigate()
   const { dispatchLogout } = useAuthActions()
-  const { firstName, lastName } = useAppSelector(
+  const { firstName, lastName, photo } = useAppSelector(
     state => state.auth.personalInfo,
   )
   const [showDropdown, setShowDropdown] = useState(false)
@@ -74,7 +74,15 @@ export const HeaderMenu = ({
                 <span className="text-white text-sm w-36 font-semibold text-end">
                   {`${firstName} ${lastName}`}
                 </span>
-                <ProfileCustomIcon className="w-10 h-10" />
+                {photo ? (
+                  <img
+                    src={photo}
+                    alt="Foto de perfil"
+                    className="w-10 h-10 rounded-full"
+                  />
+                ) : (
+                  <ProfileCustomIcon className="w-10 h-10" />
+                )}
               </div>
             }
             isToogleIcon

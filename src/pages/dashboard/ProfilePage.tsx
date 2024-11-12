@@ -1,16 +1,22 @@
+import { PhotoCameraIcon, ProfileCustomIcon } from '@assets'
+import { ICloudinarySignature, cloudinaryUploadFile } from '@common'
 import {
   ButtonCustom,
   DialogCustom,
   IAlert,
+  IconButtonCustom,
   PageLayout,
   TextCustom,
   TextInputCustom,
+  UploadFileCustom,
 } from '@components'
 import { api } from '@config'
 import { useCustomFetch } from '@hooks'
 import { Divider } from '@mui/material'
 import { useAuthActions } from '@redux'
 import {
+  apiDeleteCloudinaryFile,
+  apiGetCloudinarySignature,
   apiGetProfile,
   apiUpdateEmail,
   apiUpdateEmailSendOtp,
@@ -26,19 +32,44 @@ export const ProfilePage = () => {
   const [alert, setAlert] = useState({} as IAlert)
   const [isSessionExpired, setIsSessionExpired] = useState(false)
   const [showOtp, setShowOtp] = useState(false)
+  const [showFile, setShowFile] = useState(false)
   // profile
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
+  const [photo, setPhoto] = useState('')
   const [otp, setOtp] = useState('')
   const [password, setPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [file, setFile] = useState({} as File)
+  const [signature, setSignature] = useState({} as ICloudinarySignature)
 
   useEffect(() => {
     loadProfile()
+    loadCloudinarySignature()
   }, [])
+
+  const loadCloudinarySignature = async () => {
+    setLoader(true)
+    const response = await customFetch(apiGetCloudinarySignature, {
+      params: { folder: 'profile-pictures' },
+    })
+    const { success, statusCode, message, data } = response
+    if (success) {
+      setSignature(data)
+    } else {
+      if (statusCode === 401) setIsSessionExpired(true)
+      setAlert({
+        open: true,
+        title: statusCode >= 500 ? 'Error' : 'Advertencia',
+        description: message,
+        severity: statusCode >= 500 ? 'error' : 'warning',
+      })
+    }
+    setLoader(false)
+  }
 
   const loadProfile = async () => {
     setLoader(true)
@@ -48,6 +79,7 @@ export const ProfilePage = () => {
       setFirstName(data?.user.firstName)
       setLastName(data?.user.lastName)
       setEmail(data?.user.email)
+      setPhoto(data?.user.photo)
       setPhoneNumber(data?.user.phoneNumber)
     } else {
       if (statusCode === 401) setIsSessionExpired(true)
@@ -56,6 +88,54 @@ export const ProfilePage = () => {
         title: statusCode >= 500 ? 'Error' : 'Advertencia',
         description: message,
         severity: statusCode >= 500 ? 'error' : 'warning',
+      })
+    }
+    setLoader(false)
+  }
+
+  const handleUpdatePhoto = async () => {
+    setLoader(true)
+    await customFetch(apiDeleteCloudinaryFile, {
+      body: { url: photo, ...signature },
+    })
+    const url = await cloudinaryUploadFile(signature, file)
+    if (url) {
+      const response = await customFetch(apiUpdateProfile, {
+        body: { photo: url },
+      })
+      const { success, statusCode, message } = response
+      if (success) {
+        setShowFile(false)
+        setAlert({
+          open: true,
+          title: 'Exitoso',
+          description: message,
+          severity: 'success',
+        })
+        dispatchUpdatePersonalInfo({
+          firstName,
+          lastName,
+          email,
+          photo: url,
+          phoneNumber,
+        })
+        loadProfile()
+      } else {
+        if (statusCode === 401) setIsSessionExpired(true)
+        setAlert({
+          open: true,
+          title: statusCode >= 500 ? 'Error' : 'Advertencia',
+          description: message,
+          severity: statusCode >= 500 ? 'error' : 'warning',
+        })
+      }
+    } else {
+      setAlert({
+        open: true,
+        title: 'Advertencia',
+        description:
+          'El tiempo para actualizar la foto de perfil se ha vencido, favor recarga la página nuevamente.',
+        severity: 'warning',
       })
     }
     setLoader(false)
@@ -73,6 +153,13 @@ export const ProfilePage = () => {
         title: 'Exitoso',
         description: message,
         severity: 'success',
+      })
+      dispatchUpdatePersonalInfo({
+        firstName,
+        lastName,
+        email,
+        photo,
+        phoneNumber,
       })
     } else {
       if (statusCode === 401) setIsSessionExpired(true)
@@ -100,6 +187,13 @@ export const ProfilePage = () => {
         severity: 'success',
       })
       setShowOtp(true)
+      dispatchUpdatePersonalInfo({
+        firstName,
+        lastName,
+        email,
+        photo,
+        phoneNumber,
+      })
     } else {
       if (statusCode === 401) setIsSessionExpired(true)
       setAlert({
@@ -196,18 +290,41 @@ export const ProfilePage = () => {
           className="text-xl font-semibold"
         />
         <Divider />
+        <div className="flex justify-center">
+          <div className="relative">
+            {photo ? (
+              <img
+                src={photo}
+                alt="Foto de perfil"
+                className="w-40 h-40 rounded-full"
+              />
+            ) : (
+              <ProfileCustomIcon className="w-40 h-40" />
+            )}
+            <div className="absolute top-28 left-28">
+              <IconButtonCustom
+                icon={<PhotoCameraIcon className="text-white" />}
+                onClick={() => setShowFile(true)}
+                className="bg-light-gray"
+                size={24}
+              />
+            </div>
+          </div>
+        </div>
         <div className="flex gap-4 flex-col sm:flex-row">
           <TextInputCustom
             name="Nombre:"
             value={firstName}
             setValue={setFirstName}
             className="w-full"
+            disableAutoComplete
           />
           <TextInputCustom
             name="Apellido:"
             value={lastName}
             setValue={setLastName}
             className="w-full"
+            disableAutoComplete
           />
         </div>
         <div className="flex gap-4 flex-col sm:flex-row">
@@ -216,6 +333,7 @@ export const ProfilePage = () => {
             value={phoneNumber}
             setValue={setPhoneNumber}
             className="w-full"
+            disableAutoComplete
           />
           <div className="w-full"></div>
         </div>
@@ -239,6 +357,7 @@ export const ProfilePage = () => {
             value={email}
             setValue={setEmail}
             className="w-full"
+            disableAutoComplete
           />
           <div className="w-full"></div>
         </div>
@@ -256,11 +375,12 @@ export const ProfilePage = () => {
         <Divider />
         <div className="flex gap-4 flex-col sm:flex-row">
           <TextInputCustom
-            name="Contraseña:"
+            name="Contraseña actual:"
             value={password}
             setValue={setPassword}
             type="password"
             className="w-full"
+            disableAutoComplete
           />
           <div className="w-full"></div>
         </div>
@@ -276,6 +396,7 @@ export const ProfilePage = () => {
             }
             type="password"
             className="w-full"
+            disableAutoComplete
           />
           <TextInputCustom
             name="Confirmar contraseña:"
@@ -288,6 +409,7 @@ export const ProfilePage = () => {
             }
             type="password"
             className="w-full"
+            disableAutoComplete
           />
         </div>
         <ButtonCustom
@@ -322,6 +444,28 @@ export const ProfilePage = () => {
           setValue={setOtp}
           validation="onlyNumber"
           maxLength={6}
+        />
+      </DialogCustom>
+      <DialogCustom
+        open={showFile}
+        setOpen={setShowFile}
+        title="Actualizar foto de perfil"
+        disabledCancelAction
+        disabledDismiss
+        dialogActions={
+          <ButtonCustom
+            text="Actualizar foto"
+            onClick={handleUpdatePhoto}
+            color="success"
+            disabled={!file}
+          />
+        }
+      >
+        <UploadFileCustom
+          accept={{ 'image/png': ['.png'], 'image/jpeg': ['.jpg', '.jpeg'] }}
+          maxSize={2 * 1024 * 1024}
+          multiple={false}
+          onChange={files => setFile(files[0])}
         />
       </DialogCustom>
     </PageLayout>
