@@ -156,7 +156,6 @@ export const LoginPage = () => {
               name="Correo"
               value={email}
               setValue={setEmail}
-              autoComplete="email"
               onEnter={() => handleLogin('email-and-pass')}
               required
             />
@@ -164,14 +163,13 @@ export const LoginPage = () => {
               name="Contraseña"
               value={password}
               setValue={setPassword}
-              autoComplete="password"
               onEnter={() => handleLogin('email-and-pass')}
               type="password"
               required
             />
             <div className="flex justify-end">
               <LinkCustom
-                name="¿Olvidastes la contraseña?"
+                name="¿Olvidastes tu contraseña?"
                 to="/recovery-account"
               />
             </div>

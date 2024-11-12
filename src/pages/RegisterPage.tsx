@@ -161,14 +161,12 @@ export const RegisterPage = () => {
                 value={firstName}
                 setValue={setFirstName}
                 className="w-full"
-                autoComplete="firstName"
                 required
               />
               <TextInputCustom
                 name="Apellido:"
                 value={lastName}
                 setValue={setLastName}
-                autoComplete="lastName"
                 className="w-full"
               />
             </div>
@@ -178,7 +176,6 @@ export const RegisterPage = () => {
                 value={phoneNumber}
                 setValue={setPhoneNumber}
                 className="w-full"
-                autoComplete="phoneNumber"
                 required
               />
               <TextInputCustom
@@ -186,7 +183,6 @@ export const RegisterPage = () => {
                 value={email}
                 setValue={setEmail}
                 type="email"
-                autoComplete="email"
                 className="w-full"
               />
             </div>
@@ -195,7 +191,6 @@ export const RegisterPage = () => {
                 name="Contraseña"
                 value={password}
                 setValue={setPassword}
-                autoComplete="password"
                 msgError={
                   password !== confirmPassword
                     ? 'Las contraseñas no coinciden'

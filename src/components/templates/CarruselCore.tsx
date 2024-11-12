@@ -4,17 +4,15 @@ import { IconButtonCustom } from '@components'
 import { KeyboardArrowLeftIcon, KeyboardArrowRightIcon } from '@assets'
 
 interface CarruselCoreProps {
-  height: number
   children: any
-  auto: boolean
-  speed: number
-  isPagination: boolean
-  pagination: number
-  isHandlePagination: boolean
+  auto?: boolean
+  speed?: number
+  isPagination?: boolean
+  pagination?: number
+  isHandlePagination?: boolean
 }
 
 const Component = ({
-  height = 300,
   children,
   auto = false,
   speed = 3000,
@@ -91,12 +89,7 @@ const Component = ({
         setIsMouseOver(true)
       }}
     >
-      <div
-        data-height={height}
-        data-length={length}
-        data-percent={percent}
-        className="w-full h-full overflow-hidden"
-      >
+      <div className="w-full h-full overflow-hidden">
         <div
           ref={ref}
           style={{

@@ -1,5 +1,6 @@
 export * from './CardMenu'
 export * from './GroupDrawerItem'
 export * from './LanguagesComponent'
+export * from './TabsCustom'
 export * from './ThemeComponent'
 export * from './UploadFileCustom'
