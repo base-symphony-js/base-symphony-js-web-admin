@@ -1,14 +1,14 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google'
 import { useAuthActions } from '@redux'
-import { apiLoginWithEmailAndPass, apiLoginWithGoogle } from '@services'
+import { apiRegisterWithEmailAndPass, apiRegisterWithGoogle } from '@services'
 import { api } from '@config'
 import { Box, Drawer, useColorScheme } from '@mui/material'
 import {
   ButtonCustom,
   IAlert,
   IconButtonCustom,
-  LinkCustom,
   LoaderCustom,
   SnackbarCustom,
   TextCustom,
@@ -16,15 +16,18 @@ import {
 } from '@components'
 import { COLORS, DRAWER_WIDTH } from '@common'
 import { LogoCustomIcon, MenuIcon } from '@assets'
-import { useNavigate } from 'react-router-dom'
 
-export const LoginPage = () => {
+export const RegisterPage = () => {
   const { colorScheme: theme } = useColorScheme()
   const { dispatchLogin } = useAuthActions()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [loader, setLoader] = useState(false)
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [alert, setAlert] = useState({} as IAlert)
   const backgroundColor = theme === 'dark' ? COLORS.general : COLORS.info
 
@@ -32,18 +35,18 @@ export const LoginPage = () => {
     setMobileOpen(!mobileOpen)
   }
 
-  const handleLogin = async (
+  const handleRegister = async (
     provider: 'email-and-pass' | 'google',
     providerCredentials?: { google: CredentialResponse },
   ) => {
     setLoader(true)
     let response
     if (provider === 'email-and-pass') {
-      response = await apiLoginWithEmailAndPass({
-        body: { email, password },
+      response = await apiRegisterWithEmailAndPass({
+        body: { firstName, lastName, email, phoneNumber, password },
       })
     } else if (provider === 'google') {
-      response = await apiLoginWithGoogle({
+      response = await apiRegisterWithGoogle({
         body: { idToken: providerCredentials?.google.credential },
       })
     } else {
@@ -139,45 +142,86 @@ export const LoginPage = () => {
         <Box className="w-full flex flex-col items-center">
           <div
             className="px-8 w-full flex flex-col gap-4 box-border"
-            style={{ maxWidth: 800 }}
+            style={{ maxWidth: 1000 }}
           >
             <div>
               <TextCustom
-                text="Inicio de sesión"
+                text="Creación de cuenta"
                 className="text-center text-xl font-medium"
               />
               <TextCustom
-                text="Inicia sesión usando tu correo y contraseña"
+                text="Crea tu cuenta usando tu nombre, correo y contraseña"
                 className="text-center italic"
                 color="textSecondary"
               />
             </div>
-            <TextInputCustom
-              name="Correo"
-              value={email}
-              setValue={setEmail}
-              autoComplete="email"
-              onEnter={() => handleLogin('email-and-pass')}
-              required
-            />
-            <TextInputCustom
-              name="Contraseña"
-              value={password}
-              setValue={setPassword}
-              autoComplete="password"
-              onEnter={() => handleLogin('email-and-pass')}
-              type="password"
-              required
-            />
-            <div className="flex justify-end">
-              <LinkCustom
-                name="¿Olvidastes la contraseña?"
-                to="/recovery-account"
+            <div className="flex gap-4 flex-col sm:flex-row">
+              <TextInputCustom
+                name="Nombre:"
+                value={firstName}
+                setValue={setFirstName}
+                className="w-full"
+                autoComplete="firstName"
+                required
+              />
+              <TextInputCustom
+                name="Apellido:"
+                value={lastName}
+                setValue={setLastName}
+                autoComplete="lastName"
+                className="w-full"
+              />
+            </div>
+            <div className="flex gap-4 flex-col sm:flex-row">
+              <TextInputCustom
+                name="Número de teléfono:"
+                value={phoneNumber}
+                setValue={setPhoneNumber}
+                className="w-full"
+                autoComplete="phoneNumber"
+                required
+              />
+              <TextInputCustom
+                name="Correo"
+                value={email}
+                setValue={setEmail}
+                type="email"
+                autoComplete="email"
+                className="w-full"
+              />
+            </div>
+            <div className="flex gap-4 flex-col sm:flex-row">
+              <TextInputCustom
+                name="Contraseña"
+                value={password}
+                setValue={setPassword}
+                autoComplete="password"
+                msgError={
+                  password !== confirmPassword
+                    ? 'Las contraseñas no coinciden'
+                    : ''
+                }
+                type="password"
+                className="w-full"
+                required
+              />
+              <TextInputCustom
+                name="Confirmar contraseña"
+                value={confirmPassword}
+                setValue={setConfirmPassword}
+                msgError={
+                  password !== confirmPassword
+                    ? 'Las contraseñas no coinciden'
+                    : ''
+                }
+                type="password"
+                className="w-full"
+                required
               />
             </div>
             <ButtonCustom
-              text="Iniciar sesión"
-              onClick={() => handleLogin('email-and-pass')}
+              text="Crear cuenta"
+              onClick={() => handleRegister('email-and-pass')}
               color="info"
             />
           </div>
@@ -206,10 +250,10 @@ export const LoginPage = () => {
               <GoogleLogin
                 size="large"
                 onSuccess={credentialResponse => {
-                  handleLogin('google', { google: credentialResponse })
+                  handleRegister('google', { google: credentialResponse })
                 }}
                 onError={() => {
-                  console.log('Login Failed')
+                  console.log('Register Failed')
                 }}
               />
             </div>
@@ -235,16 +279,16 @@ const SideBar = () => {
     <div className="h-full flex items-center">
       <div className="flex flex-col items-center gap-8 p-4">
         <TextCustom
-          text="¿No tienes cuenta?"
+          text="¿Ya tienes cuenta?"
           className="text-white text-2xl font-semibold"
         />
         <TextCustom
-          text="Crea una cuenta fácil y rápido. Comienza a explorar las funcionalidades del aplicativo."
+          text="Inicia sesión de una vez. Comienza a explorar las funcionalidades del aplicativo."
           className="text-wrap text-white font-light"
         />
         <ButtonCustom
-          text="Crear cuenta"
-          onClick={() => navigate('/register')}
+          text="Iniciar sesión"
+          onClick={() => navigate('/login')}
           color="warning"
           className="w-full"
         />

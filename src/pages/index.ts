@@ -1,4 +1,6 @@
 export * from './dashboard'
 export * from './LoginPage'
+export * from './RegisterPage'
+export * from './RecoveryAcconutPage'
 export * from './NotAuthorizedPage'
 export * from './NotFoundPage'

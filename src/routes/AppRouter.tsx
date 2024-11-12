@@ -6,11 +6,17 @@ import {
 } from 'react-router-dom'
 import { PrivateRoute, PublicRoute, DashboardRouter, ROUTES } from '@routes'
 import { useAppSelector } from '@redux'
-import { LoginPage, NotFoundPage } from '@pages'
+import {
+  LoginPage,
+  NotFoundPage,
+  RecoveryAcconutPage,
+  RegisterPage,
+} from '@pages'
 
 export const AppRouter = () => {
   const isAuth = useAppSelector(state => state.auth.isAuth)
-  const { MAIN, LOGIN, NOT_FOUND, DASHBOARD } = ROUTES
+  const { MAIN, LOGIN, REGISTER, RECOVERY_ACCOUNT, NOT_FOUND, DASHBOARD } =
+    ROUTES
 
   return (
     <Router>
@@ -18,6 +24,16 @@ export const AppRouter = () => {
         <Route
           path={LOGIN}
           element={<PublicRoute element={LoginPage} isAuth={isAuth} />}
+        />
+        <Route
+          path={REGISTER}
+          element={<PublicRoute element={RegisterPage} isAuth={isAuth} />}
+        />
+        <Route
+          path={RECOVERY_ACCOUNT}
+          element={
+            <PublicRoute element={RecoveryAcconutPage} isAuth={isAuth} />
+          }
         />
         <Route
           path={DASHBOARD.path + '/*'}

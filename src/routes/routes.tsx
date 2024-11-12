@@ -74,6 +74,8 @@ interface IModuleRoute {
 interface IROUTES {
   MAIN: string
   LOGIN: string
+  REGISTER: string
+  RECOVERY_ACCOUNT: string
   NOT_FOUND: string
   NOT_AUTHORIZED: string
   PROFILE: string
@@ -92,6 +94,8 @@ interface IROUTES {
 export const ROUTES: IROUTES = {
   MAIN: '/',
   LOGIN: '/login',
+  REGISTER: '/register',
+  RECOVERY_ACCOUNT: '/recovery-account',
   NOT_FOUND: '/page-not-found',
   NOT_AUTHORIZED: '/page-not-authorized',
   PROFILE: '/profile',

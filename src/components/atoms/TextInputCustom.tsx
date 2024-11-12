@@ -34,6 +34,7 @@ interface TextInputCustomProps {
   endIconAction?: () => void
   endIconColor?: IconButtonProps['color']
   disableAutoComplete?: boolean
+  autoComplete?: string
 }
 
 const Component = ({
@@ -60,6 +61,7 @@ const Component = ({
   endIconAction = () => null,
   endIconColor = 'primary',
   disableAutoComplete = false,
+  autoComplete = '',
 }: TextInputCustomProps) => {
   return (
     <div className={`flex flex-col ${className}`}>
@@ -90,6 +92,7 @@ const Component = ({
         required={required}
         helperText={msgError}
         error={msgError ? true : false}
+        autoComplete={autoComplete}
         slotProps={{
           input: {
             autoComplete: disableAutoComplete ? 'new-password' : '',
