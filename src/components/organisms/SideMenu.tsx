@@ -41,12 +41,18 @@ export const SideMenu = ({
   return (
     <div className="flex flex-col h-full">
       <div className="flex justify-center text-white my-2 mx-2">
-        <LogoCustomIcon
-          className="w-16 h-16 cursor-pointer"
+        <div
+          className="flex flex-col items-center cursor-pointer"
           onClick={() => handleItem(DASHBOARD.path)}
-        />
+        >
+          <LogoCustomIcon theme="dark" className="w-16 h-16" />
+          <TextCustom
+            text="Base Symphony JS"
+            className="text-white italic text-sm"
+          />
+        </div>
       </div>
-      <div className="h-full flex flex-col gap-8 overflow-y-auto mt-8">
+      <div className="h-full flex flex-col gap-8 overflow-y-auto mt-2">
         <Collapse in={showMainMenu} timeout="auto" unmountOnExit>
           <div className="flex flex-col gap-8">
             <List className="flex flex-col py-0">
