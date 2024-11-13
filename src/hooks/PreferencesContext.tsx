@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { api } from '@config'
 import { PreferencesStorage } from '@services'
 import { ILanguages, ITranslation, translations } from '@languages'
@@ -16,7 +16,7 @@ interface PreferencesContextProviderProps {
   children: React.ReactNode
 }
 
-const PreferencesContext = createContext<PreferenceContextType>(
+export const PreferencesContext = createContext<PreferenceContextType>(
   {} as PreferenceContextType,
 )
 
@@ -70,12 +70,4 @@ export const PreferencesContextProvider = ({
       <ThemeProvider theme={currentTheme}>{children}</ThemeProvider>
     </PreferencesContext.Provider>
   )
-}
-
-export const usePreferences = () => {
-  const context = useContext(PreferencesContext)
-  if (context === undefined) {
-    throw new Error('usePreferences can only be used inside Provider')
-  }
-  return context
 }

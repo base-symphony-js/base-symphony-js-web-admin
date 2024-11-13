@@ -13,7 +13,7 @@ export const cloudinaryUploadFile = async (
 ) => {
   let url = ''
   try {
-    let formData = new FormData()
+    const formData = new FormData()
     formData.append('file', file!)
     formData.append('api_key', signature.api_key)
     formData.append('timestamp', signature.timestamp)

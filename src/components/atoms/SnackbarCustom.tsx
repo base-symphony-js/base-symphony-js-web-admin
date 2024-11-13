@@ -1,8 +1,7 @@
 import Snackbar from '@mui/material/Snackbar'
 import Alert, { AlertProps } from '@mui/material/Alert'
-import { IAlert, IconButtonCustom, TextCustom } from '@components'
+import { IAlert, TextCustom } from '@components'
 import { AlertTitle } from '@mui/material'
-import { CloseIcon } from '@assets'
 
 interface SnackbarCustomProps {
   title?: string

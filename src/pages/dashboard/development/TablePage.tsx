@@ -3,7 +3,6 @@ import {
   BadgePoint,
   PageLayout,
   TableCustom,
-  TextCustom,
   IAlert,
   IModalAlert,
   ButtonCustom,
