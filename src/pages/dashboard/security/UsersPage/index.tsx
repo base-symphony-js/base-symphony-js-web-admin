@@ -54,7 +54,7 @@ export const UsersPage = () => {
     })
     const { success, statusCode, message } = response
     if (success) {
-      loadUsers()
+      await loadUsers()
       setAlert({
         open: true,
         title: 'Exitoso',
@@ -80,7 +80,7 @@ export const UsersPage = () => {
     })
     const { success, statusCode, message } = response
     if (success) {
-      loadUsers()
+      await loadUsers()
       setAlert({
         open: true,
         title: 'Exitoso',
@@ -130,6 +130,7 @@ export const UsersPage = () => {
   return (
     <PageLayout
       title="Gestión de usuarios"
+      loader={loader}
       alert={alert}
       setAlert={setAlert}
       modalAlert={modalAlert}
@@ -177,7 +178,6 @@ export const UsersPage = () => {
         /* STATE */
         identifierName="_id"
         initialState={{ columnVisibility: { _id: false } }}
-        isLoading={loader}
         /* EXPORT */
         enableExport
         filename="Usuarios"
