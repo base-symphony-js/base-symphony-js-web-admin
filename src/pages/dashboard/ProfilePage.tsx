@@ -246,7 +246,7 @@ export const ProfilePage = () => {
 
   const handleUpdatePassword = async () => {
     setLoader(true)
-    const response = await customFetch(apiUpdatePassword, {
+    const response = await apiUpdatePassword({
       body: { password, newPassword },
     })
     const { success, statusCode, message, data } = response
@@ -264,7 +264,6 @@ export const ProfilePage = () => {
         refreshToken: data?.tokens?.refreshToken,
       })
     } else {
-      if (statusCode === 401) setIsSessionExpired(true)
       setAlert({
         open: true,
         title: statusCode >= 500 ? 'Error' : 'Advertencia',

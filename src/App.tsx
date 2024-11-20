@@ -29,8 +29,6 @@ const App = () => {
       api.defaults.headers.Authorization = `Bearer ${tokens?.accessToken}`
       dispatchLogin(personalInfo, tokens, roles)
     } else {
-      AuthStorage.removePersonalInfo()
-      AuthStorage.removeTokens()
       dispatchLogout()
     }
   }, [dispatchLogin, dispatchLogout])
