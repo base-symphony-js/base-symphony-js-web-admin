@@ -10,7 +10,7 @@ interface DialogViewUserProps {
   setOpen: (value: boolean) => void
   setIsSessionExpired: (value: boolean) => void
   onDismiss?: () => void
-  idUser: any
+  userId: any
 }
 
 export const DialogViewUser = ({
@@ -18,7 +18,7 @@ export const DialogViewUser = ({
   setOpen = () => null,
   setIsSessionExpired = () => null,
   onDismiss = () => null,
-  idUser = null,
+  userId = null,
 }: DialogViewUserProps) => {
   const { customFetch } = useCustomFetch()
   const [user, setUser] = useState<any>(null)
@@ -28,11 +28,11 @@ export const DialogViewUser = ({
 
   useEffect(() => {
     if (open) loadUser()
-  }, [open, idUser])
+  }, [open, userId])
 
   const loadUser = async () => {
     setLoader(true)
-    const response = await customFetch(apiGetUser, { params: { idUser } })
+    const response = await customFetch(apiGetUser, { params: { userId } })
     const { success, statusCode, message, data } = response
     if (success) {
       setUser(data?.user)
@@ -51,7 +51,7 @@ export const DialogViewUser = ({
 
   const unlockedUser = async () => {
     setLoader(true)
-    const response = await customFetch(apiUnlockedUser, { params: { idUser } })
+    const response = await customFetch(apiUnlockedUser, { params: { userId } })
     const { success, statusCode, message } = response
     if (success) {
       setOpen(false)

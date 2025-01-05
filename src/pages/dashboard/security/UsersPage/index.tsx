@@ -16,7 +16,7 @@ import { DialogAddUser } from './DialogAddUser'
 export const UsersPage = () => {
   const navigate = useNavigate()
   const { customFetch } = useCustomFetch()
-  const [idUser, setIdUser] = useState<any>(null)
+  const [userId, setUserId] = useState<any>(null)
   const [users, setUsers] = useState<any[]>([])
   const [loader, setLoader] = useState(false)
   const [isSessionExpired, setIsSessionExpired] = useState(false)
@@ -50,7 +50,7 @@ export const UsersPage = () => {
   const handleDisableUser = async (id: string) => {
     setLoader(true)
     const response = await customFetch(apiDisableUser, {
-      params: { idUser: id },
+      params: { userId: id },
     })
     const { success, statusCode, message } = response
     if (success) {
@@ -76,7 +76,7 @@ export const UsersPage = () => {
   const handleDeleteUser = async (id: string) => {
     setLoader(true)
     const response = await customFetch(apiDeleteUser, {
-      params: { idUser: id },
+      params: { userId: id },
     })
     const { success, statusCode, message } = response
     if (success) {
@@ -101,7 +101,7 @@ export const UsersPage = () => {
 
   const handleActions = {
     view: (id: string, _obj: any) => {
-      setIdUser(id)
+      setUserId(id)
       setShowUser(true)
     },
     edit: (id: string, _obj: any) => {
@@ -207,7 +207,7 @@ export const UsersPage = () => {
         open={showUser}
         setOpen={setShowUser}
         onDismiss={loadUsers}
-        idUser={idUser}
+        userId={userId}
         setIsSessionExpired={setIsSessionExpired}
       />
       <DialogAddUser

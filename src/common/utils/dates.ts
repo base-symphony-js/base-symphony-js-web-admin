@@ -12,7 +12,7 @@ export const getLegalDate = () => {
 }
 
 export const formatDate = (
-  date: Date | null,
+  date: Date | string | null,
   lng: ILanguages = 'en',
   type: 'date' | 'time' | 'date-time' = 'date',
 ) => {

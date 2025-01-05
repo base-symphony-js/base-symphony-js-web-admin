@@ -38,8 +38,13 @@ export const DashboardRouter = () => {
     const customRoutes = [
       {
         access: canAccess(roles, permissions, '/security/users'),
-        path: '/security/users/:idUser',
+        path: '/security/users/:userId',
         Component: Pages.UserPage,
+      },
+      {
+        access: canAccess(roles, permissions, '/security/roles'),
+        path: '/security/roles/:roleId',
+        Component: Pages.RolePage,
       },
       {
         access: true,

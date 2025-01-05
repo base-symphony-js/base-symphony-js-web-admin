@@ -7,34 +7,35 @@ import {
 } from '@components'
 import { useCustomFetch } from '@hooks'
 import { useState } from 'react'
-import { apiCreateUser } from '@services'
+import { apiCreateRole } from '@services'
 
-interface DialogAddUserProps {
+interface DialogAddRoleProps {
   open: boolean
   setOpen: (value: boolean) => void
   setIsSessionExpired: (value: boolean) => void
   onDismiss?: () => void
 }
 
-export const DialogAddUser = ({
+export const DialogAddRole = ({
   open = false,
   setOpen = () => null,
   setIsSessionExpired = () => null,
   onDismiss = () => null,
-}: DialogAddUserProps) => {
+}: DialogAddRoleProps) => {
   const { customFetch } = useCustomFetch()
   const [alert, setAlert] = useState({} as IAlert)
   const [loader, setLoader] = useState(false)
-  // User
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [email, setEmail] = useState('')
+  // Role
+  const [title_en, setTitle_en] = useState('')
+  const [title_es, setTitle_es] = useState('')
+  const [description_en, setDescription_en] = useState('')
+  const [description_es, setDescription_es] = useState('')
   const [state, setState] = useState(true)
 
-  const handleAddUser = async () => {
+  const handleAddRole = async () => {
     setLoader(true)
-    const response = await customFetch(apiCreateUser, {
-      body: { firstName, lastName, email, state },
+    const response = await customFetch(apiCreateRole, {
+      body: { title_en, title_es, description_en, description_es, state },
     })
     const { success, statusCode, message } = response
     if (success) {
@@ -54,7 +55,7 @@ export const DialogAddUser = ({
 
   return (
     <DialogCustom
-      title="Información del usuario"
+      title="Información del rol"
       open={open}
       setOpen={setOpen}
       loader={loader}
@@ -62,28 +63,35 @@ export const DialogAddUser = ({
       setAlert={setAlert}
       disabledCancelAction
       dialogActions={
-        <ButtonCustom text="Agregar" onClick={handleAddUser} color="success" />
+        <ButtonCustom text="Agregar" onClick={handleAddRole} color="success" />
       }
     >
       <div className="flex flex-col gap-4">
         <div className="flex gap-4 flex-col sm:flex-row">
           <TextInputCustom
-            name="Nombre:"
-            value={firstName}
-            setValue={setFirstName}
+            name="Título (EN):"
+            value={title_en}
+            setValue={setTitle_en}
             className="w-full"
           />
           <TextInputCustom
-            name="Apellido:"
-            value={lastName}
-            setValue={setLastName}
+            name="Título (ES):"
+            value={title_es}
+            setValue={setTitle_es}
             className="w-full"
           />
         </div>
         <TextInputCustom
-          name="Correo Electrónico:"
-          value={email}
-          setValue={setEmail}
+          name="Descripción (EN):"
+          value={description_en}
+          setValue={setDescription_en}
+          className="w-full"
+        />
+        <TextInputCustom
+          name="Descripción (ES):"
+          value={description_es}
+          setValue={setDescription_es}
+          className="w-full"
         />
         <SwitchCustom
           name="Estado:"

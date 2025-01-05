@@ -1,5 +1,6 @@
 export * from './PermissionsPage'
 export * from './RolesPage'
+export * from './RolePage'
 export * from './UsersPage'
 export * from './UserPage'
 export * from './SecurityPage'

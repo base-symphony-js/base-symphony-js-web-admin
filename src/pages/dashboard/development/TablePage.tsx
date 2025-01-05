@@ -176,18 +176,18 @@ const data = [
 ]
 
 export const TablePage = () => {
-  const [idUser, setIdUser] = useState<number | null>(null)
+  const [userId, setUserId] = useState<number | null>(null)
   const [alert, setAlert] = useState({} as IAlert)
   const [modalAlert, setModalAlert] = useState({} as IModalAlert)
 
-  const handleClean = () => setIdUser(null)
+  const handleClean = () => setUserId(null)
 
   const handleInhabilitar = () => {
-    console.log('Inhabilitar el usuario:', idUser)
+    console.log('Inhabilitar el usuario:', userId)
   }
 
   const handleEliminar = () => {
-    console.log('Eliminar el usuario:', idUser)
+    console.log('Eliminar el usuario:', userId)
   }
 
   const handleActions = {
@@ -195,7 +195,7 @@ export const TablePage = () => {
       setAlert({
         open: true,
         title: 'Ver Información',
-        description: `Cree una página para ver la información detallada del registro selecciado con id: ${idUser}`,
+        description: `Cree una página para ver la información detallada del registro selecciado con id: ${userId}`,
         severity: 'info',
       })
     },
@@ -203,7 +203,7 @@ export const TablePage = () => {
       setAlert({
         open: true,
         title: 'Editar Información',
-        description: `Cree una ventana modal para editar la información del registro selecciado con id: ${idUser}`,
+        description: `Cree una ventana modal para editar la información del registro selecciado con id: ${userId}`,
         severity: 'success',
       })
     },
@@ -253,7 +253,7 @@ export const TablePage = () => {
         /* ACTIONS */
         actions={['view', 'edit', 'disable', 'delete']}
         onAction={(action, id, obj) => {
-          setIdUser(id)
+          setUserId(id)
           handleActions[action](obj)
         }}
         positionActionsColumn="last"

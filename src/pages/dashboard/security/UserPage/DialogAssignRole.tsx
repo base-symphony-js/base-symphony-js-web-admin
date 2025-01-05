@@ -14,7 +14,7 @@ interface DialogAssignRoleProps {
   setOpen: (value: boolean) => void
   setIsSessionExpired: (value: boolean) => void
   onDismiss?: () => void
-  idUser: any
+  userId: any
   roles: any[]
 }
 
@@ -23,7 +23,7 @@ export const DialogAssignRole = ({
   setOpen = () => null,
   setIsSessionExpired = () => null,
   onDismiss = () => null,
-  idUser = null,
+  userId = null,
   roles = [],
 }: DialogAssignRoleProps) => {
   const { customFetch } = useCustomFetch()
@@ -34,8 +34,8 @@ export const DialogAssignRole = ({
   const handleAddRole = async () => {
     setLoader(true)
     const response = await customFetch(apiAssignRole, {
-      params: { idUser },
-      body: { idRole: selectedRole },
+      params: { userId },
+      body: { roleId: selectedRole },
     })
     const { success, statusCode, message } = response
     if (success) {

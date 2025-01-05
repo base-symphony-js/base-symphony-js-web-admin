@@ -37,7 +37,7 @@ export const apiGetUser = async (request: IRequest) => {
     data: null,
   }
   try {
-    const url = `/security/users/${request.params?.idUser}`
+    const url = `/security/users/${request.params?.userId}`
     const response = await api.get(url)
     dataResponse.success = response.status >= 200 || response.status < 300
     dataResponse.statusCode = response.status
@@ -95,7 +95,7 @@ export const apiUpdateUser = async (request: IRequest) => {
     data: null,
   }
   try {
-    const url = `/security/users/${params.idUser}`
+    const url = `/security/users/${params.userId}`
     const response = await api.put(url, body)
     dataResponse.success = response.status >= 200 || response.status < 300
     dataResponse.statusCode = response.status
@@ -124,7 +124,7 @@ export const apiDisableUser = async (request: IRequest) => {
     data: null,
   }
   try {
-    const url = `/security/users/${params.idUser}/disable`
+    const url = `/security/users/${params.userId}/disable`
     const response = await api.patch(url)
     dataResponse.success = response.status >= 200 || response.status < 300
     dataResponse.statusCode = response.status
@@ -153,7 +153,7 @@ export const apiUnlockedUser = async (request: IRequest) => {
     data: null,
   }
   try {
-    const url = `/security/users/${params.idUser}/unlock`
+    const url = `/security/users/${params.userId}/unlock`
     const response = await api.patch(url)
     dataResponse.success = response.status >= 200 || response.status < 300
     dataResponse.statusCode = response.status
@@ -182,7 +182,7 @@ export const apiDeleteUser = async (request: IRequest) => {
     data: null,
   }
   try {
-    const url = `/security/users/${params.idUser}`
+    const url = `/security/users/${params.userId}`
     const response = await api.delete(url)
     dataResponse.success = response.status >= 200 || response.status < 300
     dataResponse.statusCode = response.status
@@ -211,7 +211,7 @@ export const apiAssignRole = async (request: IRequest) => {
     data: null,
   }
   try {
-    const url = `/security/users/${params.idUser}/assignRole`
+    const url = `/security/users/${params.userId}/assignRole`
     const response = await api.patch(url, body)
     dataResponse.success = response.status >= 200 || response.status < 300
     dataResponse.statusCode = response.status
@@ -240,7 +240,7 @@ export const apiRemoveRole = async (request: IRequest) => {
     data: null,
   }
   try {
-    const url = `/security/users/${params.idUser}/removeRole`
+    const url = `/security/users/${params.userId}/removeRole`
     const response = await api.patch(url, body)
     dataResponse.success = response.status >= 200 || response.status < 300
     dataResponse.statusCode = response.status

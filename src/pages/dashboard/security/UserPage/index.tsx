@@ -18,7 +18,7 @@ import { DialogAssignRole } from './DialogAssignRole'
 
 export const UserPage = () => {
   const { customFetch } = useCustomFetch()
-  const { idUser } = useParams()
+  const { userId } = useParams()
   const [alert, setAlert] = useState({} as IAlert)
   const [modalAlert, setModalAlert] = useState({} as IModalAlert)
   const [loader, setLoader] = useState(false)
@@ -38,7 +38,7 @@ export const UserPage = () => {
 
   const loadUser = async () => {
     setLoader(true)
-    const response = await customFetch(apiGetUser, { params: { idUser } })
+    const response = await customFetch(apiGetUser, { params: { userId } })
     const { success, statusCode, message, data } = response
     if (success) {
       setFirstName(data?.user.firstName)
@@ -62,7 +62,7 @@ export const UserPage = () => {
   const handleEditUser = async () => {
     setLoader(true)
     const response = await customFetch(apiUpdateUser, {
-      params: { idUser },
+      params: { userId },
       body: { firstName, lastName, email, state },
     })
     const { success, statusCode, message } = response
@@ -86,11 +86,11 @@ export const UserPage = () => {
     setLoader(false)
   }
 
-  const handleRemoveRole = async (idRole: string) => {
+  const handleRemoveRole = async (roleId: string) => {
     setLoader(true)
     const response = await customFetch(apiRemoveRole, {
-      params: { idUser },
-      body: { idRole },
+      params: { userId },
+      body: { roleId },
     })
     const { success, statusCode, message } = response
     if (success) {
@@ -231,7 +231,7 @@ export const UserPage = () => {
         setOpen={setShowRole}
         setIsSessionExpired={setIsSessionExpired}
         onDismiss={loadUser}
-        idUser={idUser}
+        userId={userId}
         roles={availableRoles}
       />
     </PageLayout>
