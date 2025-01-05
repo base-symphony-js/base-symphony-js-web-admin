@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
-# yarn format-check
-# yarn lint
+yarn format-check
+yarn lint

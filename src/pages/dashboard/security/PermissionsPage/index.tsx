@@ -48,10 +48,10 @@ export const PermissionsPage = () => {
   const [alert, setAlert] = useState({} as IAlert)
 
   useEffect(() => {
-    loadRoles()
+    loadPermissions()
   }, [])
 
-  const loadRoles = async () => {
+  const loadPermissions = async () => {
     setLoader(true)
     const response = await customFetch(apiGetPermissions, {})
     const { success, statusCode, message, data } = response

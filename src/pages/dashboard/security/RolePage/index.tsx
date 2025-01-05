@@ -10,9 +10,10 @@ import {
 } from '@components'
 import { useCustomFetch } from '@hooks'
 import { Box, Divider } from '@mui/material'
-import { apiGetRole, apiUpdateRole } from '@services'
+import { apiGetPermissions, apiGetRole, apiUpdateRole } from '@services'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { PermissionTest } from './PermissionTest'
 
 export const RolePage = () => {
   const { customFetch } = useCustomFetch()
@@ -36,10 +37,34 @@ export const RolePage = () => {
     at: '',
     by: '',
   })
+  // Permissions
+  const [customPermissions, setCustomPermissions] = useState<any[]>([])
+  const [permissions, setPermissions] = useState<any[]>([])
+  const [actions, setActions] = useState<any[]>([])
 
   useEffect(() => {
     loadRole()
+    loadPermissions()
   }, [])
+
+  const loadPermissions = async () => {
+    setLoader(true)
+    const response = await customFetch(apiGetPermissions, {})
+    const { success, statusCode, message, data } = response
+    if (success) {
+      setPermissions(data.permissions)
+      setActions(data.actions)
+    } else {
+      if (statusCode === 401) setIsSessionExpired(true)
+      setAlert({
+        open: true,
+        title: statusCode >= 500 ? 'Error' : 'Advertencia',
+        description: message,
+        severity: statusCode >= 500 ? 'error' : 'warning',
+      })
+    }
+    setLoader(false)
+  }
 
   const loadRole = async () => {
     setLoader(true)
@@ -60,6 +85,7 @@ export const RolePage = () => {
         at: data?.role.updatedAt,
         by: data?.role.updatedBy?.email,
       })
+      setCustomPermissions(data?.role.CustomPermissions)
     } else {
       if (statusCode === 401) setIsSessionExpired(true)
       setAlert({
@@ -181,6 +207,12 @@ export const RolePage = () => {
           className="self-auto sm:self-end"
         />
       </div>
+      <PermissionTest
+        permissions={permissions}
+        actions={actions}
+        customPermissions={customPermissions}
+        setCustomPermissions={setCustomPermissions}
+      />
     </PageLayout>
   )
 }
