@@ -69,18 +69,18 @@ export const DialogAssignRole = ({
         /* DATA */
         columns={[
           {
-            accessorKey: '_id',
+            accessorKey: 'id',
             header: 'Nro.',
             enableEditing: false,
             enableHiding: false,
           },
           {
-            accessorKey: 'name',
+            accessorKey: 'title_es',
             header: 'Nombre',
             enableEditing: true,
           },
           {
-            accessorKey: 'description',
+            accessorKey: 'description_es',
             header: 'Descripción',
             enableEditing: true,
           },
@@ -98,8 +98,8 @@ export const DialogAssignRole = ({
         ]}
         data={roles}
         /* STATE */
-        identifierName="_id"
-        initialState={{ columnVisibility: { _id: false } }}
+        identifierName="id"
+        initialState={{ columnVisibility: { id: false } }}
         enableRowSelection
         onRowSelectionChange={selectedRows => setSelectedRole(selectedRows[0])}
       />

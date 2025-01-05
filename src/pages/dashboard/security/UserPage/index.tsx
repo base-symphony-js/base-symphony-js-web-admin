@@ -172,18 +172,18 @@ export const UserPage = () => {
           /* DATA */
           columns={[
             {
-              accessorKey: '_id',
+              accessorKey: 'id',
               header: 'Nro.',
               enableEditing: false,
               enableHiding: false,
             },
             {
-              accessorKey: 'name',
+              accessorKey: 'title_es',
               header: 'Nombre',
               enableEditing: true,
             },
             {
-              accessorKey: 'description',
+              accessorKey: 'description_es',
               header: 'Descripción',
               enableEditing: true,
             },
@@ -201,8 +201,8 @@ export const UserPage = () => {
           ]}
           data={assignedRoles}
           /* STATE */
-          identifierName="_id"
-          initialState={{ columnVisibility: { _id: false } }}
+          identifierName="id"
+          initialState={{ columnVisibility: { id: false } }}
           /* ACTIONS */
           actions={['delete']}
           onAction={(_action, id, obj) =>

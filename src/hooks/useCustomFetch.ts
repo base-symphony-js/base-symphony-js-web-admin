@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2025 Luis Solano. All rights reserved.
+ * Licensed under the MIT License. See the LICENSE file in the root of this repository for more information.
+ */
 import { api } from '@config'
 import { IDataResponse, IRequest } from '@interfaces'
 import { useAppSelector, useAuthActions } from '@redux'

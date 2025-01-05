@@ -20,14 +20,15 @@ const App = () => {
   const loadUserInfo = useCallback(async () => {
     const personalInfo = AuthStorage.getPersonalInfo()
     const tokens = AuthStorage.getTokens()
-    const roles = AuthStorage.getRoles()
+    const roles = AuthStorage.getRoles() ?? []
+    const permissions = AuthStorage.getPermissions() ?? []
     if (
       Object.keys(personalInfo).length !== 0 &&
       Object.keys(tokens).length !== 0 &&
       roles
     ) {
       api.defaults.headers.Authorization = `Bearer ${tokens?.accessToken}`
-      dispatchLogin(personalInfo, tokens, roles)
+      dispatchLogin(personalInfo, tokens, roles, permissions)
     } else {
       dispatchLogout()
     }

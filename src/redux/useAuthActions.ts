@@ -4,7 +4,7 @@ import {
   logout,
   updatePersonalInfo,
   updateTokens,
-  updateRoles,
+  updateRolesAndPermissions,
 } from './features/authSlice'
 import { IPersonalInfo, IRole, ITokens } from '@interfaces'
 
@@ -15,12 +15,14 @@ export const useAuthActions = () => {
     personalInfo: IPersonalInfo,
     tokens: ITokens,
     roles: IRole[],
+    permissions: string[],
   ) => {
     dispatch(
       login({
         personalInfo,
         tokens,
         roles,
+        permissions,
       }),
     )
   }
@@ -41,10 +43,14 @@ export const useAuthActions = () => {
     )
   }
 
-  const dispatchUpdateRoles = (roles: IRole[]) => {
+  const dispatchUpdateRolesAndPermissions = (
+    roles: IRole[],
+    permissions: string[],
+  ) => {
     dispatch(
-      updateRoles({
+      updateRolesAndPermissions({
         roles,
+        permissions,
       }),
     )
   }
@@ -57,7 +63,7 @@ export const useAuthActions = () => {
     dispatchLogout,
     dispatchUpdatePersonalInfo,
     dispatchUpdateTokens,
-    dispatchUpdateRoles,
+    dispatchUpdateRolesAndPermissions,
     dispatchLogin,
   }
 }

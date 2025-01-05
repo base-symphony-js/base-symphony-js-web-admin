@@ -14,7 +14,7 @@ import {
   TextCustom,
   TextInputCustom,
 } from '@components'
-import { COLORS, DRAWER_WIDTH } from '@common'
+import { APP_NAME, COLORS, DRAWER_WIDTH } from '@common'
 import { LogoCustomIcon, MenuIcon } from '@assets'
 
 export const RegisterPage = () => {
@@ -68,6 +68,7 @@ export const RegisterPage = () => {
           refreshToken: data?.tokens?.refreshToken,
         },
         data?.roles ?? [],
+        data?.permissions ?? [],
       )
     } else {
       setAlert({
@@ -134,7 +135,7 @@ export const RegisterPage = () => {
               className="w-10 h-10 sm:w-16 sm:h-16"
             />
             <TextCustom
-              text="Base Symphony JS"
+              text={APP_NAME}
               className="text-info italic text-xl sm:text-3xl"
             />
           </div>

@@ -2,6 +2,7 @@ import {
   ButtonCustom,
   DialogCustom,
   IAlert,
+  SwitchCustom,
   TextInputCustom,
 } from '@components'
 import { useCustomFetch } from '@hooks'
@@ -28,11 +29,12 @@ export const DialogAddUser = ({
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
+  const [state, setState] = useState(true)
 
   const handleAddUser = async () => {
     setLoader(true)
     const response = await customFetch(apiCreateUser, {
-      body: { firstName, lastName, email },
+      body: { firstName, lastName, email, state },
     })
     const { success, statusCode, message } = response
     if (success) {
@@ -81,6 +83,13 @@ export const DialogAddUser = ({
         name="Correo Electrónico:"
         value={email}
         setValue={setEmail}
+      />
+      <SwitchCustom
+        name="Estado:"
+        value={state}
+        setValue={setState}
+        align="top"
+        className="w-full"
       />
     </DialogCustom>
   )

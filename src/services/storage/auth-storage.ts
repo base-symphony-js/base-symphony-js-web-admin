@@ -33,4 +33,18 @@ export const AuthStorage = {
   removeRoles() {
     localStorage.removeItem('auth-roles')
   },
+  getPermissions(): string[] | null {
+    const permissions = localStorage.getItem('auth-permissions')
+    if (permissions) {
+      return JSON.parse(permissions)
+    } else {
+      return null
+    }
+  },
+  setPermissions(newTokens: string[]) {
+    localStorage.setItem('auth-permissions', JSON.stringify(newTokens))
+  },
+  removePermissions() {
+    localStorage.removeItem('auth-permissions')
+  },
 }

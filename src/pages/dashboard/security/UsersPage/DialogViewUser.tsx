@@ -133,30 +133,27 @@ export const DialogViewUser = ({
             <div className="flex flex-col">
               <TextCustom text="Creado en:" />
               <TextCustom
-                text={formatDate(user?.created_at)}
+                text={formatDate(user?.createdAt)}
                 color="textSecondary"
               />
             </div>
             <div className="flex flex-col">
               <TextCustom text="Creado por:" />
               <TextCustom
-                text={user?.created_by?.email ?? 'El sistema'}
+                text={user?.createdBy?.email ?? 'El sistema'}
                 color="textSecondary"
               />
             </div>
             <div className="flex flex-col">
               <TextCustom text="Actualizado en:" />
               <TextCustom
-                text={formatDate(user?.updated_at)}
+                text={formatDate(user?.updatedAt)}
                 color="textSecondary"
               />
             </div>
             <div className="flex flex-col">
               <TextCustom text="Actualizado por:" />
-              <TextCustom
-                text={user?.updated_by?.email}
-                color="textSecondary"
-              />
+              <TextCustom text={user?.updatedBy?.email} color="textSecondary" />
             </div>
           </div>
         </Box>
@@ -164,11 +161,14 @@ export const DialogViewUser = ({
           <TextCustom text="Roles del usuario:" className="font-semibold" />
           <div className="flex flex-col gap-4">
             {roles?.map((role: any, index: number) => (
-              <div key={role._id} className="flex gap-4 items-center">
+              <div key={role.id} className="flex gap-4 items-center">
                 <TextCustom text={`${index + 1}`} />
                 <div className="flex flex-col">
-                  <TextCustom text={role.name} />
-                  <TextCustom text={role.description} color="textSecondary" />
+                  <TextCustom text={role.title_es} />
+                  <TextCustom
+                    text={role.description_es}
+                    color="textSecondary"
+                  />
                 </div>
               </div>
             ))}

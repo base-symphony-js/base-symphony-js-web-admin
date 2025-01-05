@@ -54,18 +54,18 @@ export const RolesPage = () => {
         /* DATA */
         columns={[
           {
-            accessorKey: '_id',
+            accessorKey: 'id',
             header: 'Nro.',
             enableEditing: false,
             enableHiding: false,
           },
           {
-            accessorKey: 'name',
-            header: 'Nombre',
+            accessorKey: 'title_es',
+            header: 'Title',
             enableEditing: true,
           },
           {
-            accessorKey: 'description',
+            accessorKey: 'description_es',
             header: 'Descripción',
             enableEditing: true,
           },
@@ -83,8 +83,8 @@ export const RolesPage = () => {
         ]}
         data={roles}
         /* STATE */
-        identifierName="_id"
-        initialState={{ columnVisibility: { _id: false } }}
+        identifierName="id"
+        initialState={{ columnVisibility: { id: false } }}
         /* EXPORT */
         enableExport
         filename="Roles"

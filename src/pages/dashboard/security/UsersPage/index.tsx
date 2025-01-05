@@ -142,7 +142,7 @@ export const UsersPage = () => {
         /* DATA */
         columns={[
           {
-            accessorKey: '_id',
+            accessorKey: 'id',
             header: 'Nro.',
             enableEditing: false,
             enableHiding: false,
@@ -176,8 +176,8 @@ export const UsersPage = () => {
         ]}
         data={users}
         /* STATE */
-        identifierName="_id"
-        initialState={{ columnVisibility: { _id: false } }}
+        identifierName="id"
+        initialState={{ columnVisibility: { id: false } }}
         /* EXPORT */
         enableExport
         filename="Usuarios"

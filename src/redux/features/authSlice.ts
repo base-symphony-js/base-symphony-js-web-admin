@@ -7,6 +7,7 @@ export interface AuthState {
   personalInfo: IPersonalInfo
   tokens: ITokens
   roles: IRole[]
+  permissions: string[]
 }
 
 const initialState: AuthState = {
@@ -20,6 +21,7 @@ const initialState: AuthState = {
     refreshToken: '',
   },
   roles: [],
+  permissions: [],
 }
 
 export const AuthSlice = createSlice({
@@ -32,15 +34,18 @@ export const AuthSlice = createSlice({
         personalInfo: IPersonalInfo
         tokens: ITokens
         roles: IRole[]
+        permissions: string[]
       }>,
     ) => {
       AuthStorage.setPersonalInfo(action.payload.personalInfo)
       AuthStorage.setTokens(action.payload.tokens)
       AuthStorage.setRoles(action.payload.roles)
+      AuthStorage.setPermissions(action.payload.permissions)
       state.isAuth = true
       state.personalInfo = action.payload.personalInfo
       state.tokens = action.payload.tokens
       state.roles = action.payload.roles
+      state.permissions = action.payload.permissions
     },
     updatePersonalInfo: (
       state,
@@ -53,22 +58,34 @@ export const AuthSlice = createSlice({
       AuthStorage.setTokens(action.payload.tokens)
       state.tokens = action.payload.tokens
     },
-    updateRoles: (state, action: PayloadAction<{ roles: IRole[] }>) => {
+    updateRolesAndPermissions: (
+      state,
+      action: PayloadAction<{ roles: IRole[]; permissions: string[] }>,
+    ) => {
       AuthStorage.setRoles(action.payload.roles)
+      AuthStorage.setPermissions(action.payload.permissions)
       state.roles = action.payload.roles
+      state.permissions = action.payload.permissions
     },
     logout: state => {
       AuthStorage.removePersonalInfo()
       AuthStorage.removeTokens()
       AuthStorage.removeRoles()
+      AuthStorage.removePermissions()
       state.isAuth = initialState.isAuth
       state.personalInfo = initialState.personalInfo
       state.tokens = initialState.tokens
       state.roles = initialState.roles
+      state.permissions = initialState.permissions
     },
   },
 })
 
 export default AuthSlice.reducer
-export const { login, updatePersonalInfo, updateTokens, updateRoles, logout } =
-  AuthSlice.actions
+export const {
+  login,
+  updatePersonalInfo,
+  updateTokens,
+  updateRolesAndPermissions,
+  logout,
+} = AuthSlice.actions
